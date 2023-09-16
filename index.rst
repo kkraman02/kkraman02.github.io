@@ -14,8 +14,8 @@ Please refer to different sections based on your platform.
    :caption: Table of Contents
 
    roscube-x/index.rst
+   raman/index.rst
    roscube-pico/index.rst
    roscube-i/index.rst
    neuronsdk/index.rst
    support_software/index.rst
-   raman/index.rst
