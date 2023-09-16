@@ -1,0 +1,482 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ROScube-I series &mdash; roscube-doc 0.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="How to use CAN bus" href="canbus.html" />
+    <link rel="prev" title="Ubuntu 20.04 for NVIDIA" href="../roscube-pico/nvidia/advanced/ubuntu20_for_nvidia.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> roscube-doc
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../roscube-x/index.html">ROScube-X series</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../roscube-x/flash_image/index.html">How to flash image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-x/flash_image/recovery_mode.html">How to enter recovery mode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/flash_image/recovery_mode.html#connect-power-cable-to-roscube-and-power-on-it">1. Connect power cable to ROScube and power on it.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/flash_image/recovery_mode.html#make-sure-micro-usb-cable-is-in-good-quality">2. Make sure Micro USB cable is in good quality.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/flash_image/recovery_mode.html#reset-to-recovery-mode">3. Reset to recovery mode.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/flash_image/recovery_mode.html#now-roscube-is-in-recovery-mode-now">4. Now ROScube is in recovery mode now.</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-x/flash_image/flash_mfi.html">How to flash MFI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/flash_image/flash_mfi.html#parepare-mfi-image-on-your-host-computer">1. Parepare mfi image on your host computer.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/flash_image/flash_mfi.html#flash-image-to-roscube">2. Flash image to ROScube</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../roscube-x/nvidia/quick_start/index.html">Quick Start</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-x/nvidia/quick_start/setting_system.html">Setting System Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-x/nvidia/quick_start/check_bsp_version.html">Check BSP Version</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/quick_start/check_bsp_version.html#check-l4t-version">1. Check L4T version.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/quick_start/check_bsp_version.html#check-kernel-version">2. Check kernel version.</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-x/nvidia/quick_start/hardware_monitor.html">Hardware Monitor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/quick_start/hardware_monitor.html#install-jetson-stats">1. Install jetson-stats.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/quick_start/hardware_monitor.html#check-the-nvidia-jetpack">2. Check the nvidia-jetpack.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/quick_start/hardware_monitor.html#run-the-hardware-monitor">3. Run the Hardware Monitor.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../roscube-x/accessory/index.html">Accessory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-x/nvidia/accessory/intel_ac9260.html">Using Intel AC9260 WiFi Card</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../roscube-x/nvidia/packages/index.html">NVIDIA Packages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-x/nvidia/packages/jetpack_sdk/index.html">Jetpack SDK</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/packages/jetpack_sdk/jetpack_sdk_install.html">Jetpack SDK Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/packages/jetpack_sdk/jetpack_sdk_yolo.html">YOLO Object Detection</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-x/nvidia/packages/deepstream.html">DeepStream SDK</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/packages/deepstream.html#deepstream-sdk-installation">1.  DeepStream SDK Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/packages/deepstream.html#deepstream-sdk-example-usage">2.  DeepStream SDK Example Usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../roscube-x/gmsl_camera/index.html">GMSL2 Camera</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-x/gmsl_camera/system_diagram.html">System Diagram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-x/gmsl_camera/camera_driver.html">Camera Driver Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/gmsl_camera/camera_driver.html#install-camera-driver">1. Install Camera Driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/gmsl_camera/camera_driver.html#apply-device-tree">2. Apply Device Tree</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/gmsl_camera/camera_driver.html#reboot">3. Reboot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/gmsl_camera/camera_driver.html#check-camera">4. Check Camera</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-x/gmsl_camera/camera_usage.html">Camera Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/gmsl_camera/camera_usage.html#gstreamer">GStreamer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/gmsl_camera/camera_usage.html#v4l-utils">v4l-utils</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-x/gmsl_camera/frame_sync.html">Frame Synchronization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/gmsl_camera/frame_sync.html#why-frame-synchronization">Why Frame Synchronization?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/gmsl_camera/frame_sync.html#fpga-firmware-version-and-upgrade">FPGA Firmware Version and Upgrade</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/gmsl_camera/frame_sync.html#tier-iv-c1-c2-frame-sync">Tier IV C1/C2 Frame Sync</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/gmsl_camera/frame_sync.html#leopard-ar0233-frame-sync">Leopard AR0233 Frame Sync</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/gmsl_camera/frame_sync.html#manual-trigger-by-application">Manual Trigger by Application</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../roscube-x/nvidia/advanced/index.html">Advanced Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-x/nvidia/advanced/mount_on_external_storage/index.html">Mount rootfs on External Storage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/advanced/mount_on_external_storage/mounting_sdmmc.html">Mounting FileSystem From SD Card</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/advanced/mount_on_external_storage/mounting_nvme.html">Mounting FileSystem From NVMe M.2 SSD</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-x/nvidia/advanced/driver_packages/index.html">Driver Packages Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/advanced/driver_packages/driver_packages.html">Download Driver Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/advanced/driver_packages/customize_filesystem.html">Customize System FileSystem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/advanced/driver_packages/flash_system.html">Flash System Image to Target Machine</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/advanced/driver_packages/backup_restore.html">Backup and Restore</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-x/nvidia/advanced/canbus.html">How to use CAN bus</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/advanced/canbus.html#hardware-pinout">Hardware Pinout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/advanced/canbus.html#configuration">Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/advanced/canbus.html#test">Test</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/advanced/canbus.html#loopback-test">Loopback Test</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-x/nvidia/advanced/common/gpu_performance/index.html">GPU Performance Evaluation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/advanced/common/gpu_performance/ai_benchmark_usage.html">How to Use AI Benchmark</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/advanced/common/gpu_performance/ai_benchmark_result.html">AI Benchmark Results</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-x/nvidia/advanced/ubuntu20_for_nvidia.html">Ubuntu 20.04 for NVIDIA</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/advanced/ubuntu20_for_nvidia.html#flash-the-image">Flash the image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/advanced/ubuntu20_for_nvidia.html#extend-the-storage">Extend the storage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/advanced/ubuntu20_for_nvidia.html#install-cuda-library">Install CUDA library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/advanced/ubuntu20_for_nvidia.html#install-neuron-startup-menu">Install Neuron Startup Menu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/advanced/ubuntu20_for_nvidia.html#install-necessary-packages-in-the-container">Install necessary packages in the container</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-x/nvidia/advanced/ubuntu20_for_nvidia.html#run-yolo-object-detection-example">Run YOLO Object Detection example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../roscube-pico/index.html">ROScube-Pico series</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../roscube-pico/flash_image/index.html">How to flash image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-pico/flash_image/board_level_flash.html">Board Level ROScube Pico Flashing Image</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/flash_image/board_level_flash.html#set-roscube-pico-into-recovery-mode">1. Set ROScube Pico into recovery mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/flash_image/board_level_flash.html#connect-host-pc-and-roscube-pico-with-micro-usb-cable">2. Connect Host PC and ROScube Pico with micro usb cable.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/flash_image/board_level_flash.html#prepare-released-image-on-host-pc">3. Prepare released image on <strong>Host PC</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-pico/flash_image/system_level_flash.html">System Level ROScube Pico Flashing Image</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/flash_image/system_level_flash.html#set-roscube-pico-into-recovery-mode">1. Set ROScube Pico into recovery mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/flash_image/system_level_flash.html#connect-host-pc-and-roscube-pico-with-micro-usb-cable">2. Connect Host PC and ROScube Pico with micro usb cable.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/flash_image/system_level_flash.html#prepare-released-image-on-host-pc">3. Prepare released image on <strong>Host PC</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-pico/flash_image/massive_flash.html">Massive Flashing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../roscube-pico/nvidia/quick_start/index.html">Quick Start</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-pico/nvidia/quick_start/setting_system.html">Setting System Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-pico/nvidia/quick_start/check_bsp_version.html">Check BSP Version</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/quick_start/check_bsp_version.html#check-l4t-version">1. Check L4T version.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/quick_start/check_bsp_version.html#check-kernel-version">2. Check kernel version.</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-pico/nvidia/quick_start/hardware_monitor.html">Hardware Monitor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/quick_start/hardware_monitor.html#install-jetson-stats">1. Install jetson-stats.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/quick_start/hardware_monitor.html#check-the-nvidia-jetpack">2. Check the nvidia-jetpack.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/quick_start/hardware_monitor.html#run-the-hardware-monitor">3. Run the Hardware Monitor.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../roscube-pico/accessory/index.html">Accessory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-pico/nvidia/accessory/intel_ac9260.html">Using Intel AC9260 WiFi Card</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-pico/accessory/bmi160_spi_demo/index.html">BMI160 SPI Demo</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/accessory/bmi160_spi_demo/spi_test.html">How to Test SPI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/accessory/bmi160_spi_demo/spi_demo.html">How to Make SPI Demo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../roscube-pico/nvidia/packages/index.html">NVIDIA Packages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-pico/nvidia/packages/jetpack_sdk/index.html">Jetpack SDK</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/packages/jetpack_sdk/jetpack_sdk_install.html">Jetpack SDK Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/packages/jetpack_sdk/jetpack_sdk_yolo.html">YOLO Object Detection</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-pico/nvidia/packages/deepstream.html">DeepStream SDK</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/packages/deepstream.html#deepstream-sdk-installation">1.  DeepStream SDK Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/packages/deepstream.html#deepstream-sdk-example-usage">2.  DeepStream SDK Example Usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../roscube-pico/nvidia/advanced/index.html">Advanced Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-pico/nvidia/advanced/mount_on_external_storage/index.html">Mount rootfs on External Storage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/advanced/mount_on_external_storage/mounting_sdmmc.html">Mounting FileSystem From SD Card</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/advanced/mount_on_external_storage/mounting_nvme.html">Mounting FileSystem From NVMe M.2 SSD</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-pico/nvidia/advanced/driver_packages/index.html">Driver Packages Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/advanced/driver_packages/driver_packages.html">Download Driver Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/advanced/driver_packages/customize_filesystem.html">Customize System FileSystem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/advanced/driver_packages/flash_system.html">Flash System Image to Target Machine</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/advanced/driver_packages/backup_restore.html">Backup and Restore</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-pico/nvidia/advanced/canbus.html">How to use CAN bus</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/advanced/canbus.html#hardware-pinout">Hardware Pinout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/advanced/canbus.html#configuration">Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/advanced/canbus.html#test">Test</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/advanced/canbus.html#loopback-test">Loopback Test</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-pico/nvidia/advanced/common/gpu_performance/index.html">GPU Performance Evaluation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/advanced/common/gpu_performance/ai_benchmark_usage.html">How to Use AI Benchmark</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/advanced/common/gpu_performance/ai_benchmark_result.html">AI Benchmark Results</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../roscube-pico/nvidia/advanced/ubuntu20_for_nvidia.html">Ubuntu 20.04 for NVIDIA</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/advanced/ubuntu20_for_nvidia.html#flash-the-image">Flash the image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/advanced/ubuntu20_for_nvidia.html#extend-the-storage">Extend the storage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/advanced/ubuntu20_for_nvidia.html#install-cuda-library">Install CUDA library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/advanced/ubuntu20_for_nvidia.html#install-neuron-startup-menu">Install Neuron Startup Menu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/advanced/ubuntu20_for_nvidia.html#install-necessary-packages-in-the-container">Install necessary packages in the container</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../roscube-pico/nvidia/advanced/ubuntu20_for_nvidia.html#run-yolo-object-detection-example">Run YOLO Object Detection example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ROScube-I series</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="canbus.html">How to use CAN bus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="canbus.html#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canbus.html#hardware-preparation">Hardware preparation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="canbus.html#test">Test</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gpu_card/index.html">GPU Card</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gpu_card/nvidia_driver.html">How to Install NVDIA Driver</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="gpu_card/nvidia_driver.html#update-your-system">1. Update your system.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gpu_card/nvidia_driver.html#show-all-driver-packages">2. Show all driver packages.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gpu_card/nvidia_driver.html#install-the-gpu-driver">3. Install the GPU driver.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gpu_card/nvidia_driver.html#reboot-your-system">4. Reboot your system.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gpu_card/nvidia_driver.html#verification">5. Verification.</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="gpu_card/common/gpu_performance/index.html">GPU Performance Evaluation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="gpu_card/common/gpu_performance/ai_benchmark_usage.html">How to Use AI Benchmark</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gpu_card/common/gpu_performance/ai_benchmark_result.html">AI Benchmark Results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../neuronsdk/index.html">Neuron SDK</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../neuronsdk/neuron_library/index.html">Neuron Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../neuronsdk/neuron_library/installation.html">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../neuronsdk/neuron_library/installation.html#install-from-apt-repository">Install from APT repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../neuronsdk/neuron_library/installation.html#build-from-source-code">Build from source code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../neuronsdk/neuron_library/usage.html">Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../neuronsdk/neuron_library/usage.html#api">API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../neuronsdk/neuron_library/usage.html#pin-mapping">Pin Mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../neuronsdk/neuron_library/usage.html#c-example">C Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../neuronsdk/neuron_library/usage.html#python-example">Python Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../neuronsdk/neuron_library/rosdriver.html">ROS 2 drvier</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../neuronsdk/neuron_startup_menu/index.html">Neuron Startup Menu</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../neuronsdk/neuron_startup_menu/installation.html">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../neuronsdk/neuron_startup_menu/installation.html#install">Install</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../neuronsdk/neuron_startup_menu/installation.html#uninstall">Uninstall</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../neuronsdk/neuron_startup_menu/usage.html">Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../neuronsdk/neuron_startup_menu/usage.html#options">Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../neuronsdk/neuron_startup_menu/usage.html#useful-commands">Useful Commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../neuronsdk/neuron_startup_menu/usage.html#configuration">Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support_software/index.html">Supported Software</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../support_software/cyclonedds/index.html">Eclipse Cyclone DDS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../support_software/cyclonedds/index.html#build">Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../support_software/cyclonedds/index.html#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">roscube-doc</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>ROScube-I series</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/roscube-i/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="roscube-i-series">
+<span id="roscube-i"></span><h1>ROScube-I series<a class="headerlink" href="#roscube-i-series" title="Permalink to this headline">¶</a></h1>
+<p>The supported models:</p>
+<ul class="simple">
+<li><p>ROScube-I</p></li>
+<li><p>ROScube-I-E</p></li>
+</ul>
+<p><strong>Table of Contents:</strong></p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="canbus.html">How to use CAN bus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_card/index.html">GPU Card</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="canbus.html" class="btn btn-neutral float-right" title="How to use CAN bus" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../roscube-pico/nvidia/advanced/ubuntu20_for_nvidia.html" class="btn btn-neutral float-left" title="Ubuntu 20.04 for NVIDIA" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2023, ADLINK Technology
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,693 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Frame Synchronization &mdash; roscube-doc 0.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Advanced Usage" href="../nvidia/advanced/index.html" />
+    <link rel="prev" title="Camera Usage" href="camera_usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> roscube-doc
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">ROScube-X series</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../flash_image/index.html">How to flash image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../flash_image/recovery_mode.html">How to enter recovery mode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../flash_image/recovery_mode.html#connect-power-cable-to-roscube-and-power-on-it">1. Connect power cable to ROScube and power on it.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../flash_image/recovery_mode.html#make-sure-micro-usb-cable-is-in-good-quality">2. Make sure Micro USB cable is in good quality.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../flash_image/recovery_mode.html#reset-to-recovery-mode">3. Reset to recovery mode.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../flash_image/recovery_mode.html#now-roscube-is-in-recovery-mode-now">4. Now ROScube is in recovery mode now.</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../flash_image/flash_mfi.html">How to flash MFI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../flash_image/flash_mfi.html#parepare-mfi-image-on-your-host-computer">1. Parepare mfi image on your host computer.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../flash_image/flash_mfi.html#flash-image-to-roscube">2. Flash image to ROScube</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../nvidia/quick_start/index.html">Quick Start</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../nvidia/quick_start/setting_system.html">Setting System Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../nvidia/quick_start/check_bsp_version.html">Check BSP Version</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/quick_start/check_bsp_version.html#check-l4t-version">1. Check L4T version.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/quick_start/check_bsp_version.html#check-kernel-version">2. Check kernel version.</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../nvidia/quick_start/hardware_monitor.html">Hardware Monitor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/quick_start/hardware_monitor.html#install-jetson-stats">1. Install jetson-stats.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/quick_start/hardware_monitor.html#check-the-nvidia-jetpack">2. Check the nvidia-jetpack.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/quick_start/hardware_monitor.html#run-the-hardware-monitor">3. Run the Hardware Monitor.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../accessory/index.html">Accessory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../nvidia/accessory/intel_ac9260.html">Using Intel AC9260 WiFi Card</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../nvidia/packages/index.html">NVIDIA Packages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../nvidia/packages/jetpack_sdk/index.html">Jetpack SDK</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/packages/jetpack_sdk/jetpack_sdk_install.html">Jetpack SDK Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/packages/jetpack_sdk/jetpack_sdk_yolo.html">YOLO Object Detection</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../nvidia/packages/deepstream.html">DeepStream SDK</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/packages/deepstream.html#deepstream-sdk-installation">1.  DeepStream SDK Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/packages/deepstream.html#deepstream-sdk-example-usage">2.  DeepStream SDK Example Usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">GMSL2 Camera</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="system_diagram.html">System Diagram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="camera_driver.html">Camera Driver Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="camera_driver.html#install-camera-driver">1. Install Camera Driver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="camera_driver.html#apply-device-tree">2. Apply Device Tree</a></li>
+<li class="toctree-l4"><a class="reference internal" href="camera_driver.html#reboot">3. Reboot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="camera_driver.html#check-camera">4. Check Camera</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="camera_usage.html">Camera Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="camera_usage.html#gstreamer">GStreamer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="camera_usage.html#v4l-utils">v4l-utils</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Frame Synchronization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#why-frame-synchronization">Why Frame Synchronization?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fpga-firmware-version-and-upgrade">FPGA Firmware Version and Upgrade</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tier-iv-c1-c2-frame-sync">Tier IV C1/C2 Frame Sync</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#leopard-ar0233-frame-sync">Leopard AR0233 Frame Sync</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#manual-trigger-by-application">Manual Trigger by Application</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../nvidia/advanced/index.html">Advanced Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../nvidia/advanced/mount_on_external_storage/index.html">Mount rootfs on External Storage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/advanced/mount_on_external_storage/mounting_sdmmc.html">Mounting FileSystem From SD Card</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/advanced/mount_on_external_storage/mounting_nvme.html">Mounting FileSystem From NVMe M.2 SSD</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../nvidia/advanced/driver_packages/index.html">Driver Packages Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/advanced/driver_packages/driver_packages.html">Download Driver Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/advanced/driver_packages/customize_filesystem.html">Customize System FileSystem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/advanced/driver_packages/flash_system.html">Flash System Image to Target Machine</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/advanced/driver_packages/backup_restore.html">Backup and Restore</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../nvidia/advanced/canbus.html">How to use CAN bus</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/advanced/canbus.html#hardware-pinout">Hardware Pinout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/advanced/canbus.html#configuration">Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/advanced/canbus.html#test">Test</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/advanced/canbus.html#loopback-test">Loopback Test</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../nvidia/advanced/common/gpu_performance/index.html">GPU Performance Evaluation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/advanced/common/gpu_performance/ai_benchmark_usage.html">How to Use AI Benchmark</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/advanced/common/gpu_performance/ai_benchmark_result.html">AI Benchmark Results</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../nvidia/advanced/ubuntu20_for_nvidia.html">Ubuntu 20.04 for NVIDIA</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/advanced/ubuntu20_for_nvidia.html#flash-the-image">Flash the image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/advanced/ubuntu20_for_nvidia.html#extend-the-storage">Extend the storage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/advanced/ubuntu20_for_nvidia.html#install-cuda-library">Install CUDA library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/advanced/ubuntu20_for_nvidia.html#install-neuron-startup-menu">Install Neuron Startup Menu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/advanced/ubuntu20_for_nvidia.html#install-necessary-packages-in-the-container">Install necessary packages in the container</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nvidia/advanced/ubuntu20_for_nvidia.html#run-yolo-object-detection-example">Run YOLO Object Detection example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../roscube-pico/index.html">ROScube-Pico series</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../roscube-pico/flash_image/index.html">How to flash image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../roscube-pico/flash_image/board_level_flash.html">Board Level ROScube Pico Flashing Image</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/flash_image/board_level_flash.html#set-roscube-pico-into-recovery-mode">1. Set ROScube Pico into recovery mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/flash_image/board_level_flash.html#connect-host-pc-and-roscube-pico-with-micro-usb-cable">2. Connect Host PC and ROScube Pico with micro usb cable.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/flash_image/board_level_flash.html#prepare-released-image-on-host-pc">3. Prepare released image on <strong>Host PC</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../roscube-pico/flash_image/system_level_flash.html">System Level ROScube Pico Flashing Image</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/flash_image/system_level_flash.html#set-roscube-pico-into-recovery-mode">1. Set ROScube Pico into recovery mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/flash_image/system_level_flash.html#connect-host-pc-and-roscube-pico-with-micro-usb-cable">2. Connect Host PC and ROScube Pico with micro usb cable.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/flash_image/system_level_flash.html#prepare-released-image-on-host-pc">3. Prepare released image on <strong>Host PC</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../roscube-pico/flash_image/massive_flash.html">Massive Flashing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../roscube-pico/nvidia/quick_start/index.html">Quick Start</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../roscube-pico/nvidia/quick_start/setting_system.html">Setting System Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../roscube-pico/nvidia/quick_start/check_bsp_version.html">Check BSP Version</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/quick_start/check_bsp_version.html#check-l4t-version">1. Check L4T version.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/quick_start/check_bsp_version.html#check-kernel-version">2. Check kernel version.</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../roscube-pico/nvidia/quick_start/hardware_monitor.html">Hardware Monitor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/quick_start/hardware_monitor.html#install-jetson-stats">1. Install jetson-stats.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/quick_start/hardware_monitor.html#check-the-nvidia-jetpack">2. Check the nvidia-jetpack.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/quick_start/hardware_monitor.html#run-the-hardware-monitor">3. Run the Hardware Monitor.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../roscube-pico/accessory/index.html">Accessory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../roscube-pico/nvidia/accessory/intel_ac9260.html">Using Intel AC9260 WiFi Card</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../roscube-pico/accessory/bmi160_spi_demo/index.html">BMI160 SPI Demo</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/accessory/bmi160_spi_demo/spi_test.html">How to Test SPI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/accessory/bmi160_spi_demo/spi_demo.html">How to Make SPI Demo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../roscube-pico/nvidia/packages/index.html">NVIDIA Packages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../roscube-pico/nvidia/packages/jetpack_sdk/index.html">Jetpack SDK</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/packages/jetpack_sdk/jetpack_sdk_install.html">Jetpack SDK Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/packages/jetpack_sdk/jetpack_sdk_yolo.html">YOLO Object Detection</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../roscube-pico/nvidia/packages/deepstream.html">DeepStream SDK</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/packages/deepstream.html#deepstream-sdk-installation">1.  DeepStream SDK Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/packages/deepstream.html#deepstream-sdk-example-usage">2.  DeepStream SDK Example Usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../roscube-pico/nvidia/advanced/index.html">Advanced Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../roscube-pico/nvidia/advanced/mount_on_external_storage/index.html">Mount rootfs on External Storage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/advanced/mount_on_external_storage/mounting_sdmmc.html">Mounting FileSystem From SD Card</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/advanced/mount_on_external_storage/mounting_nvme.html">Mounting FileSystem From NVMe M.2 SSD</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../roscube-pico/nvidia/advanced/driver_packages/index.html">Driver Packages Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/advanced/driver_packages/driver_packages.html">Download Driver Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/advanced/driver_packages/customize_filesystem.html">Customize System FileSystem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/advanced/driver_packages/flash_system.html">Flash System Image to Target Machine</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/advanced/driver_packages/backup_restore.html">Backup and Restore</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../roscube-pico/nvidia/advanced/canbus.html">How to use CAN bus</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/advanced/canbus.html#hardware-pinout">Hardware Pinout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/advanced/canbus.html#configuration">Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/advanced/canbus.html#test">Test</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/advanced/canbus.html#loopback-test">Loopback Test</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../roscube-pico/nvidia/advanced/common/gpu_performance/index.html">GPU Performance Evaluation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/advanced/common/gpu_performance/ai_benchmark_usage.html">How to Use AI Benchmark</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/advanced/common/gpu_performance/ai_benchmark_result.html">AI Benchmark Results</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../roscube-pico/nvidia/advanced/ubuntu20_for_nvidia.html">Ubuntu 20.04 for NVIDIA</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/advanced/ubuntu20_for_nvidia.html#flash-the-image">Flash the image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/advanced/ubuntu20_for_nvidia.html#extend-the-storage">Extend the storage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/advanced/ubuntu20_for_nvidia.html#install-cuda-library">Install CUDA library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/advanced/ubuntu20_for_nvidia.html#install-neuron-startup-menu">Install Neuron Startup Menu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/advanced/ubuntu20_for_nvidia.html#install-necessary-packages-in-the-container">Install necessary packages in the container</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-pico/nvidia/advanced/ubuntu20_for_nvidia.html#run-yolo-object-detection-example">Run YOLO Object Detection example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../roscube-i/index.html">ROScube-I series</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../roscube-i/canbus.html">How to use CAN bus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../roscube-i/canbus.html#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../roscube-i/canbus.html#hardware-preparation">Hardware preparation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../roscube-i/canbus.html#test">Test</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../roscube-i/gpu_card/index.html">GPU Card</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../roscube-i/gpu_card/nvidia_driver.html">How to Install NVDIA Driver</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-i/gpu_card/nvidia_driver.html#update-your-system">1. Update your system.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-i/gpu_card/nvidia_driver.html#show-all-driver-packages">2. Show all driver packages.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-i/gpu_card/nvidia_driver.html#install-the-gpu-driver">3. Install the GPU driver.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-i/gpu_card/nvidia_driver.html#reboot-your-system">4. Reboot your system.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-i/gpu_card/nvidia_driver.html#verification">5. Verification.</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../roscube-i/gpu_card/common/gpu_performance/index.html">GPU Performance Evaluation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-i/gpu_card/common/gpu_performance/ai_benchmark_usage.html">How to Use AI Benchmark</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../roscube-i/gpu_card/common/gpu_performance/ai_benchmark_result.html">AI Benchmark Results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../neuronsdk/index.html">Neuron SDK</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../neuronsdk/neuron_library/index.html">Neuron Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../neuronsdk/neuron_library/installation.html">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../neuronsdk/neuron_library/installation.html#install-from-apt-repository">Install from APT repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../neuronsdk/neuron_library/installation.html#build-from-source-code">Build from source code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../neuronsdk/neuron_library/usage.html">Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../neuronsdk/neuron_library/usage.html#api">API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../neuronsdk/neuron_library/usage.html#pin-mapping">Pin Mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../neuronsdk/neuron_library/usage.html#c-example">C Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../neuronsdk/neuron_library/usage.html#python-example">Python Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../neuronsdk/neuron_library/rosdriver.html">ROS 2 drvier</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../neuronsdk/neuron_startup_menu/index.html">Neuron Startup Menu</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../neuronsdk/neuron_startup_menu/installation.html">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../neuronsdk/neuron_startup_menu/installation.html#install">Install</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../neuronsdk/neuron_startup_menu/installation.html#uninstall">Uninstall</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../neuronsdk/neuron_startup_menu/usage.html">Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../neuronsdk/neuron_startup_menu/usage.html#options">Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../neuronsdk/neuron_startup_menu/usage.html#useful-commands">Useful Commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../neuronsdk/neuron_startup_menu/usage.html#configuration">Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../support_software/index.html">Supported Software</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../support_software/cyclonedds/index.html">Eclipse Cyclone DDS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../support_software/cyclonedds/index.html#build">Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../support_software/cyclonedds/index.html#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">roscube-doc</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">ROScube-X series</a> &raquo;</li>
+        
+          <li><a href="index.html">GMSL2 Camera</a> &raquo;</li>
+        
+      <li>Frame Synchronization</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/roscube-x/gmsl_camera/frame_sync.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="frame-synchronization">
+<span id="frame-sync"></span><h1>Frame Synchronization<a class="headerlink" href="#frame-synchronization" title="Permalink to this headline">¶</a></h1>
+<p>The ROScube-X compatible GMSL2 cameras can be run in the following modes:</p>
+<ul class="simple">
+<li><p><strong>Free Run mode</strong> - The camera runs at default FPS.</p></li>
+<li><p><strong>Fsync Auto Trigger mode</strong> - The camera shutter is automatically triggered by FPGA.</p></li>
+<li><p><strong>Fsync Manual Trigger mode</strong> - The camera shutter is manually triggered by Fsync signal.</p></li>
+</ul>
+<div class="line-block">
+<div class="line">For Free Run mode, the FPS is fixed at default frame rate.</div>
+<div class="line">For Fsync (Frame Synchronization) mode, the FPS can be different depends on the triggering rate.</div>
+</div>
+<p>Typically, if you want to use Fsync mode, you need to follow the procedure.</p>
+<blockquote>
+<div><ol class="lowerroman simple">
+<li><p>Set all cameras to Fsync mode by kernel modules’s parameter.</p></li>
+<li><p>Set FPGA parameter for automatically triggering. Or use I/O library to manually trigger frames.</p></li>
+<li><p>Use GStreamer or Argus API to retrive your frame.</p></li>
+</ol>
+</div></blockquote>
+<div class="section" id="why-frame-synchronization">
+<h2>Why Frame Synchronization?<a class="headerlink" href="#why-frame-synchronization" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">Observe the following plot.</div>
+<div class="line">Camera’s frame 1 (f1) and camera’s frame 2 (f2) are not at the same time. Therefore, in your system they are not under the same timestamp.</div>
+</div>
+<a class="reference internal image-reference" href="../../_images/free-run-30fps.png"><img alt="../../_images/free-run-30fps.png" class="align-center" src="../../_images/free-run-30fps.png" style="width: 80%;" /></a>
+<div class="line-block">
+<div class="line">Fsync mode is a mechanism to put your cameras in passive mode, and every frame from camera is triggered by external signal.</div>
+<div class="line">Therefore, we can make sure all the camera shutters are triggered at the same time.</div>
+<div class="line">Or intent to customize cameras in different frame rate.</div>
+</div>
+<a class="reference internal image-reference" href="../../_images/frame-sync-30fps.png"><img alt="../../_images/frame-sync-30fps.png" class="align-center" src="../../_images/frame-sync-30fps.png" style="width: 80%;" /></a>
+</div>
+<div class="section" id="fpga-firmware-version-and-upgrade">
+<h2>FPGA Firmware Version and Upgrade<a class="headerlink" href="#fpga-firmware-version-and-upgrade" title="Permalink to this headline">¶</a></h2>
+<p>In order to use Fsync mode, please make sure that FPGA version is at least 0x24.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>i2cget -f -y <span class="m">2</span> 0x66 0x01
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/fpga_fw_0x24.png"><img alt="../../_images/fpga_fw_0x24.png" class="align-center" src="../../_images/fpga_fw_0x24.png" style="width: 70%;" /></a>
+<p>If the version value is unable to read, you have to flash the FPGA firmware.</p>
+<ul class="simple">
+<li><p>For RQX-590 with ADLINK GMSL board, please go to <a class="reference external" href="https://github.com/Adlink-ROS/rqx-release-sw">https://github.com/Adlink-ROS/rqx-release-sw</a> to download the flash tool and the latest firmware.</p></li>
+<li><p>For RQX-58G and RQX-590 with Leopard GMSL board, you have to send RQX back to ADLINK to upgrade the firmware.</p></li>
+</ul>
+</div>
+<div class="section" id="tier-iv-c1-c2-frame-sync">
+<h2>Tier IV C1/C2 Frame Sync<a class="headerlink" href="#tier-iv-c1-c2-frame-sync" title="Permalink to this headline">¶</a></h2>
+<p>If you are using Tier IV Automotive HDR Camera C1/C2. To enable Fsync mode, please use a text editor to open the driver configuration file:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/etc/modprobe.d/tier4-isx021.conf</span></code> for C1 camera</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/etc/modprobe.d/tier4-imx490.conf</span></code> for C2 camera</p></li>
+</ul>
+<p>And then follow the steps to enable Fsync mode:</p>
+<blockquote>
+<div><ol class="lowerroman simple">
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">trigger_mode=1</span></code>.</p></li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">fsync_mode=1</span></code> for <strong>Fsync Auto Trigger mode</strong> or <code class="docutils literal notranslate"><span class="pre">fsync_mode=2</span></code> for <strong>Fsync Manual Trigger mode</strong>.</p></li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">fps_camX_camX=&lt;FPS&gt;</span></code> for Fsync Auto Trigger rate.</p></li>
+<li><p>Save file and reboot system to take effect.</p></li>
+</ol>
+</div></blockquote>
+<p>Here is C1 camera example for using Fsync Auto Trigger mode with 10 Hz tigger rate:</p>
+<a class="reference internal image-reference" href="../../_images/c1_fsync_auto.png"><img alt="../../_images/c1_fsync_auto.png" class="align-center" src="../../_images/c1_fsync_auto.png" style="width: 95%;" /></a>
+<p>After reboot, enter GStreamer command on terminal to verify the trigger rate (FPS):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gst-launch-1.0 -e v4l2src <span class="nv">device</span><span class="o">=</span>/dev/video0 ! <span class="s1">&#39;video/x-raw,format=UYVY,width=1920,height=1280&#39;</span> ! videoconvert ! fpsdisplaysink video-sink<span class="o">=</span>xvimagesink <span class="nv">sync</span><span class="o">=</span><span class="nb">false</span>
+</pre></div>
+</div>
+<p>In this example, the streaming result will be around 10 Hz:</p>
+<a class="reference internal image-reference" href="../../_images/gst_launch_10fps.png"><img alt="../../_images/gst_launch_10fps.png" class="align-center" src="../../_images/gst_launch_10fps.png" style="width: 90%;" /></a>
+<p>If you want to use Fsync Manual Trigger Mode, please go to the <a class="reference internal" href="#section">section</a>.</p>
+</div>
+<div class="section" id="leopard-ar0233-frame-sync">
+<h2>Leopard AR0233 Frame Sync<a class="headerlink" href="#leopard-ar0233-frame-sync" title="Permalink to this headline">¶</a></h2>
+<p>For Leopard AR0233 users, to enable Fsync mode, please change the value from <code class="docutils literal notranslate"><span class="pre">/sys/module/leopard_ar0233/paramters/trigger_mode</span></code>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>0 -&gt; Free Run mode</p></li>
+<li><p>1 -&gt; Fsync mode</p></li>
+</ul>
+</div></blockquote>
+<p>To see current value of <code class="docutils literal notranslate"><span class="pre">trigger_mode</span></code>, please enter the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo su
+cat /sys/module/leopard_ar0233/parameters/trigger_mode
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Value <strong>0</strong> means all AR0233 cameras are in free run mode,
+while value <strong>1</strong> means AR0233 cameras are in frame sync mode.</p>
+</div>
+<ul>
+<li><p>Fsync Auto Trigger mode:</p>
+<p>To enable Fsync Auto Trigger mode, please enter the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo su
+
+<span class="c1"># For Fsync Auto Trigger mode</span>
+<span class="nb">echo</span> <span class="m">1</span> &gt; /sys/module/leopard_ar0233/parameters/trigger_mode
+i2cset -f -y <span class="m">2</span> 0x66 0x04 0xff
+i2cset -f -y <span class="m">2</span> 0x66 0x05 0xf0
+
+<span class="c1"># Set to 10 Hz (0x0a) for 8 cameras</span>
+i2cset -y -f <span class="m">2</span> 0x66 0x08 0x0a
+i2cset -y -f <span class="m">2</span> 0x66 0x14 0x0a
+i2cset -y -f <span class="m">2</span> 0x66 0x20 0x0a
+i2cset -y -f <span class="m">2</span> 0x66 0x2c 0x0a
+<span class="c1"># (trigger rate can be set from 0x01 to 0x30)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Fsync Manual Trigger mode:</p>
+<p>To enable Fsync Manual Trigger Mode, please enter the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># For Fsync Manual Trigger mode</span>
+sudo su
+<span class="nb">echo</span> <span class="m">1</span> &gt; /sys/module/leopard_ar0233/parameters/trigger_mode
+i2cset -f -y <span class="m">2</span> 0x66 0x04 0xff
+i2cset -f -y <span class="m">2</span> 0x66 0x05 0x00
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">To learn how to manually trigger the camera shutters, please go to the <a class="reference internal" href="#section">section</a>.</div>
+</div>
+</li>
+<li><p>Free Run mode:</p>
+<p>To disable Fsync mode and enable Free Run mode, please enter the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># For Free Run mode</span>
+sudo su
+<span class="nb">echo</span> <span class="m">0</span> &gt; /sys/module/leopard_ar0233/parameters/trigger_mode
+i2cset -f -y <span class="m">2</span> 0x66 0x04 0xf0
+i2cset -f -y <span class="m">2</span> 0x66 0x05 0x00
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="manual-trigger-by-application">
+<span id="section"></span><h2>Manual Trigger by Application<a class="headerlink" href="#manual-trigger-by-application" title="Permalink to this headline">¶</a></h2>
+<p>How to manually trigger the camera shutters when using Fsync Manual Trigger mode?</p>
+<p>In ROScube-X Series, we use 4 GPIOs to send Fsync signals to trigger 8 camera shutters.
+Once you know which GPIOs can be used, you can write a program by setting high/low to the GPIOs to send Fsync signals.</p>
+<p>The 4 GPIOs used to send Fsync signal are listed below:</p>
+<ul class="simple">
+<li><p>For RQX-590 Series:</p></li>
+</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 48%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Camera Number</p></th>
+<th class="head"><p>Sysfs Pin Number</p></th>
+<th class="head"><p>Pin Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>cam 1 - cam 2</p></td>
+<td><p>/sys/class/gpio/gpio440</p></td>
+<td><p>PP.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>cam 3 - cam 4</p></td>
+<td><p>/sys/class/gpio/gpio397</p></td>
+<td><p>PH.06</p></td>
+</tr>
+<tr class="row-even"><td><p>cam 5 - cam 6</p></td>
+<td><p>/sys/class/gpio/gpio487</p></td>
+<td><p>PAC.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>cam 7 - cam 8</p></td>
+<td><p>/sys/class/gpio/gpio486</p></td>
+<td><p>PAC.00</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>For RQX-58G:</p></li>
+</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 48%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Camera Number</p></th>
+<th class="head"><p>Sysfs Pin Number</p></th>
+<th class="head"><p>Pin Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>cam 1 - cam 2</p></td>
+<td><p>/sys/class/gpio/gpio408</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>cam 3 - cam 4</p></td>
+<td><p>/sys/class/gpio/gpio350</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>cam 5 - cam 6</p></td>
+<td><p>/sys/class/gpio/gpio446</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>cam 7 - cam 8</p></td>
+<td><p>/sys/class/gpio/gpio445</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The sample codes can be downloaded from this link: <a class="reference external" href="https://github.com/Adlink-ROS/fsync_manual_trigger">https://github.com/Adlink-ROS/fsync_manual_trigger</a>
+Before using this program, please make sure the cameras are switched to Fsync Manual Trigger mode.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In Fsync Manual Trigger mode, the performance and the precision depends on the program as well as the system load. <strong>Fsync Auto Trigger</strong> mode is much more precise than manual trigger mode.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You should trigger the frame first before running camera streaming.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../nvidia/advanced/index.html" class="btn btn-neutral float-right" title="Advanced Usage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="camera_usage.html" class="btn btn-neutral float-left" title="Camera Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2023, ADLINK Technology
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
