@@ -19,14 +19,14 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'roscube-doc'
-copyright = '2023, ADLINK Technology'
-author = 'ADLINK'
+project = 'KKRaman-docs'
+copyright = '2023, Kothandaraman Kannadasan'
+author = 'Kothandaraman Kannadasan'
 
 # The short X.Y version
 version = ''
 # The full version, including alpha/beta/rc tags
-release = '0.9.1'
+release = '0.1'
 
 
 # -- General configuration ---------------------------------------------------
@@ -109,7 +109,7 @@ html_sidebars = {'**': ['index.html']}
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'roscube-docdoc'
+# htmlhelp_basename = 'roscube-docdoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
