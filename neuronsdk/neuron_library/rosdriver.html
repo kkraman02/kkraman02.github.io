@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ROS 2 drvier &mdash; KKRaman-docs 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Neuron Startup Menu" href="../neuron_startup_menu/index.html" />
+    <link rel="prev" title="Usage" href="usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> KKRaman-docs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../raman/index.html">Raman Demo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../raman/raman/index.html">Eclipse Cyclone DDS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../raman/raman/index.html#build">Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../raman/raman/index.html#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Neuron SDK</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Neuron Library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="installation.html#install-from-apt-repository">Install from APT repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="installation.html#build-from-source-code">Build from source code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html">Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="usage.html#api">API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="usage.html#pin-mapping">Pin Mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="usage.html#c-example">C Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="usage.html#python-example">Python Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ROS 2 drvier</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../neuron_startup_menu/index.html">Neuron Startup Menu</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../neuron_startup_menu/installation.html">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../neuron_startup_menu/installation.html#install">Install</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../neuron_startup_menu/installation.html#uninstall">Uninstall</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../neuron_startup_menu/usage.html">Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../neuron_startup_menu/usage.html#options">Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../neuron_startup_menu/usage.html#useful-commands">Useful Commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../neuron_startup_menu/usage.html#configuration">Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">KKRaman-docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Neuron SDK</a> &raquo;</li>
+        
+          <li><a href="index.html">Neuron Library</a> &raquo;</li>
+        
+      <li>ROS 2 drvier</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/neuronsdk/neuron_library/rosdriver.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ros-2-drvier">
+<span id="nlib-rosdriver"></span><h1>ROS 2 drvier<a class="headerlink" href="#ros-2-drvier" title="Permalink to this headline">¶</a></h1>
+<p>For ROS 2 users, examples provided from ADLINK are available at the following link:
+<a class="reference external" href="https://github.com/Adlink-ROS/neuron_library_example.git">https://github.com/Adlink-ROS/neuron_library_example.git</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These examples are only tested under ROS 2 foxy.</p>
+</div>
+<ol class="arabic simple">
+<li><p>Install ROS.</p></li>
+<li><p>Create a workspace and git clone the following package from github.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># You can name your workspace.</span>
+mkdir -p neuronlib_example_ws/src
+<span class="nb">cd</span> neuronlib_example_ws/src
+git clone https://github.com/Adlink-ROS/neuron_library_example.git
+<span class="nb">cd</span> ..
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Build the ROS 2 package.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon build --cmake-args -DCMAKE_BUILD_TYPE<span class="o">=</span>Release
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Source the package.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#Source the package everytime you open a new terminal</span>
+<span class="nb">source</span> install/local_setup.bash
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Tutorials of the examples are provided at the links below.</p></li>
+</ol>
+<ul class="simple">
+<li><p>GPIO example: <a class="reference external" href="https://github.com/Adlink-ROS/neuron_library_example/tree/master/gpio_example">https://github.com/Adlink-ROS/neuron_library_example/tree/master/gpio_example</a></p></li>
+<li><p>I2C example: <a class="reference external" href="https://github.com/Adlink-ROS/neuron_library_example/tree/master/i2c_example">https://github.com/Adlink-ROS/neuron_library_example/tree/master/i2c_example</a></p></li>
+<li><p>LED example: <a class="reference external" href="https://github.com/Adlink-ROS/neuron_library_example/tree/master/led_example">https://github.com/Adlink-ROS/neuron_library_example/tree/master/led_example</a></p></li>
+<li><p>Serial example: <a class="reference external" href="https://github.com/Adlink-ROS/neuron_library_example/tree/master/serial_example">https://github.com/Adlink-ROS/neuron_library_example/tree/master/serial_example</a></p></li>
+<li><p>PWM example: <a class="reference external" href="https://github.com/Adlink-ROS/neuron_library_example/tree/master/pwm_example">https://github.com/Adlink-ROS/neuron_library_example/tree/master/pwm_example</a></p></li>
+<li><p>SPI example: <a class="reference external" href="https://github.com/Adlink-ROS/neuron_library_example/tree/master/spi_example">https://github.com/Adlink-ROS/neuron_library_example/tree/master/spi_example</a></p></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../neuron_startup_menu/index.html" class="btn btn-neutral float-right" title="Neuron Startup Menu" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="usage.html" class="btn btn-neutral float-left" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2023, Kothandaraman Kannadasan
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
