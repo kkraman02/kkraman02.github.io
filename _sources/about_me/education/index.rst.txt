@@ -1,0 +1,20 @@
+.. _education:
+
+Education
+=========
+
+Master Degree (2020 - 2022)
+---------------------------
+
+RTIOMS Labaratory
+
+Department of Electrical Engineering
+
+National Taipei University of Technology, Taiwan
+
+Bachelor Degree (2015 - 2019)
+-----------------------------
+
+Department of Mechatronics Engineering
+
+Anna University, India

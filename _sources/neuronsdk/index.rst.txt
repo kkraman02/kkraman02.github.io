@@ -5,7 +5,6 @@ Neuron SDK
 
 Neuron SDK is the software set for ADLINK ROScube.
 
-**Table of Contents:**
 
 .. toctree::
    :maxdepth: 1
