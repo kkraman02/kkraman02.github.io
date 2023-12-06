@@ -1,0 +1,241 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ACPI(Advanced Configuration and Power Interface) &mdash; KKRaman Docs 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Professional History" href="../about_me/professional_history/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> KKRaman Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Profile</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about_me/index.html">About Me</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../about_me/education/index.html">Education</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../about_me/education/index.html#master-degree-2020-2022">Master Degree (2020 - 2022)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../about_me/education/index.html#bachelor-degree-2015-2019">Bachelor Degree (2015 - 2019)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../about_me/professional_history/index.html">Professional History</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../about_me/professional_history/index.html#master-degree-2020-2022">Master Degree (2020 - 2022)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../about_me/professional_history/index.html#bachelor-degree-2015-2019">Bachelor Degree (2015 - 2019)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Blogs</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ACPI(Advanced Configuration and Power Interface)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#power-states">Power states</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#global-states">Global states</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">KKRaman Docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>ACPI(Advanced Configuration and Power Interface)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/EDKII/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="acpi-advanced-configuration-and-power-interface">
+<span id="edkii"></span><h1>ACPI(Advanced Configuration and Power Interface)<a class="headerlink" href="#acpi-advanced-configuration-and-power-interface" title="Permalink to this headline">¶</a></h1>
+<p>ACPI defines <a class="reference external" href="https://en.wikipedia.org/wiki/Hardware_abstraction">hardware
+abstraction</a>
+interfaces between the device’s firmware
+(e.g. <a class="reference external" href="https://en.wikipedia.org/wiki/BIOS">BIOS</a>,
+<a class="reference external" href="https://en.wikipedia.org/wiki/UEFI">UEFI</a>), the <a class="reference external" href="https://en.wikipedia.org/wiki/Computer_hardware">computer
+hardware</a>
+components, and the <a class="reference external" href="https://en.wikipedia.org/wiki/Operating_system">operating
+systems</a>.</p>
+<div class="section" id="power-states">
+<h2>Power states<a class="headerlink" href="#power-states" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="global-states">
+<h3>Global states<a class="headerlink" href="#global-states" title="Permalink to this headline">¶</a></h3>
+<p>The ACPI Specification defines the following four global “Gx” states and
+six sleep “Sx” states for an ACPI-compliant computer system:</p>
+<p>The specification also defines a <em>Legacy</em> state: the state of an
+operating system which does not support ACPI. In this state, the
+hardware and power are not managed via ACPI, effectively disabling ACPI.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../about_me/professional_history/index.html" class="btn btn-neutral float-left" title="Professional History" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2023, Kothandaraman Kannadasan
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
