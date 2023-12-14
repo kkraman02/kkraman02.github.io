@@ -3,8 +3,8 @@
 Education
 =========
 
-Master Degree (2020 - 2022)
----------------------------
+Master's Degree
+---------------
 
 RTIOMS Labaratory
 
@@ -12,8 +12,8 @@ Department of Electrical Engineering
 
 National Taipei University of Technology, Taiwan
 
-Bachelor Degree (2015 - 2019)
------------------------------
+Bachelor's Degree
+-----------------
 
 Department of Mechatronics Engineering
 

@@ -1,7 +1,7 @@
-.. _EDKII:
+.. _BMC:
 
-EDKII
-=====
+MMC
+===
 
 Abbrevation
 -----------

@@ -16,6 +16,21 @@ Please refer to different sections based on your interest.
    about_me/index.rst
 
 .. toctree::
-   :caption: Blogs
+   :caption: EDKII
 
    EDKII/index.rst
+
+.. toctree::
+   :caption: BMC
+
+   BMC/index.rst
+
+.. toctree::
+   :caption: MMC
+
+   MMC/index.rst
+
+.. toctree::
+   :caption: Blogs
+
+   blogs/index.rst
