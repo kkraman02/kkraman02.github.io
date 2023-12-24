@@ -1,6 +1,6 @@
-This repo is dedicated to the NXP IMX-based modules. Here you can find the Yocto BSP recipes.
+- This repo is dedicated to the NXP IMX-based modules. Here you can find the Yocto BSP recipes.
 
-You can follow the same procedure to build your own customized BSP based on your own interest.
+- You can follow the same procedure to build your own customized BSP based on your own interest.
 
 # 1. Supported Hardware
 
