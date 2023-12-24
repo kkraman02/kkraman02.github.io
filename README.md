@@ -4,8 +4,6 @@ You can follow the same procedure to build your own customized BSP based on your
 
 For more details refer to the [I-Pi Wiki](www.ipi.wiki).
 
-
-
 [TOC]
 
 # 1. Supported Hardware
