@@ -26,26 +26,8 @@ You can follow the same steps to build your own customized BSP based on your int
 
 # 3. Documentation
 
-## 3.1 Yocto Build Guide
+- [Yocto Build Guide]()
 
-  - [LEC-IMX8MP]()
-  - [LEC-IMX8MM]()
-  - [LEC-IMX8M]()
-  - [LEC-IMX6]()
-  - [LEC-IMX6R2]()
+- [U-boot Build Guide]()
 
-## 3.2 U-boot Build Guide
-
-  - [LEC-IMX8MP]()
-  - [LEC-IMX8MM]()
-  - [LEC-IMX8M]()
-  - [LEC-IMX6]()
-  - [LEC-IMX6R2]()
-
-## 3.3 Yocto Flashing Guide
-
-  - [LEC-IMX8MP]()
-  - [LEC-IMX8MM]()
-  - [LEC-IMX8M]()
-  - [LEC-IMX6]()
-  - [LEC-IMX6R2]()
+- [Yocto Flashing Guide]()
