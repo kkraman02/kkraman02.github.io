@@ -11,12 +11,12 @@ For more details refer to the [I-Pi Wiki](www.ipi.wiki).
 # 1. Supported Hardware
 
 | Product    | Hardware Documentation | Software Documentation |
-| :--------- | ---------------------- | ---------------------- |
-| LEC-IMX8MP | [Click_here]()         | [Click_here]()         |
-| LEC-IMX8MM | [Click_here]()         | [Click_here]()         |
-| LEC-IMX8M  | [Click_here]()         | [Click_here]()         |
-| LEC-IMX6   | [Click_here]()         | [Click_here]()         |
-| LEC-IMX6R2 | [Click_here]()         | [Click_here]()         |
+| :--------- | :--------------------: | :--------------------: |
+| LEC-IMX8MP |     [Click_here]()     |     [Click_here]()     |
+| LEC-IMX8MM |     [Click_here]()     |     [Click_here]()     |
+| LEC-IMX8M  |     [Click_here]()     |     [Click_here]()     |
+| LEC-IMX6   |     [Click_here]()     |     [Click_here]()     |
+| LEC-IMX6R2 |     [Click_here]()     |     [Click_here]()     |
 
 # 2. Available Branches
 
