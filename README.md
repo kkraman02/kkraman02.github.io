@@ -2,12 +2,6 @@ This repo is dedicated for the NXP IMX-based modules. Here you can find the Yoct
 
 You can follow the same procedure to build your own customized BSP based on your own interest.
 
-For more details refer to the [I-Pi Wiki](www.ipi.wiki).
-
-
-
-[TOC]
-
 # 1. Supported Hardware
 
 | Product    | Hardware Documentation | Software Documentation |
