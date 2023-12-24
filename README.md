@@ -1,4 +1,4 @@
-This repo is dedicated for the NXP IMX-based modules. Here you can find the Yocto BSP recipes and how to compile them to build the Yocto BSP for your module.
+This repo is dedicated to the NXP IMX-based modules. Here you can find the Yocto BSP recipes.
 
 You can follow the same procedure to build your own customized BSP based on your own interest.
 
@@ -26,4 +26,4 @@ You can follow the same procedure to build your own customized BSP based on your
 
 # 3. Documentation
 
-Refer to our [wiki page]() for BSP build guide.
+To compile these recipes to build the Yocto BSP for your module, please refer to our [wiki page]() for the BSP build guide.
