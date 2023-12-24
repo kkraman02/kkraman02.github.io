@@ -26,4 +26,12 @@ You can follow the same procedure to build your own customized BSP based on your
 
 # 3. Documentation
 
+## 3.1 Yocto Build Guide
+
+Refer to our [wiki page]().
+
+## 3.2 Yocto Flashing Guide
+
+Refer to our [wiki page]().
+
 To compile these recipes to build the Yocto BSP for your module, please refer to our [wiki page]() for the BSP build guide.
