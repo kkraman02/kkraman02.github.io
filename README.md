@@ -8,7 +8,7 @@ For more details refer to the [I-Pi Wiki](www.ipi.wiki).
 
 # 1. Supported Hardware
 
-|                           Product                            | Hardware <br />Documentation | Software <br />Documentation |
+|                           Product                            | Hardware Documentation | Software Documentation |
 | :----------------------------------------------------------: | ---------------------------- | ---------------------------- |
 | <img src='https://cdn.adlinktech.com/webupd/products/images/2002/LEC-IMX8MM-F-web.png' width=400px/><br />**LEC-IMX8MP** | [Click_here]()               | [Click_here]()               |
 |                          LEC-IMX8MM                          | [Click_here]()               | [Click_here]()               |
