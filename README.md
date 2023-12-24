@@ -32,4 +32,4 @@ You can follow the same procedure to build your own customized BSP based on your
 
 - Yocto Flashing Guide
 
- - Refer to our [GitHub wiki page]().
+  - Refer to our [GitHub wiki page]().
