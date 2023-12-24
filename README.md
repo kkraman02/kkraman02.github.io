@@ -12,7 +12,7 @@ For more details refer to the [I-Pi Wiki](www.ipi.wiki).
 
 | Product    | Hardware Documentation | Software Documentation |
 | :--------- | ---------------------- | ---------------------- |
-| LEC-IMX8MP |       [link]()         |         [link]()       |
+| LEC-IMX8MP | [Click_here]()         | [Click_here]()         |
 | LEC-IMX8MM | [Click_here]()         | [Click_here]()         |
 | LEC-IMX8M  | [Click_here]()         | [Click_here]()         |
 | LEC-IMX6   | [Click_here]()         | [Click_here]()         |
