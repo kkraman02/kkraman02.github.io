@@ -1,21 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Building Yocto for NXP</title>
-    <url>/2024/05/25/hello-world/</url>
+    <title>Bitbake Environment</title>
+    <url>/2024/06/04/Bitbake-Environment/</url>
+    <content><![CDATA[<h2 id="1-Definition"><a href="#1-Definition" class="headerlink" title="1. Definition"></a>1. Definition</h2><p>BitBake is a build automation tool used to manage the compilation and packaging of software. It’s commonly used in the Yocto Project to create custom Linux distributions. BitBake processes recipes, which specify how to fetch, configure, compile, and package software components, enabling reproducible and customizable builds.</p>
+<h2 id="2-Usages-of-the-bitbake"><a href="#2-Usages-of-the-bitbake" class="headerlink" title="2. Usages of the bitbake"></a>2. Usages of the bitbake</h2><h3 id="2-1-bitbake-recipe"><a href="#2-1-bitbake-recipe" class="headerlink" title="2.1 bitbake (recipe)"></a>2.1 bitbake (recipe)</h3><p>Build a specified recipe.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake core-image-minimal</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-bitbake-c-task-recipe"><a href="#2-2-bitbake-c-task-recipe" class="headerlink" title="2.2 bitbake -c (task) (recipe)"></a>2.2 bitbake -c (task) (recipe)</h3><p>Execute a specific task for a recipe.<br>This allows you to run a particular task within a recipe. Replace(task) with the desired task (e.g., fetch, configure, compile).</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake -c clean core-image-minimal</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-bitbake-layers"><a href="#2-3-bitbake-layers" class="headerlink" title="2.3 bitbake-layers"></a>2.3 bitbake-layers</h3><p>Manage layers in your build environment.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake-layers show-layers</span><br></pre></td></tr></table></figure>
+
+<p>This command lists all the layers included in your build environment.</p>
+<h4 id="2-3-1-Add-new-layer-to-the-build-environment"><a href="#2-3-1-Add-new-layer-to-the-build-environment" class="headerlink" title="2.3.1 Add new layer to the build environment"></a>2.3.1 Add new layer to the build environment</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake-layers add-layer meta-example</span><br></pre></td></tr></table></figure>
+
+<p>This command adds the meta-example layer to your build environment.</p>
+]]></content>
+      <tags>
+        <tag>Bitbake</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Changing Ownership in Linux</title>
+    <url>/2024/06/23/ChangingOwnershipLinux/</url>
+    <content><![CDATA[<p>chown, full name change owner, is a very useful command in Linux systems, mainly used to change the permissions of files or directories.</p>
+<p> Let’s take a look at how to use it and some common options:</p>
+<p>Basic syntax</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> [options] [user:group] file(or)directory </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-v, –verbose: Display the instruction execution process.</li>
+<li>-R, –recursive: Process recursively, processing all files and subdirectories in the specified directory together.</li>
+</ul>
+<p>Here is an example:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> &lt;directory_path&gt;</span><br><span class="line">sudo <span class="built_in">chown</span> -Rv raman:raman .</span><br><span class="line">sudo <span class="built_in">chown</span> -Rv a+rwX .</span><br></pre></td></tr></table></figure>
+
+<p><code>sudo</code>: Runs the command with superuser (administrator) privileges.</p>
+<p><code>chown</code>: Stands for “change owner”, which changes the owner of files and directories.</p>
+<p><code>-R</code>: Recursive option, applies the command to all files and directories within the specified directory.</p>
+<p><code>-v</code>: Verbose mode, which outputs more information about the files and directories being changed.</p>
+<p><code>a</code>: Represents all users.</p>
+<p><code>+rwX</code>: Specifies the permissions to grant: <code>rw</code> for read and write permissions on files, and <code>X</code> for execute permissions on directories.</p>
+<p><code>.</code>: Represents the current directory.</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Compressing &amp;  Decompressing Files</title>
+    <url>/2024/06/23/CompressingDecompressingFiles/</url>
+    <content><![CDATA[<p>Decompressing .tar.gz and .tar.xz files</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install tar</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -xvf &lt;file_name&gt;.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>Decompressing .zst files</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install zstd</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">zst -d &lt;file_name&gt;.zst</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>Creating a Post in Hexo</title>
+    <url>/2024/07/02/CreatingPostHexo/</url>
     <content><![CDATA[<p>In this guide you will get to know how to build the Yocto for NXP products based on Scarthgap branch.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new page --path _posts/ChangingOwnershipLinux <span class="string">&quot;Changing Ownership in Linux&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment<i class="fas fa-external-link-alt"></i></a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Flashing OS Using DD Utility in Linux</title>
+    <url>/2024/06/23/FlashingOSUsingDDUtilityLinux/</url>
+    <content><![CDATA[<h2 id="1-Formatting-the-USB-stick"><a href="#1-Formatting-the-USB-stick" class="headerlink" title="1. Formatting the USB stick"></a>1. Formatting the USB stick</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">lsblk</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo umount /dev/sdc1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo fdisk.vfat -F 32 -n USB_A /dev/sdc -I</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-Flashing-the-OS-Image-file-to-the-USB-stick"><a href="#2-Flashing-the-OS-Image-file-to-the-USB-stick" class="headerlink" title="2. Flashing the OS&#x2F;Image file to the USB stick"></a>2. Flashing the OS&#x2F;Image file to the USB stick</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">dd</span> <span class="keyword">if</span>=&lt;file_name&gt; of=/dev/sdc status=progress</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sync</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>OpenBMC Development</title>
+    <url>/2024/06/03/OpenBMCDevelopment/</url>
+    <content><![CDATA[<h2 id="1-Setting-up-the-system-for-the-OpenBMC-development"><a href="#1-Setting-up-the-system-for-the-OpenBMC-development" class="headerlink" title="1. Setting up the system for the OpenBMC development"></a>1. Setting up the system for the OpenBMC development</h2><ul>
+<li><p>Install the following dependencies</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install git python3-distutils gcc g++ make file wget gawk diffstat bzip2 cpio chrpath zstd lz4 bzip2</span><br></pre></td></tr></table></figure></li>
+<li><p>Download the source code</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/bcran/openbmc</span><br><span class="line"><span class="built_in">cd</span> openbmc</span><br></pre></td></tr></table></figure></li>
+<li><p>Choose your machine</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">. setup comhpcalt</span><br></pre></td></tr></table></figure></li>
+<li><p>start to buid the firmware</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake obmc-phosphor-image</span><br></pre></td></tr></table></figure></li>
+<li><p>Once the build is completed, the BMC image will be created and stored in this location <code>tmp/deploy/images/&lt;platform&gt;/</code></p>
+<ul>
+<li><code>obmc-phosphor-image-&lt;platform&gt;-&lt;datetime&gt;.static.mtd</code> and <code>obmc-phosphor-image-&lt;platform&gt;-&lt;datetime&gt;.static.mtd.tar</code></li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>openbmc</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Yocto Project Development</title>
+    <url>/2024/06/03/YoctoProjectDevelopment/</url>
+    <content><![CDATA[<h3 id="Definitions"><a href="#Definitions" class="headerlink" title="Definitions"></a>Definitions</h3><p>Terminology in the Yocto Project can be a little confusing. These definitions should help you along the way:</p>
+<ul>
+<li><strong>OpenEmbedded</strong>: build system and community</li>
+<li><strong>The Yocto Project</strong>: umbrella project and community</li>
+<li><strong>Metadata</strong>: files containing information about how to build an image</li>
+<li><strong>Recipe</strong>: file with instructions to build one or more packages</li>
+<li><strong>Layer</strong>: directory containing grouped metadata (start with “meta-”)</li>
+<li><strong>Board support package (BSP)</strong>: layer that defines how to build for board (usually maintained by vendor)</li>
+<li><strong>Distribution</strong>: specific implementation of Linux (kernel version, rootfs, etc.)</li>
+<li><strong>Machine</strong>: defines the architecture, pins, buses, BSP, etc.</li>
+<li><strong>Image</strong>: output of build process (bootable and executable Linux OS)</li>
+</ul>
+<h3 id="Block-Diagram"><a href="#Block-Diagram" class="headerlink" title="Block Diagram"></a>Block Diagram</h3><p><img   src="YoctoProjectDevelopment.assets/YoctoBlockDiagram.png" ></p>
 ]]></content>
   </entry>
 </search>
