@@ -9,7 +9,7 @@
     
     <title>
         
-            Flashing OS Using DD Utility in Linux |
+            Yocto Project Development |
         
         Makes Sense
     </title>
@@ -236,7 +236,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        Flashing OS Using DD Utility in Linux
+                        Yocto Project Development
                     </div>
                 
 
@@ -264,16 +264,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-06-23 01:06:14</span>
+                <span class="datetime">2024-06-23 00:49:53</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-<<<<<<< HEAD
-                <span class="datetime" data-updated="Tue Jul 02 2024 14:17:04 GMT+0800">2024-07-02 14:17:04</span>
-=======
-                <span class="datetime" data-updated="Sun Jun 23 2024 01:23:08 GMT+0800">2024-06-23 01:23:08</span>
->>>>>>> 336ad6b77f26bfbdfc3aab73086f1fe85605a482
+                <span class="datetime" data-updated="Sun Jun 23 2024 00:49:53 GMT+0800">2024-06-23 00:49:53</span>
             </span>
         
 
@@ -302,16 +298,19 @@
                 <div class="post-content keep-markdown-body">
                     
 
-                    <h2 id="1-Formatting-the-USB-stick"><a href="#1-Formatting-the-USB-stick" class="headerlink" title="1. Formatting the USB stick"></a>1. Formatting the USB stick</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsblk</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo umount /dev/sdc1</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo fdisk.vfat -F 32 -n USB_A /dev/sdc -I</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-Flashing-the-OS-Image-file-to-the-USB-stick"><a href="#2-Flashing-the-OS-Image-file-to-the-USB-stick" class="headerlink" title="2. Flashing the OS&#x2F;Image file to the USB stick"></a>2. Flashing the OS&#x2F;Image file to the USB stick</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">dd</span> <span class="keyword">if</span>=&lt;file_name&gt; of=/dev/sdc status=progress</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sync</span></span><br></pre></td></tr></table></figure>
-
+                    <h3 id="Definitions"><a href="#Definitions" class="headerlink" title="Definitions"></a>Definitions</h3><p>Terminology in the Yocto Project can be a little confusing. These definitions should help you along the way:</p>
+<ul>
+<li><strong>OpenEmbedded</strong>: build system and community</li>
+<li><strong>The Yocto Project</strong>: umbrella project and community</li>
+<li><strong>Metadata</strong>: files containing information about how to build an image</li>
+<li><strong>Recipe</strong>: file with instructions to build one or more packages</li>
+<li><strong>Layer</strong>: directory containing grouped metadata (start with “meta-”)</li>
+<li><strong>Board support package (BSP)</strong>: layer that defines how to build for board (usually maintained by vendor)</li>
+<li><strong>Distribution</strong>: specific implementation of Linux (kernel version, rootfs, etc.)</li>
+<li><strong>Machine</strong>: defines the architecture, pins, buses, BSP, etc.</li>
+<li><strong>Image</strong>: output of build process (bootable and executable Linux OS)</li>
+</ul>
+<h3 id="Block-Diagram"><a href="#Block-Diagram" class="headerlink" title="Block Diagram"></a>Block Diagram</h3><p><img   src="YoctoProjectDevelopment.assets/YoctoBlockDiagram.png" ></p>
 
                 </div>
                 
@@ -333,14 +332,14 @@
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="../CompressingDecompressingFiles/"
-                                   title="Compressing &amp;  Decompressing Files"
+                                   href="../CreatingPostHexo/"
+                                   title="Creating a Post in Hexo"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Compressing &amp;  Decompressing Files</span>
+                                        <span class="post-nav-title-item text-ellipsis">Creating a Post in Hexo</span>
                                         <span class="post-nav-item">Prev posts</span>
                                     </span>
                                 </a>
@@ -350,19 +349,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-<<<<<<< HEAD
-                                   href="../../04/Bitbake-Environment/"
-                                   title="Bitbake Environment"
+                                   href="../../03/OpenBMCDevelopment/"
+                                   title="OpenBMC Development"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Bitbake Environment</span>
-=======
-                                   href="../CreatingPostHexo/"
-                                   title="Creating a Post in Hexo"
-                                >
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Creating a Post in Hexo</span>
->>>>>>> 336ad6b77f26bfbdfc3aab73086f1fe85605a482
+                                        <span class="post-nav-title-item text-ellipsis">OpenBMC Development</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -391,7 +382,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Formatting-the-USB-stick"><span class="nav-number">1.</span> <span class="nav-text">1. Formatting the USB stick</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Flashing-the-OS-Image-file-to-the-USB-stick"><span class="nav-number">2.</span> <span class="nav-text">2. Flashing the OS&#x2F;Image file to the USB stick</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Definitions"><span class="nav-number">1.</span> <span class="nav-text">Definitions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Block-Diagram"><span class="nav-number">2.</span> <span class="nav-text">Block Diagram</span></a></li></ol>
     </div>
 </div>
 
@@ -561,7 +552,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Formatting-the-USB-stick"><span class="nav-number">1.</span> <span class="nav-text">1. Formatting the USB stick</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Flashing-the-OS-Image-file-to-the-USB-stick"><span class="nav-number">2.</span> <span class="nav-text">2. Flashing the OS&#x2F;Image file to the USB stick</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Definitions"><span class="nav-number">1.</span> <span class="nav-text">Definitions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Block-Diagram"><span class="nav-number">2.</span> <span class="nav-text">Block Diagram</span></a></li></ol>
     </div>
 </div>
 
