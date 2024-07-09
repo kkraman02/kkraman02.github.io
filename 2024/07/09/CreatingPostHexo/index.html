@@ -9,7 +9,7 @@
     
     <title>
         
-            Yocto Project Development |
+            Creating a Post in Hexo |
         
         Makes Sense
     </title>
@@ -204,7 +204,7 @@
 
     <div class="window-mask"></div>
 
-    <!-- Example for EJS templating -->
+    <!-- Example for EJS templating
     <nav>
         <ul>
           <li class="dropdown">
@@ -216,6 +216,7 @@
           </li>
         </ul>
     </nav>
+    -->
 
 </header>
 
@@ -236,7 +237,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        Yocto Project Development
+                        Creating a Post in Hexo
                     </div>
                 
 
@@ -251,7 +252,7 @@
                             <div class="author border-box">
                                 <span class="name">Kothandaraman Kannadasan</span>
                                 
-                                    <span class="author-badge">Lv1</span>
+                                    <span class="author-badge">Lv2</span>
                                 
                             </div>
                             <div class="meta-info border-box">
@@ -264,12 +265,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-06-23 00:49:53</span>
+                <span class="datetime">2024-07-09 10:14:31</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Sun Jun 23 2024 00:49:53 GMT+0800">2024-06-23 00:49:53</span>
+                <span class="datetime" data-updated="Tue Jul 09 2024 10:14:31 GMT+0800">2024-07-09 10:14:31</span>
             </span>
         
 
@@ -298,19 +299,21 @@
                 <div class="post-content keep-markdown-body">
                     
 
-                    <h3 id="Definitions"><a href="#Definitions" class="headerlink" title="Definitions"></a>Definitions</h3><p>Terminology in the Yocto Project can be a little confusing. These definitions should help you along the way:</p>
-<ul>
-<li><strong>OpenEmbedded</strong>: build system and community</li>
-<li><strong>The Yocto Project</strong>: umbrella project and community</li>
-<li><strong>Metadata</strong>: files containing information about how to build an image</li>
-<li><strong>Recipe</strong>: file with instructions to build one or more packages</li>
-<li><strong>Layer</strong>: directory containing grouped metadata (start with “meta-”)</li>
-<li><strong>Board support package (BSP)</strong>: layer that defines how to build for board (usually maintained by vendor)</li>
-<li><strong>Distribution</strong>: specific implementation of Linux (kernel version, rootfs, etc.)</li>
-<li><strong>Machine</strong>: defines the architecture, pins, buses, BSP, etc.</li>
-<li><strong>Image</strong>: output of build process (bootable and executable Linux OS)</li>
-</ul>
-<h3 id="Block-Diagram"><a href="#Block-Diagram" class="headerlink" title="Block Diagram"></a>Block Diagram</h3><p><img   src="YoctoProjectDevelopment.assets/YoctoBlockDiagram.png" ></p>
+                    <p>In this guide you will get to know how to build the Yocto for NXP products based on Scarthgap branch.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html" >Writing<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page --path _posts/ChangingOwnershipLinux <span class="string">&quot;Changing Ownership in Linux&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/server.html" >Server<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html" >Generating<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html" >Deployment<i class="fas fa-external-link-alt"></i></a></p>
 
                 </div>
                 
@@ -332,14 +335,14 @@
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="../CreatingPostHexo/"
-                                   title="Creating a Post in Hexo"
+                                   href="../YoctoProjectDevelopment/"
+                                   title="Yocto Project Development"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Creating a Post in Hexo</span>
+                                        <span class="post-nav-title-item text-ellipsis">Yocto Project Development</span>
                                         <span class="post-nav-item">Prev posts</span>
                                     </span>
                                 </a>
@@ -349,11 +352,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="../../03/OpenBMCDevelopment/"
-                                   title="OpenBMC Development"
+                                   href="../../04/BuildOpenBMCFirmware/"
+                                   title="Building OpenBMC Firmware"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">OpenBMC Development</span>
+                                        <span class="post-nav-title-item text-ellipsis">Building OpenBMC Firmware</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -382,7 +385,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Definitions"><span class="nav-number">1.</span> <span class="nav-text">Definitions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Block-Diagram"><span class="nav-number">2.</span> <span class="nav-text">Block Diagram</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -552,7 +555,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Definitions"><span class="nav-number">1.</span> <span class="nav-text">Definitions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Block-Diagram"><span class="nav-number">2.</span> <span class="nav-text">Block Diagram</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol>
     </div>
 </div>
 

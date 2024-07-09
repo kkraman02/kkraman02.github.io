@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-<<<<<<< HEAD
+    <title>Bitbake Environment</title>
+    <url>/2024/06/04/Bitbake-Environment/</url>
+    <content><![CDATA[<h2 id="1-Definition"><a href="#1-Definition" class="headerlink" title="1. Definition"></a>1. Definition</h2><p>BitBake is a build automation tool used to manage the compilation and packaging of software. It’s commonly used in the Yocto Project to create custom Linux distributions. BitBake processes recipes, which specify how to fetch, configure, compile, and package software components, enabling reproducible and customizable builds.</p>
+<h2 id="2-Usages-of-the-bitbake"><a href="#2-Usages-of-the-bitbake" class="headerlink" title="2. Usages of the bitbake"></a>2. Usages of the bitbake</h2><h3 id="2-1-bitbake-recipe"><a href="#2-1-bitbake-recipe" class="headerlink" title="2.1 bitbake (recipe)"></a>2.1 bitbake (recipe)</h3><p>Build a specified recipe.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake core-image-minimal</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-bitbake-c-task-recipe"><a href="#2-2-bitbake-c-task-recipe" class="headerlink" title="2.2 bitbake -c (task) (recipe)"></a>2.2 bitbake -c (task) (recipe)</h3><p>Execute a specific task for a recipe.<br>This allows you to run a particular task within a recipe. Replace(task) with the desired task (e.g., fetch, configure, compile).</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake -c clean core-image-minimal</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-bitbake-layers"><a href="#2-3-bitbake-layers" class="headerlink" title="2.3 bitbake-layers"></a>2.3 bitbake-layers</h3><p>Manage layers in your build environment.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake-layers show-layers</span><br></pre></td></tr></table></figure>
+
+<p>This command lists all the layers included in your build environment.</p>
+<h4 id="2-3-1-Add-new-layer-to-the-build-environment"><a href="#2-3-1-Add-new-layer-to-the-build-environment" class="headerlink" title="2.3.1 Add new layer to the build environment"></a>2.3.1 Add new layer to the build environment</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake-layers add-layer meta-example</span><br></pre></td></tr></table></figure>
+
+<p>This command adds the meta-example layer to your build environment.</p>
+]]></content>
+      <tags>
+        <tag>Bitbake</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Building OpenBMC Firmware</title>
     <url>/2024/07/04/BuildOpenBMCFirmware/</url>
     <content><![CDATA[<h2 id="1-Setting-up-the-Yocto-build-environment"><a href="#1-Setting-up-the-Yocto-build-environment" class="headerlink" title="1. Setting up the Yocto build environment"></a>1. Setting up the Yocto build environment</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install git python3-distutils gcc g++ make file wget gawk diffstat bzip2 cpio chrpath zstd lz4 bzip2</span><br></pre></td></tr></table></figure>
@@ -49,28 +70,19 @@
 
 
 ]]></content>
-=======
-    <title>Bitbake Environment</title>
-    <url>/2024/06/04/Bitbake-Environment/</url>
-    <content><![CDATA[<h2 id="1-Definition"><a href="#1-Definition" class="headerlink" title="1. Definition"></a>1. Definition</h2><p>BitBake is a build automation tool used to manage the compilation and packaging of software. It’s commonly used in the Yocto Project to create custom Linux distributions. BitBake processes recipes, which specify how to fetch, configure, compile, and package software components, enabling reproducible and customizable builds.</p>
-<h2 id="2-Usages-of-the-bitbake"><a href="#2-Usages-of-the-bitbake" class="headerlink" title="2. Usages of the bitbake"></a>2. Usages of the bitbake</h2><h3 id="2-1-bitbake-recipe"><a href="#2-1-bitbake-recipe" class="headerlink" title="2.1 bitbake (recipe)"></a>2.1 bitbake (recipe)</h3><p>Build a specified recipe.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake core-image-minimal</span><br></pre></td></tr></table></figure>
+  </entry>
+  <entry>
+    <title>Compressing &amp;  Decompressing Files</title>
+    <url>/2024/06/23/CompressingDecompressingFiles/</url>
+    <content><![CDATA[<p>Decompressing .tar.gz and .tar.xz files</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install tar</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-2-bitbake-c-task-recipe"><a href="#2-2-bitbake-c-task-recipe" class="headerlink" title="2.2 bitbake -c (task) (recipe)"></a>2.2 bitbake -c (task) (recipe)</h3><p>Execute a specific task for a recipe.<br>This allows you to run a particular task within a recipe. Replace(task) with the desired task (e.g., fetch, configure, compile).</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake -c clean core-image-minimal</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -xvf &lt;file_name&gt;.tar.gz</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-3-bitbake-layers"><a href="#2-3-bitbake-layers" class="headerlink" title="2.3 bitbake-layers"></a>2.3 bitbake-layers</h3><p>Manage layers in your build environment.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake-layers show-layers</span><br></pre></td></tr></table></figure>
+<p>Decompressing .zst files</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install zstd</span><br></pre></td></tr></table></figure>
 
-<p>This command lists all the layers included in your build environment.</p>
-<h4 id="2-3-1-Add-new-layer-to-the-build-environment"><a href="#2-3-1-Add-new-layer-to-the-build-environment" class="headerlink" title="2.3.1 Add new layer to the build environment"></a>2.3.1 Add new layer to the build environment</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake-layers add-layer meta-example</span><br></pre></td></tr></table></figure>
-
-<p>This command adds the meta-example layer to your build environment.</p>
-]]></content>
-      <tags>
-        <tag>Bitbake</tag>
-      </tags>
->>>>>>> fc251a60ad8f336688bd1716833faed855e4c0a5
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">zst -d &lt;file_name&gt;.zst</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
     <title>Changing Ownership in Linux</title>
@@ -94,39 +106,6 @@
 <p><code>a</code>: Represents all users.</p>
 <p><code>+rwX</code>: Specifies the permissions to grant: <code>rw</code> for read and write permissions on files, and <code>X</code> for execute permissions on directories.</p>
 <p><code>.</code>: Represents the current directory.</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Compressing &amp;  Decompressing Files</title>
-    <url>/2024/06/23/CompressingDecompressingFiles/</url>
-    <content><![CDATA[<p>Decompressing .tar.gz and .tar.xz files</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install tar</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -xvf &lt;file_name&gt;.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p>Decompressing .zst files</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install zstd</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">zst -d &lt;file_name&gt;.zst</span><br></pre></td></tr></table></figure>]]></content>
-  </entry>
-  <entry>
-    <title>Creating a Post in Hexo</title>
-    <url>/2024/07/02/CreatingPostHexo/</url>
-    <content><![CDATA[<p>In this guide you will get to know how to build the Yocto for NXP products based on Scarthgap branch.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing<i class="fas fa-external-link-alt"></i></a></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new page --path _posts/ChangingOwnershipLinux <span class="string">&quot;Changing Ownership in Linux&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment<i class="fas fa-external-link-alt"></i></a></p>
 ]]></content>
   </entry>
   <entry>
@@ -168,8 +147,98 @@
       </tags>
   </entry>
   <entry>
+    <title>Project Plan</title>
+    <url>/2024/07/09/ProjectPlan/</url>
+    <content><![CDATA[<p>A project plan defines the multiple stages of the process. How will it be started, and we should finish it. It is derived from the items below:</p>
+<p>Here’s a detailed breakdown of each stage in the project plan, including its purpose and what it entails:</p>
+<h3 id="1-Gerber-Out"><a href="#1-Gerber-Out" class="headerlink" title="1. Gerber Out"></a>1. Gerber Out</h3><p><strong>Purpose:</strong> Generate and send the Gerber files to the manufacturer for PCB fabrication.</p>
+<p><strong>Process:</strong></p>
+<ul>
+<li><strong>Design Review:</strong> Ensure the PCB design is finalized and reviewed for errors.</li>
+<li><strong>Gerber File Generation:</strong> Export the PCB layout into Gerber files using EDA software.</li>
+<li><strong>File Verification:</strong> Validate the Gerber files using a Gerber viewer.</li>
+<li><strong>Send to Manufacturer:</strong> Submit the Gerber files to the chosen PCB fabrication house.</li>
+</ul>
+<h3 id="2-PCBA-Printed-Circuit-Board-Assembly"><a href="#2-PCBA-Printed-Circuit-Board-Assembly" class="headerlink" title="2. PCBA (Printed Circuit Board Assembly)"></a>2. PCBA (Printed Circuit Board Assembly)</h3><p><strong>Purpose:</strong> Assemble the PCB with components.</p>
+<p><strong>Process:</strong></p>
+<ul>
+<li><strong>Component Sourcing:</strong> Order all required components.</li>
+<li><strong>Stencil Preparation:</strong> Prepare a stencil for solder paste application.</li>
+<li><strong>Solder Paste Application:</strong> Apply solder paste to the PCB.</li>
+<li><strong>Component Placement:</strong> Place components on the PCB using pick-and-place machines.</li>
+<li><strong>Reflow Soldering:</strong> Pass the PCB through a reflow oven to solder components.</li>
+<li><strong>Inspection:</strong> Inspect the assembled PCBs for defects (automated optical inspection or manual).</li>
+</ul>
+<h3 id="3-BBU-Bring-Up-and-Basic-Unit-Testing"><a href="#3-BBU-Bring-Up-and-Basic-Unit-Testing" class="headerlink" title="3. BBU (Bring-Up and Basic Unit Testing)"></a>3. BBU (Bring-Up and Basic Unit Testing)</h3><p><strong>Purpose:</strong> Power on the PCB and perform initial functionality tests.</p>
+<p><strong>Process:</strong></p>
+<ul>
+<li><strong>Power On:</strong> Safely power on the PCB for the first time.</li>
+<li><strong>Basic Testing:</strong> Perform basic tests to check if the board is operational (e.g., voltage checks, basic functionality tests).</li>
+<li><strong>Initial Debugging:</strong> Identify and fix any immediate issues.</li>
+</ul>
+<h3 id="4-Check-Point"><a href="#4-Check-Point" class="headerlink" title="4. Check Point"></a>4. Check Point</h3><p><strong>Purpose:</strong> Review progress and ensure everything is on track.</p>
+<p><strong>Process:</strong></p>
+<ul>
+<li><strong>Team Meeting:</strong> Conduct a meeting with the project team to review the status.</li>
+<li><strong>Review Milestones:</strong> Check if the project is meeting its milestones.</li>
+<li><strong>Issue Resolution:</strong> Address any issues or roadblocks encountered so far.</li>
+</ul>
+<h3 id="5-SI-Signal-Integrity-Testing"><a href="#5-SI-Signal-Integrity-Testing" class="headerlink" title="5. SI (Signal Integrity Testing)"></a>5. SI (Signal Integrity Testing)</h3><p><strong>Purpose:</strong> Ensure signal integrity of high-speed signals on the PCB.</p>
+<p><strong>Process:</strong></p>
+<ul>
+<li><strong>Test Setup:</strong> Set up signal integrity testing equipment.</li>
+<li><strong>Perform Tests:</strong> Conduct tests to measure signal quality (e.g., eye diagrams, crosstalk).</li>
+<li><strong>Analyze Results:</strong> Analyze test results and identify any signal integrity issues.</li>
+<li><strong>Mitigate Issues:</strong> Implement design changes if necessary to address signal integrity problems.</li>
+</ul>
+<h3 id="6-DVT-Design-Verification-Testing"><a href="#6-DVT-Design-Verification-Testing" class="headerlink" title="6. DVT (Design Verification Testing)"></a>6. DVT (Design Verification Testing)</h3><p><strong>Purpose:</strong> Verify that the design meets all specifications and requirements.</p>
+<p><strong>Process:</strong></p>
+<ul>
+<li><strong>Test Planning:</strong> Develop a comprehensive test plan covering all functional and performance aspects.</li>
+<li><strong>Execute Tests:</strong> Perform the planned tests (e.g., functional tests, thermal tests, stress tests).</li>
+<li><strong>Document Results:</strong> Record test results and compare them with the expected outcomes.</li>
+<li><strong>Review:</strong> Conduct a review meeting to discuss the test results and any deviations.</li>
+</ul>
+<h3 id="7-RRC-Reliability-and-Regulatory-Compliance"><a href="#7-RRC-Reliability-and-Regulatory-Compliance" class="headerlink" title="7. RRC (Reliability and Regulatory Compliance)"></a>7. RRC (Reliability and Regulatory Compliance)</h3><p><strong>Purpose:</strong> Ensure the product is reliable and meets regulatory standards.</p>
+<p><strong>Process:</strong></p>
+<ul>
+<li><strong>Reliability Testing:</strong> Perform tests to assess the product’s reliability (e.g., burn-in testing, environmental testing).</li>
+<li><strong>Regulatory Testing:</strong> Conduct tests to ensure compliance with regulatory standards (e.g., FCC, CE).</li>
+<li><strong>Certification:</strong> Obtain necessary certifications for the product.</li>
+</ul>
+<h3 id="8-Debug"><a href="#8-Debug" class="headerlink" title="8. Debug"></a>8. Debug</h3><p><strong>Purpose:</strong> Identify and resolve any remaining issues.</p>
+<p><strong>Process:</strong></p>
+<ul>
+<li><strong>Issue Identification:</strong> Identify any functional or performance issues.</li>
+<li><strong>Root Cause Analysis:</strong> Perform detailed analysis to find the root causes of issues.</li>
+<li><strong>Implement Fixes:</strong> Implement solutions to fix the identified issues.</li>
+<li><strong>Retest:</strong> Retest the fixed issues to ensure they are resolved.</li>
+</ul>
+<h3 id="9-TSP-PE-Transfer-Test-Service-Provider-Production-Engineering-Transfer"><a href="#9-TSP-PE-Transfer-Test-Service-Provider-Production-Engineering-Transfer" class="headerlink" title="9. TSP&#x2F;PE Transfer (Test Service Provider&#x2F;Production Engineering Transfer)"></a>9. TSP&#x2F;PE Transfer (Test Service Provider&#x2F;Production Engineering Transfer)</h3><p><strong>Purpose:</strong> Transfer the project to production engineering and&#x2F;or test service provider for mass production.</p>
+<p><strong>Process:</strong></p>
+<ul>
+<li><strong>Documentation:</strong> Prepare detailed documentation for production (e.g., assembly instructions, test procedures).</li>
+<li><strong>Training:</strong> Train the production and test teams on the new product.</li>
+<li><strong>Pilot Run:</strong> Conduct a pilot run to validate the production process.</li>
+<li><strong>Feedback:</strong> Collect feedback from the pilot run and make necessary adjustments.</li>
+</ul>
+<h3 id="10-PCQ"><a href="#10-PCQ" class="headerlink" title="10. PCQ"></a>10. PCQ</h3><h3 id="11-FPR-and-C4-Pass-Final-Product-Review-and-Customer-Closure"><a href="#11-FPR-and-C4-Pass-Final-Product-Review-and-Customer-Closure" class="headerlink" title="11. FPR and C4 Pass (Final Product Review and Customer Closure)"></a>11. FPR and C4 Pass (Final Product Review and Customer Closure)</h3><p><strong>Purpose:</strong> Final review of the product and customer acceptance.</p>
+<p><strong>Process:</strong></p>
+<ul>
+<li><strong>Final Review:</strong> Conduct a thorough review of the final product.</li>
+<li><strong>Customer Testing:</strong> Provide the product to the customer for their testing and approval.</li>
+<li><strong>Feedback:</strong> Collect and address any feedback from the customer.</li>
+<li><strong>Acceptance:</strong> Obtain formal acceptance from the customer, completing the project.</li>
+</ul>
+<p>This sequence ensures a structured and thorough approach to developing and bringing a product to market, addressing design, assembly, testing, compliance, and final review stages.</p>
+]]></content>
+      <tags>
+        <tag>Project</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Yocto Project Development</title>
-    <url>/2024/06/03/YoctoProjectDevelopment/</url>
+    <url>/2024/07/09/YoctoProjectDevelopment/</url>
     <content><![CDATA[<h3 id="Definitions"><a href="#Definitions" class="headerlink" title="Definitions"></a>Definitions</h3><p>Terminology in the Yocto Project can be a little confusing. These definitions should help you along the way:</p>
 <ul>
 <li><strong>OpenEmbedded</strong>: build system and community</li>
@@ -183,6 +252,26 @@
 <li><strong>Image</strong>: output of build process (bootable and executable Linux OS)</li>
 </ul>
 <h3 id="Block-Diagram"><a href="#Block-Diagram" class="headerlink" title="Block Diagram"></a>Block Diagram</h3><p><img   src="YoctoProjectDevelopment.assets/YoctoBlockDiagram.png" ></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Creating a Post in Hexo</title>
+    <url>/2024/07/09/CreatingPostHexo/</url>
+    <content><![CDATA[<p>In this guide you will get to know how to build the Yocto for NXP products based on Scarthgap branch.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new page --path _posts/ChangingOwnershipLinux <span class="string">&quot;Changing Ownership in Linux&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment<i class="fas fa-external-link-alt"></i></a></p>
 ]]></content>
   </entry>
 </search>
