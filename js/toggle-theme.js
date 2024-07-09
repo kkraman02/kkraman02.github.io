@@ -26,6 +26,18 @@ KEEP.initModeToggle = () => {
     },
 
     initModeStatus() {
+      const configMode = KEEP.theme_config?.base_info?.mode
+
+      if (configMode === 'dark') {
+        this.enableDarkMode()
+        return
+      }
+
+      if (configMode === 'light') {
+        this.enableLightMode()
+        return
+      }
+
       const styleStatus = KEEP.getStyleStatus()
 
       if (styleStatus) {
@@ -36,10 +48,13 @@ KEEP.initModeToggle = () => {
     },
 
     initModeToggleButton() {
-      this.themeModeToggleBtn.addEventListener('click', () => {
-        const isDark = document.documentElement.classList.contains('dark-mode')
-        isDark ? this.enableLightMode() : this.enableDarkMode()
-      })
+      if (!this.themeModeToggleBtn?.hasClickListener) {
+        this.themeModeToggleBtn.addEventListener('click', () => {
+          const isDark = document.documentElement.classList.contains('dark-mode')
+          isDark ? this.enableLightMode() : this.enableDarkMode()
+        })
+        this.themeModeToggleBtn.hasClickListener = true
+      }
     },
 
     initModeAutoTrigger() {

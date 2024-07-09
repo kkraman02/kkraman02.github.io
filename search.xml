@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Bitbake Environment</title>
-    <url>/2024/06/04/Bitbake-Environment/</url>
-    <content><![CDATA[<h2 id="1-Definition"><a href="#1-Definition" class="headerlink" title="1. Definition"></a>1. Definition</h2><p>BitBake is a build automation tool used to manage the compilation and packaging of software. It’s commonly used in the Yocto Project to create custom Linux distributions. BitBake processes recipes, which specify how to fetch, configure, compile, and package software components, enabling reproducible and customizable builds.</p>
-<h2 id="2-Usages-of-the-bitbake"><a href="#2-Usages-of-the-bitbake" class="headerlink" title="2. Usages of the bitbake"></a>2. Usages of the bitbake</h2><h3 id="2-1-bitbake-recipe"><a href="#2-1-bitbake-recipe" class="headerlink" title="2.1 bitbake (recipe)"></a>2.1 bitbake (recipe)</h3><p>Build a specified recipe.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake core-image-minimal</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-2-bitbake-c-task-recipe"><a href="#2-2-bitbake-c-task-recipe" class="headerlink" title="2.2 bitbake -c (task) (recipe)"></a>2.2 bitbake -c (task) (recipe)</h3><p>Execute a specific task for a recipe.<br>This allows you to run a particular task within a recipe. Replace(task) with the desired task (e.g., fetch, configure, compile).</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake -c clean core-image-minimal</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-3-bitbake-layers"><a href="#2-3-bitbake-layers" class="headerlink" title="2.3 bitbake-layers"></a>2.3 bitbake-layers</h3><p>Manage layers in your build environment.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake-layers show-layers</span><br></pre></td></tr></table></figure>
-
-<p>This command lists all the layers included in your build environment.</p>
-<h4 id="2-3-1-Add-new-layer-to-the-build-environment"><a href="#2-3-1-Add-new-layer-to-the-build-environment" class="headerlink" title="2.3.1 Add new layer to the build environment"></a>2.3.1 Add new layer to the build environment</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake-layers add-layer meta-example</span><br></pre></td></tr></table></figure>
-
-<p>This command adds the meta-example layer to your build environment.</p>
-]]></content>
-      <tags>
-        <tag>Bitbake</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Building OpenBMC Firmware</title>
     <url>/2024/07/04/BuildOpenBMCFirmware/</url>
     <content><![CDATA[<h2 id="1-Setting-up-the-Yocto-build-environment"><a href="#1-Setting-up-the-Yocto-build-environment" class="headerlink" title="1. Setting up the Yocto build environment"></a>1. Setting up the Yocto build environment</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install git python3-distutils gcc g++ make file wget gawk diffstat bzip2 cpio chrpath zstd lz4 bzip2</span><br></pre></td></tr></table></figure>
@@ -72,17 +50,26 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Compressing &amp;  Decompressing Files</title>
-    <url>/2024/06/23/CompressingDecompressingFiles/</url>
-    <content><![CDATA[<p>Decompressing .tar.gz and .tar.xz files</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install tar</span><br></pre></td></tr></table></figure>
+    <title>Bitbake Environment</title>
+    <url>/2024/06/04/Bitbake-Environment/</url>
+    <content><![CDATA[<h2 id="1-Definition"><a href="#1-Definition" class="headerlink" title="1. Definition"></a>1. Definition</h2><p>BitBake is a build automation tool used to manage the compilation and packaging of software. It’s commonly used in the Yocto Project to create custom Linux distributions. BitBake processes recipes, which specify how to fetch, configure, compile, and package software components, enabling reproducible and customizable builds.</p>
+<h2 id="2-Usages-of-the-bitbake"><a href="#2-Usages-of-the-bitbake" class="headerlink" title="2. Usages of the bitbake"></a>2. Usages of the bitbake</h2><h3 id="2-1-bitbake-recipe"><a href="#2-1-bitbake-recipe" class="headerlink" title="2.1 bitbake (recipe)"></a>2.1 bitbake (recipe)</h3><p>Build a specified recipe.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake core-image-minimal</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -xvf &lt;file_name&gt;.tar.gz</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-bitbake-c-task-recipe"><a href="#2-2-bitbake-c-task-recipe" class="headerlink" title="2.2 bitbake -c (task) (recipe)"></a>2.2 bitbake -c (task) (recipe)</h3><p>Execute a specific task for a recipe.<br>This allows you to run a particular task within a recipe. Replace(task) with the desired task (e.g., fetch, configure, compile).</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake -c clean core-image-minimal</span><br></pre></td></tr></table></figure>
 
-<p>Decompressing .zst files</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install zstd</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-bitbake-layers"><a href="#2-3-bitbake-layers" class="headerlink" title="2.3 bitbake-layers"></a>2.3 bitbake-layers</h3><p>Manage layers in your build environment.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake-layers show-layers</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">zst -d &lt;file_name&gt;.zst</span><br></pre></td></tr></table></figure>]]></content>
+<p>This command lists all the layers included in your build environment.</p>
+<h4 id="2-3-1-Add-new-layer-to-the-build-environment"><a href="#2-3-1-Add-new-layer-to-the-build-environment" class="headerlink" title="2.3.1 Add new layer to the build environment"></a>2.3.1 Add new layer to the build environment</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake-layers add-layer meta-example</span><br></pre></td></tr></table></figure>
+
+<p>This command adds the meta-example layer to your build environment.</p>
+]]></content>
+      <tags>
+        <tag>Bitbake</tag>
+      </tags>
   </entry>
   <entry>
     <title>Changing Ownership in Linux</title>
@@ -106,6 +93,39 @@
 <p><code>a</code>: Represents all users.</p>
 <p><code>+rwX</code>: Specifies the permissions to grant: <code>rw</code> for read and write permissions on files, and <code>X</code> for execute permissions on directories.</p>
 <p><code>.</code>: Represents the current directory.</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Compressing &amp;  Decompressing Files</title>
+    <url>/2024/06/23/CompressingDecompressingFiles/</url>
+    <content><![CDATA[<p>Decompressing .tar.gz and .tar.xz files</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install tar</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -xvf &lt;file_name&gt;.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>Decompressing .zst files</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install zstd</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">zst -d &lt;file_name&gt;.zst</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>Creating a Post in Hexo</title>
+    <url>/2024/07/09/CreatingPostHexo/</url>
+    <content><![CDATA[<p>In this guide you will get to know how to build the Yocto for NXP products based on Scarthgap branch.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new page --path _posts/ChangingOwnershipLinux <span class="string">&quot;Changing Ownership in Linux&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment<i class="fas fa-external-link-alt"></i></a></p>
 ]]></content>
   </entry>
   <entry>
@@ -251,27 +271,12 @@
 <li><strong>Machine</strong>: defines the architecture, pins, buses, BSP, etc.</li>
 <li><strong>Image</strong>: output of build process (bootable and executable Linux OS)</li>
 </ul>
-<h3 id="Block-Diagram"><a href="#Block-Diagram" class="headerlink" title="Block Diagram"></a>Block Diagram</h3><p><img   src="YoctoProjectDevelopment.assets/YoctoBlockDiagram.png" ></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Creating a Post in Hexo</title>
-    <url>/2024/07/09/CreatingPostHexo/</url>
-    <content><![CDATA[<p>In this guide you will get to know how to build the Yocto for NXP products based on Scarthgap branch.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing<i class="fas fa-external-link-alt"></i></a></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new page --path _posts/ChangingOwnershipLinux <span class="string">&quot;Changing Ownership in Linux&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="Block-Diagram"><a href="#Block-Diagram" class="headerlink" title="Block Diagram"></a>Block Diagram</h3><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="YoctoProjectDevelopment.assets/YoctoBlockDiagram.png"
+                       
+                 ></p>
 ]]></content>
   </entry>
 </search>

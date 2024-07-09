@@ -20,6 +20,72 @@ KEEP.initUtils = () => {
     isHideHeader: true,
     hasToc: false,
 
+    // ==============  common utils ==============
+
+    // formatting timestamp
+    formatDatetime(fmt = KEEP.themeInfo.defaultDatetimeFormat, timestamp = Date.now()) {
+      function padLeftZero(str) {
+        return `00${str}`.substring(str.length)
+      }
+
+      const date = new Date(timestamp)
+
+      if (/(y+)/.test(fmt) || /(Y+)/.test(fmt)) {
+        fmt = fmt.replace(RegExp.$1, `${date.getFullYear()}`.substr(4 - RegExp.$1.length))
+      }
+
+      const obj = {
+        'M+': date.getMonth() + 1,
+        'D+': date.getDate(),
+        'd+': date.getDate(),
+        'H+': date.getHours(),
+        'h+': date.getHours(),
+        'm+': date.getMinutes(),
+        's+': date.getSeconds()
+      }
+
+      for (const key in obj) {
+        if (new RegExp(`(${key})`).test(fmt)) {
+          const str = `${obj[key]}`
+          fmt = fmt.replace(RegExp.$1, RegExp.$1.length === 1 ? str : padLeftZero(str))
+        }
+      }
+      return fmt
+    },
+
+    // set how long ago language
+    setHowLongAgoLanguage(p1, p2) {
+      return p2.replace(/%s/g, p1)
+    },
+
+    // get how long ago
+    getHowLongAgo(timestamp) {
+      const lang = KEEP.language_ago
+      const __Y = Math.floor(timestamp / (60 * 60 * 24 * 30) / 12)
+      const __M = Math.floor(timestamp / (60 * 60 * 24 * 30))
+      const __W = Math.floor(timestamp / (60 * 60 * 24) / 7)
+      const __d = Math.floor(timestamp / (60 * 60 * 24))
+      const __h = Math.floor((timestamp / (60 * 60)) % 24)
+      const __m = Math.floor((timestamp / 60) % 60)
+      const __s = Math.floor(timestamp % 60)
+
+      if (__Y > 0) {
+        return this.setHowLongAgoLanguage(__Y, lang.year)
+      } else if (__M > 0) {
+        return this.setHowLongAgoLanguage(__M, lang.month)
+      } else if (__W > 0) {
+        return this.setHowLongAgoLanguage(__W, lang.week)
+      } else if (__d > 0) {
+        return this.setHowLongAgoLanguage(__d, lang.day)
+      } else if (__h > 0) {
+        return this.setHowLongAgoLanguage(__h, lang.hour)
+      } else if (__m > 0) {
+        return this.setHowLongAgoLanguage(__m, lang.minute)
+      } else if (__s > 0) {
+        return this.setHowLongAgoLanguage(__s, lang.second)
+      }
+    },
+
     // initialization data
     initData() {
       const scroll = KEEP.theme_config?.scroll || {}
@@ -130,10 +196,15 @@ KEEP.initUtils = () => {
     toggleShowToolsList() {
       const sideToolsListDom = document.querySelector('.side-tools-list')
       const toggleShowToolsDom = document.querySelector('.tool-toggle-show')
-      toggleShowToolsDom.addEventListener('click', (e) => {
-        sideToolsListDom.classList.toggle('show')
-        e.stopPropagation()
-      })
+
+      if (!toggleShowToolsDom?.hasClickListener) {
+        toggleShowToolsDom.addEventListener('click', (e) => {
+          sideToolsListDom.classList.toggle('show')
+          e.stopPropagation()
+        })
+        toggleShowToolsDom.hasClickListener = true
+      }
+
       sideToolsListDom.querySelectorAll('.tools-item').forEach((item) => {
         item.addEventListener('click', (e) => {
           e.stopPropagation()
@@ -297,56 +368,6 @@ KEEP.initUtils = () => {
       }
     },
 
-    // set how long ago language
-    setHowLongAgoLanguage(p1, p2) {
-      return p2.replace(/%s/g, p1)
-    },
-
-    // get how long ago
-    getHowLongAgo(timestamp) {
-      const lang = KEEP.language_ago
-      const __Y = Math.floor(timestamp / (60 * 60 * 24 * 30) / 12)
-      const __M = Math.floor(timestamp / (60 * 60 * 24 * 30))
-      const __W = Math.floor(timestamp / (60 * 60 * 24) / 7)
-      const __d = Math.floor(timestamp / (60 * 60 * 24))
-      const __h = Math.floor((timestamp / (60 * 60)) % 24)
-      const __m = Math.floor((timestamp / 60) % 60)
-      const __s = Math.floor(timestamp % 60)
-
-      if (__Y > 0) {
-        return this.setHowLongAgoLanguage(__Y, lang.year)
-      } else if (__M > 0) {
-        return this.setHowLongAgoLanguage(__M, lang.month)
-      } else if (__W > 0) {
-        return this.setHowLongAgoLanguage(__W, lang.week)
-      } else if (__d > 0) {
-        return this.setHowLongAgoLanguage(__d, lang.day)
-      } else if (__h > 0) {
-        return this.setHowLongAgoLanguage(__h, lang.hour)
-      } else if (__m > 0) {
-        return this.setHowLongAgoLanguage(__m, lang.minute)
-      } else if (__s > 0) {
-        return this.setHowLongAgoLanguage(__s, lang.second)
-      }
-    },
-
-    // set how long age in home post block
-    setHowLongAgoInHome() {
-      const { post_datetime_format } = KEEP.theme_config?.home || {}
-
-      if (post_datetime_format && post_datetime_format !== 'ago') {
-        return
-      }
-
-      const post = document.querySelectorAll('.post-meta-info .home-post-history')
-      post &&
-        post.forEach((v) => {
-          const nowTimestamp = Date.now()
-          const updatedTimestamp = new Date(v.dataset.updated).getTime()
-          v.innerHTML = this.getHowLongAgo(Math.floor((nowTimestamp - updatedTimestamp) / 1000))
-        })
-    },
-
     // loading progress bar start
     pjaxProgressBarStart() {
       this.pjaxProgressBarTimer && clearInterval(this.pjaxProgressBarTimer)
@@ -498,17 +519,20 @@ KEEP.initUtils = () => {
               eventTrigger = 'mouseover'
             }
 
-            dom.addEventListener(eventTrigger, (e) => {
-              if (isLazyLoadImg && !imgsSet[nameIdx].imgLoaded) {
-                loadImg(
-                  document.querySelector(`.tooltip-img-box img.${imgDomClass}`),
-                  imgsSet[nameIdx].imgLoaded
-                )
-              }
-              imgsSet[nameIdx].isShowImg = !imgsSet[nameIdx].isShowImg
-              dom.classList.toggle('show-img')
-              e.stopPropagation()
-            })
+            if (!dom?.hasEventListener) {
+              dom.addEventListener(eventTrigger, (e) => {
+                if (isLazyLoadImg && !imgsSet[nameIdx].imgLoaded) {
+                  loadImg(
+                    document.querySelector(`.tooltip-img-box img.${imgDomClass}`),
+                    imgsSet[nameIdx].imgLoaded
+                  )
+                }
+                imgsSet[nameIdx].isShowImg = !imgsSet[nameIdx].isShowImg
+                dom.classList.toggle('show-img')
+                e.stopPropagation()
+              })
+              dom.hasEventListener = true
+            }
 
             hideTooltipImg(dom, nameIdx, tooltipImgTrigger)
           }
@@ -619,54 +643,6 @@ KEEP.initUtils = () => {
         })
     },
 
-    // first screen typewriter
-    initTypewriter() {
-      const fsc = KEEP.theme_config?.first_screen || {}
-      const isHitokoto = fsc?.hitokoto === true
-
-      if (fsc?.enable !== true) {
-        return
-      }
-
-      if (fsc?.enable === true && !isHitokoto && !fsc?.description) {
-        return
-      }
-
-      const descBox = document.querySelector('.first-screen-content .description')
-      if (descBox) {
-        descBox.style.opacity = '0'
-
-        setTimeout(
-          () => {
-            descBox.style.opacity = '1'
-            const descItemList = descBox.querySelectorAll('.desc-item')
-            descItemList.forEach((descItem) => {
-              const desc = descItem.querySelector('.desc')
-              const cursor = descItem.querySelector('.cursor')
-              const text = desc.innerHTML
-              desc.innerHTML = ''
-              let charIndex = 0
-
-              if (text) {
-                const typewriter = () => {
-                  if (charIndex < text.length) {
-                    desc.textContent += text.charAt(charIndex)
-                    charIndex++
-                    setTimeout(typewriter, 100)
-                  } else {
-                    cursor.style.display = 'none'
-                  }
-                }
-
-                typewriter()
-              }
-            })
-          },
-          isHitokoto ? 400 : 300
-        )
-      }
-    },
-
     // remove white space between children
     removeWhitespace(container) {
       if (!container) {
@@ -693,19 +669,6 @@ KEEP.initUtils = () => {
       this.removeWhitespace(document.querySelector('.post-meta-info-container .post-tag-ul'))
     },
 
-    // close website announcement
-    closeWebsiteAnnouncement() {
-      if (KEEP.theme_config?.home?.announcement) {
-        const waDom = document.querySelector('.home-content-container .website-announcement')
-        if (waDom) {
-          const closeDom = waDom.querySelector('.close')
-          closeDom.addEventListener('click', () => {
-            waDom.style.display = 'none'
-          })
-        }
-      }
-    },
-
     // wrap table dom with div
     wrapTableWithBox() {
       document.querySelectorAll('table').forEach((element) => {
@@ -718,34 +681,37 @@ KEEP.initUtils = () => {
     // H tag title to top
     title2Top4HTag(a, h, duration, cb) {
       if (a && h) {
-        a.addEventListener('click', (e) => {
-          e.preventDefault()
+        if (!a?.hasEventListener) {
+          a.addEventListener('click', (e) => {
+            e.preventDefault()
 
-          cb && cb()
+            cb && cb()
 
-          let winScrollY = window.scrollY
-          winScrollY = winScrollY <= 1 ? -19 : winScrollY
-          let offset = h.getBoundingClientRect().top + winScrollY
+            let winScrollY = window.scrollY
+            winScrollY = winScrollY <= 1 ? -19 : winScrollY
+            let offset = h.getBoundingClientRect().top + winScrollY
 
-          if (!this.isHideHeader) {
-            offset = offset - this.headerWrapperDom.getBoundingClientRect().height
-          }
-
-          window.anime({
-            targets: document.scrollingElement,
-            duration,
-            easing: 'linear',
-            scrollTop: offset,
-            complete: () => {
-              history.pushState(null, document.title, a.href)
-              if (this.isHideHeader) {
-                setTimeout(() => {
-                  this.pageTopDom.classList.add('hide')
-                }, 160)
-              }
+            if (!this.isHideHeader) {
+              offset = offset - this.headerWrapperDom.getBoundingClientRect().height
             }
+
+            window.anime({
+              targets: document.scrollingElement,
+              duration,
+              easing: 'linear',
+              scrollTop: offset,
+              complete: () => {
+                history.pushState(null, document.title, a.href)
+                if (this.isHideHeader) {
+                  setTimeout(() => {
+                    this.pageTopDom.classList.add('hide')
+                  }, 160)
+                }
+              }
+            })
           })
-        })
+          a.hasEventListener = true
+        }
       }
     },
 
@@ -757,20 +723,22 @@ KEEP.initUtils = () => {
     }
   }
 
+  // global
   KEEP.utils.initData()
   KEEP.utils.registerWindowScroll()
   KEEP.utils.toggleShowToolsList()
   KEEP.utils.globalFontAdjust()
   KEEP.utils.initHasToc()
-  KEEP.utils.zoomInImage()
-  KEEP.utils.setHowLongAgoInHome()
-  KEEP.utils.insertTooltipContent()
   KEEP.utils.siteCountInitialize()
   KEEP.utils.pageNumberJump()
-  KEEP.utils.tabsActiveHandle()
-  KEEP.utils.initTypewriter()
+
+  // home & post page
   KEEP.utils.trimPostMetaInfoBar()
-  KEEP.utils.closeWebsiteAnnouncement()
+
+  // post page
+  KEEP.utils.insertTooltipContent()
+  KEEP.utils.zoomInImage()
+  KEEP.utils.tabsActiveHandle()
   KEEP.utils.wrapTableWithBox()
   KEEP.utils.aAnchorJump()
 }
