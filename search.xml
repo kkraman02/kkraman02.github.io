@@ -2,6 +2,54 @@
 <search>
   <entry>
 <<<<<<< HEAD
+    <title>Building OpenBMC Firmware</title>
+    <url>/2024/07/04/BuildOpenBMCFirmware/</url>
+    <content><![CDATA[<h2 id="1-Setting-up-the-Yocto-build-environment"><a href="#1-Setting-up-the-Yocto-build-environment" class="headerlink" title="1. Setting up the Yocto build environment"></a>1. Setting up the Yocto build environment</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install git python3-distutils gcc g++ make file wget gawk diffstat bzip2 cpio chrpath zstd lz4 bzip2</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-1-Fork-the-upstream-OpenBMC-repo-to-yours"><a href="#1-1-Fork-the-upstream-OpenBMC-repo-to-yours" class="headerlink" title="1.1 Fork the upstream OpenBMC repo to yours"></a>1.1 Fork the upstream OpenBMC repo to yours</h3><p><a class="link"   href="https://github.com/openbmc/openbmc" >https://github.com/openbmc/openbmc<i class="fas fa-external-link-alt"></i></a> -&gt; <a class="link"   href="https://github.com/kkraman02/openbmc" >https://github.com/kkraman02/openbmc<i class="fas fa-external-link-alt"></i></a></p>
+<ul>
+<li>Pull the forked repo in your Ubuntu system.</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> -v https://github.com/kkraman02/openbmc</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> openbmc</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Check the available branches remote and local</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch -all</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-Build-OpenBMC-Firmware-for-the-AST-2500-EVB-board"><a href="#2-Build-OpenBMC-Firmware-for-the-AST-2500-EVB-board" class="headerlink" title="2. Build OpenBMC Firmware for the AST-2500 EVB board"></a>2. Build OpenBMC Firmware for the AST-2500 EVB board</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">. setup evb-ast2500</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake obmc-phosphor-image</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Once, the build is completed you can see the image in the following path <code>/openbmc/build/evb-ast2500/tmp/deploy/images/evb-ast2500</code></p>
+</li>
+<li><p>Check the file size</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -lh obmc-phosphor-image-evb-ast2500*</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="3-Build-OpenBMC-Firmware-for-the-ADLINK-board"><a href="#3-Build-OpenBMC-Firmware-for-the-ADLINK-board" class="headerlink" title="3. Build OpenBMC Firmware for the ADLINK board"></a>3. Build OpenBMC Firmware for the ADLINK board</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout -b development</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push -u origin development</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir meta-adlink</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> -rv meta-aspeed/* meta-adlink/</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+=======
     <title>Bitbake Environment</title>
     <url>/2024/06/04/Bitbake-Environment/</url>
     <content><![CDATA[<h2 id="1-Definition"><a href="#1-Definition" class="headerlink" title="1. Definition"></a>1. Definition</h2><p>BitBake is a build automation tool used to manage the compilation and packaging of software. It’s commonly used in the Yocto Project to create custom Linux distributions. BitBake processes recipes, which specify how to fetch, configure, compile, and package software components, enabling reproducible and customizable builds.</p>
@@ -22,6 +70,7 @@
       <tags>
         <tag>Bitbake</tag>
       </tags>
+>>>>>>> fc251a60ad8f336688bd1716833faed855e4c0a5
   </entry>
   <entry>
     <title>Changing Ownership in Linux</title>
@@ -45,12 +94,6 @@
 <p><code>a</code>: Represents all users.</p>
 <p><code>+rwX</code>: Specifies the permissions to grant: <code>rw</code> for read and write permissions on files, and <code>X</code> for execute permissions on directories.</p>
 <p><code>.</code>: Represents the current directory.</p>
-=======
-    <title>Changing Ownership in Linux</title>
-    <url>/2024/06/23/ChangingOwnershipLinux/</url>
-    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> &lt;directory_path&gt;</span><br><span class="line">sudo <span class="built_in">chown</span> -R raman:raman .</span><br><span class="line">sudo <span class="built_in">chown</span> -R a+rwX .</span><br></pre></td></tr></table></figure>
-
->>>>>>> 336ad6b77f26bfbdfc3aab73086f1fe85605a482
 ]]></content>
   </entry>
   <entry>
@@ -68,11 +111,7 @@
   </entry>
   <entry>
     <title>Creating a Post in Hexo</title>
-<<<<<<< HEAD
     <url>/2024/07/02/CreatingPostHexo/</url>
-=======
-    <url>/2024/06/23/CreatingPostHexo/</url>
->>>>>>> 336ad6b77f26bfbdfc3aab73086f1fe85605a482
     <content><![CDATA[<p>In this guide you will get to know how to build the Yocto for NXP products based on Scarthgap branch.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
@@ -130,11 +169,7 @@
   </entry>
   <entry>
     <title>Yocto Project Development</title>
-<<<<<<< HEAD
     <url>/2024/06/03/YoctoProjectDevelopment/</url>
-=======
-    <url>/2024/06/23/YoctoProjectDevelopment/</url>
->>>>>>> 336ad6b77f26bfbdfc3aab73086f1fe85605a482
     <content><![CDATA[<h3 id="Definitions"><a href="#Definitions" class="headerlink" title="Definitions"></a>Definitions</h3><p>Terminology in the Yocto Project can be a little confusing. These definitions should help you along the way:</p>
 <ul>
 <li><strong>OpenEmbedded</strong>: build system and community</li>
