@@ -9,7 +9,7 @@
     
     <title>
         
-            Compressing &amp;  Decompressing Files |
+            Verified Commits in the GitHub |
         
         Makes Sense
     </title>
@@ -215,7 +215,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        Compressing &amp;  Decompressing Files
+                        Verified Commits in the GitHub
                     </div>
                 
 
@@ -243,12 +243,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-06-23 01:27:22</span>
+                <span class="datetime">2024-07-10 22:09:24</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Jul 10 2024 21:54:21 GMT+0800">2024-07-10 21:54:21</span>
+                <span class="datetime" data-updated="Wed Jul 10 2024 22:12:56 GMT+0800">2024-07-10 22:12:56</span>
             </span>
         
 
@@ -278,15 +278,31 @@
                     
 
                     
-                         <p>Decompressing .tar.gz and .tar.xz files</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install tar</span><br></pre></td></tr></table></figure>
+                         <p>Verified commits in GitHub are those that are signed and can be cryptographically verified to ensure that they come from a trusted source. Here’s how you can set up and use GPG to sign your commits and tags:</p>
+<h2 id="Step-by-Step-Guide-to-Verified-Commits"><a href="#Step-by-Step-Guide-to-Verified-Commits" class="headerlink" title="Step-by-Step Guide to Verified Commits"></a>Step-by-Step Guide to Verified Commits</h2><h3 id="1-Install-GPG"><a href="#1-Install-GPG" class="headerlink" title="1. Install GPG"></a>1. Install GPG</h3><p>If you don’t have GPG installed, you can install it using the following commands:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install gnupg</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf &lt;file_name&gt;.tar.gz</span><br></pre></td></tr></table></figure>
+<h3 id="2-Generate-a-GPG-Key"><a href="#2-Generate-a-GPG-Key" class="headerlink" title="2. Generate a GPG Key"></a>2. Generate a GPG Key</h3><p>If you don’t already have a GPG key, you can generate one using the following command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --full-generate-key</span><br></pre></td></tr></table></figure>
 
-<p>Decompressing .zst files</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install zstd</span><br></pre></td></tr></table></figure>
+<p>Follow the prompts to generate your key. Choose RSA and RSA, key size of 4096 bits, and a key expiration period as per your preference.</p>
+<h3 id="3-List-Your-GPG-Keys"><a href="#3-List-Your-GPG-Keys" class="headerlink" title="3. List Your GPG Keys"></a>3. List Your GPG Keys</h3><p>To list your GPG keys and find the key ID, use the following command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --list-secret-keys --keyid-format LONG</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zst -d &lt;file_name&gt;.zst</span><br></pre></td></tr></table></figure>
+<p>Output:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">gpg: checking the trustdb</span><br><span class="line">gpg: marginals needed: 3  completes needed: 1  trust model: pgp</span><br><span class="line">gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u</span><br><span class="line">/home/raman/.gnupg/pubring.kbx</span><br><span class="line">------------------------------</span><br><span class="line">sec   rsa4096/69A232962D78CB0A 2024-07-06 [SC]</span><br><span class="line">      29C678E0F97172E8238E1B3A69A232962D78CB0A</span><br><span class="line">uid                 [ultimate] raman (created to <span class="keyword">do</span> the verified commits) &lt;kkraman02@gmail.com&gt;</span><br><span class="line">ssb   rsa4096/3DCDC68CC5F4C641 2024-07-06 [E]</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-Export-Your-GPG-Key"><a href="#4-Export-Your-GPG-Key" class="headerlink" title="4. Export Your GPG Key"></a>4. Export Your GPG Key</h3><p>export your GPG key in ASCII format:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --armor --<span class="built_in">export</span> 69A232962D78CB0A</span><br></pre></td></tr></table></figure>
+
+<p>copy and paste the generated <strong>PUBLIC KEY BLOCK</strong> to the here(<a class="link"   target="_blank" rel="noopener" href="https://github.com/settings/keys" >https://github.com/settings/keys<i class="fas fa-external-link-alt"></i></a>) -&gt; GPG keys.</p>
+<h3 id="5-Configure-Git-to-Use-Your-GPG-Key"><a href="#5-Configure-Git-to-Use-Your-GPG-Key" class="headerlink" title="5. Configure Git to Use Your GPG Key"></a>5. Configure Git to Use Your GPG Key</h3><p>Set Git to use your GPG key for signing commits:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.signingkey 69A232962D78CB0A</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-Sign-Your-Commits"><a href="#6-Sign-Your-Commits" class="headerlink" title="6. Sign Your Commits"></a>6. Sign Your Commits</h3><p>To sign your commits, add the <code>-S</code> flag to the commit command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -S -m <span class="string">&quot;Your commit message&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="7-How-to-check-verified-and-unverified-commits"><a href="#7-How-to-check-verified-and-unverified-commits" class="headerlink" title="7. How to check verified and unverified commits"></a>7. How to check verified and unverified commits</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --show-signature	<span class="comment"># show verified commits</span></span><br><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
                     
                 </div>
 
@@ -296,11 +312,11 @@
     <div class="copyright-info-content border-box">
         <div class="copyright-info-top border-box">
             <div class="copyright-post-title border-box text-ellipsis">
-                Compressing &amp;  Decompressing Files
+                Verified Commits in the GitHub
             </div>
 
             <div class="copyright-post-link border-box text-ellipsis">
-                2024/06/23/CompressingDecompressingFiles/
+                2024/07/10/VerifiedCommitsGitHub/
             </div>
         </div>
 
@@ -316,7 +332,7 @@
                 <div class="type">
                     Published
                 </div>
-                <div class="content">2024-06-23 01:27</div>
+                <div class="content">2024-07-10 22:09</div>
             </div>
 
 
@@ -383,31 +399,15 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="../ChangingOwnershipLinux/"
-                                   title="Changing Ownership in Linux"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Changing Ownership in Linux</span>
-                                        <span class="post-nav-item">Prev posts</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="../FlashingOSUsingDDUtilityLinux/"
-                                   title="Flashing OS Using DD Utility in Linux"
+                                   href="../GitHub/"
+                                   title="GitHub"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Flashing OS Using DD Utility in Linux</span>
+                                        <span class="post-nav-title-item text-ellipsis">GitHub</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -435,7 +435,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-by-Step-Guide-to-Verified-Commits"><span class="nav-text">Step-by-Step Guide to Verified Commits</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Install-GPG"><span class="nav-text">1. Install GPG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Generate-a-GPG-Key"><span class="nav-text">2. Generate a GPG Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-List-Your-GPG-Keys"><span class="nav-text">3. List Your GPG Keys</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Export-Your-GPG-Key"><span class="nav-text">4. Export Your GPG Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Configure-Git-to-Use-Your-GPG-Key"><span class="nav-text">5. Configure Git to Use Your GPG Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Sign-Your-Commits"><span class="nav-text">6. Sign Your Commits</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-How-to-check-verified-and-unverified-commits"><span class="nav-text">7. How to check verified and unverified commits</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -616,7 +616,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-by-Step-Guide-to-Verified-Commits"><span class="nav-text">Step-by-Step Guide to Verified Commits</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Install-GPG"><span class="nav-text">1. Install GPG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Generate-a-GPG-Key"><span class="nav-text">2. Generate a GPG Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-List-Your-GPG-Keys"><span class="nav-text">3. List Your GPG Keys</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Export-Your-GPG-Key"><span class="nav-text">4. Export Your GPG Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Configure-Git-to-Use-Your-GPG-Key"><span class="nav-text">5. Configure Git to Use Your GPG Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Sign-Your-Commits"><span class="nav-text">6. Sign Your Commits</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-How-to-check-verified-and-unverified-commits"><span class="nav-text">7. How to check verified and unverified commits</span></a></li></ol></li></ol>
     </div>
 </div>
 

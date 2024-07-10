@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Bitbake Environment</title>
+    <url>/2024/06/04/Bitbake-Environment/</url>
+    <content><![CDATA[<h2 id="1-Definition"><a href="#1-Definition" class="headerlink" title="1. Definition"></a>1. Definition</h2><p>BitBake is a build automation tool used to manage the compilation and packaging of software. It’s commonly used in the Yocto Project to create custom Linux distributions. BitBake processes recipes, which specify how to fetch, configure, compile, and package software components, enabling reproducible and customizable builds.</p>
+<h2 id="2-Usages-of-the-bitbake"><a href="#2-Usages-of-the-bitbake" class="headerlink" title="2. Usages of the bitbake"></a>2. Usages of the bitbake</h2><h3 id="2-1-bitbake-recipe"><a href="#2-1-bitbake-recipe" class="headerlink" title="2.1 bitbake (recipe)"></a>2.1 bitbake (recipe)</h3><p>Build a specified recipe.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake core-image-minimal</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-bitbake-c-task-recipe"><a href="#2-2-bitbake-c-task-recipe" class="headerlink" title="2.2 bitbake -c (task) (recipe)"></a>2.2 bitbake -c (task) (recipe)</h3><p>Execute a specific task for a recipe.<br>This allows you to run a particular task within a recipe. Replace(task) with the desired task (e.g., fetch, configure, compile).</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake -c clean core-image-minimal</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-bitbake-layers"><a href="#2-3-bitbake-layers" class="headerlink" title="2.3 bitbake-layers"></a>2.3 bitbake-layers</h3><p>Manage layers in your build environment.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake-layers show-layers</span><br></pre></td></tr></table></figure>
+
+<p>This command lists all the layers included in your build environment.</p>
+<h4 id="2-3-1-Add-new-layer-to-the-build-environment"><a href="#2-3-1-Add-new-layer-to-the-build-environment" class="headerlink" title="2.3.1 Add new layer to the build environment"></a>2.3.1 Add new layer to the build environment</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake-layers add-layer meta-example</span><br></pre></td></tr></table></figure>
+
+<p>This command adds the meta-example layer to your build environment.</p>
+]]></content>
+      <tags>
+        <tag>Bitbake</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Building OpenBMC Firmware</title>
     <url>/2024/07/04/BuildOpenBMCFirmware/</url>
     <content><![CDATA[<h2 id="1-Setting-up-the-Yocto-build-environment"><a href="#1-Setting-up-the-Yocto-build-environment" class="headerlink" title="1. Setting up the Yocto build environment"></a>1. Setting up the Yocto build environment</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install git python3-distutils gcc g++ make file wget gawk diffstat bzip2 cpio chrpath zstd lz4 bzip2</span><br></pre></td></tr></table></figure>
@@ -50,28 +72,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Bitbake Environment</title>
-    <url>/2024/06/04/Bitbake-Environment/</url>
-    <content><![CDATA[<h2 id="1-Definition"><a href="#1-Definition" class="headerlink" title="1. Definition"></a>1. Definition</h2><p>BitBake is a build automation tool used to manage the compilation and packaging of software. It’s commonly used in the Yocto Project to create custom Linux distributions. BitBake processes recipes, which specify how to fetch, configure, compile, and package software components, enabling reproducible and customizable builds.</p>
-<h2 id="2-Usages-of-the-bitbake"><a href="#2-Usages-of-the-bitbake" class="headerlink" title="2. Usages of the bitbake"></a>2. Usages of the bitbake</h2><h3 id="2-1-bitbake-recipe"><a href="#2-1-bitbake-recipe" class="headerlink" title="2.1 bitbake (recipe)"></a>2.1 bitbake (recipe)</h3><p>Build a specified recipe.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake core-image-minimal</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-2-bitbake-c-task-recipe"><a href="#2-2-bitbake-c-task-recipe" class="headerlink" title="2.2 bitbake -c (task) (recipe)"></a>2.2 bitbake -c (task) (recipe)</h3><p>Execute a specific task for a recipe.<br>This allows you to run a particular task within a recipe. Replace(task) with the desired task (e.g., fetch, configure, compile).</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake -c clean core-image-minimal</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-3-bitbake-layers"><a href="#2-3-bitbake-layers" class="headerlink" title="2.3 bitbake-layers"></a>2.3 bitbake-layers</h3><p>Manage layers in your build environment.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake-layers show-layers</span><br></pre></td></tr></table></figure>
-
-<p>This command lists all the layers included in your build environment.</p>
-<h4 id="2-3-1-Add-new-layer-to-the-build-environment"><a href="#2-3-1-Add-new-layer-to-the-build-environment" class="headerlink" title="2.3.1 Add new layer to the build environment"></a>2.3.1 Add new layer to the build environment</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake-layers add-layer meta-example</span><br></pre></td></tr></table></figure>
-
-<p>This command adds the meta-example layer to your build environment.</p>
-]]></content>
-      <tags>
-        <tag>Bitbake</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Changing Ownership in Linux</title>
     <url>/2024/06/23/ChangingOwnershipLinux/</url>
     <content><![CDATA[<p>chown, full name change owner, is a very useful command in Linux systems, mainly used to change the permissions of files or directories.</p>
@@ -110,7 +110,7 @@
   </entry>
   <entry>
     <title>Creating a Post in Hexo</title>
-    <url>/2024/07/09/CreatingPostHexo/</url>
+    <url>/2024/07/10/CreatingPostHexo/</url>
     <content><![CDATA[<p>In this guide you will get to know how to build the Yocto for NXP products based on Scarthgap branch.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
@@ -144,26 +144,87 @@
 ]]></content>
   </entry>
   <entry>
-    <title>OpenBMC Development</title>
-    <url>/2024/06/03/OpenBMCDevelopment/</url>
-    <content><![CDATA[<h2 id="1-Setting-up-the-system-for-the-OpenBMC-development"><a href="#1-Setting-up-the-system-for-the-OpenBMC-development" class="headerlink" title="1. Setting up the system for the OpenBMC development"></a>1. Setting up the system for the OpenBMC development</h2><ul>
-<li><p>Install the following dependencies</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install git python3-distutils gcc g++ make file wget gawk diffstat bzip2 cpio chrpath zstd lz4 bzip2</span><br></pre></td></tr></table></figure></li>
-<li><p>Download the source code</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/bcran/openbmc</span><br><span class="line"><span class="built_in">cd</span> openbmc</span><br></pre></td></tr></table></figure></li>
-<li><p>Choose your machine</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">. setup comhpcalt</span><br></pre></td></tr></table></figure></li>
-<li><p>start to buid the firmware</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bitbake obmc-phosphor-image</span><br></pre></td></tr></table></figure></li>
-<li><p>Once the build is completed, the BMC image will be created and stored in this location <code>tmp/deploy/images/&lt;platform&gt;/</code></p>
-<ul>
-<li><code>obmc-phosphor-image-&lt;platform&gt;-&lt;datetime&gt;.static.mtd</code> and <code>obmc-phosphor-image-&lt;platform&gt;-&lt;datetime&gt;.static.mtd.tar</code></li>
-</ul>
+    <title>GitHub</title>
+    <url>/2024/07/10/GitHub/</url>
+    <content><![CDATA[<h1 id="What-is-GitHub"><a href="#What-is-GitHub" class="headerlink" title="What is GitHub?"></a>What is GitHub?</h1><p>GitHub is a platform where developers store and share their code. Think of it like a social network for programmers, but instead of sharing photos or updates, they share software projects. It helps developers collaborate on projects, track changes, and manage different versions of their code. It’s widely used for open-source projects and by teams working on software development together.</p>
+<h2 id="1-Installing-and-Getting-Started-with-Git-in-Linux"><a href="#1-Installing-and-Getting-Started-with-Git-in-Linux" class="headerlink" title="1. Installing and Getting Started with Git in Linux"></a>1. Installing and Getting Started with Git in Linux</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt upgrade -y</span><br><span class="line">sudo apt install git</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-Configuring-Git"><a href="#1-2-Configuring-Git" class="headerlink" title="1.2. Configuring Git"></a>1.2. Configuring Git</h3><p>After installing Git, you should configure it with your name and email. This information is used to identify your commits.</p>
+<ol>
+<li><p><strong>Set Your Name:</strong> Replace <code>Your Name</code> with your actual name:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;Your Name&quot;</span></span><br></pre></td></tr></table></figure>
 </li>
-</ul>
+<li><p><strong>Set Your Email:</strong> Replace <code>your.email@example.com</code> with your email address:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.email <span class="string">&quot;your.email@example.com&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="1-3-Cloning-an-Existing-Repository"><a href="#1-3-Cloning-an-Existing-Repository" class="headerlink" title="1.3. Cloning an Existing Repository:"></a>1.3. Cloning an Existing Repository:</h3><ol>
+<li><p><strong>Navigate to the Directory:</strong> Open Terminal and navigate to the directory where you want to clone the repository. For example:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/your/desired/directory</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Clone the Repository:</strong> Use the <code>git clone</code> command followed by the URL of the GitHub repository you want to clone. For example, to clone a repository named <code>example_repo</code> from GitHub:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/username/example_repo.git</span><br></pre></td></tr></table></figure>
+
+<p>Replace <code>username</code> with the GitHub username and <code>example_repo</code> with the name of the repository you want to clone.</p>
+</li>
+<li><p><strong>Navigate into the Cloned Repository:</strong> After cloning, navigate into the cloned repository:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> example_repo</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="2-Branching-in-the-repositories"><a href="#2-Branching-in-the-repositories" class="headerlink" title="2. Branching in the repositories"></a>2. Branching in the repositories</h2><h3 id="2-1-Creating-a-new-branch"><a href="#2-1-Creating-a-new-branch" class="headerlink" title="2.1. Creating a new branch"></a>2.1. Creating a new branch</h3>   <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch --all</span><br><span class="line">git checkout -b new-branch-name</span><br><span class="line">git checkout new-branch-name</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-Deleting-a-branch"><a href="#2-2-Deleting-a-branch" class="headerlink" title="2.2. Deleting a branch"></a>2.2. Deleting a branch</h3><p>Once you’ve merged your changes from a branch and no longer need it, you can delete it:</p>
+<ol>
+<li><p><strong>Delete Locally:</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch -d branch-name</span><br></pre></td></tr></table></figure>
+
+<p>This deletes the branch named <code>branch-name</code> locally, but only if its changes have been merged into another branch.</p>
+</li>
+<li><p><strong>Delete Remotely:</strong> If you’ve pushed the branch to GitHub and want to delete it there too:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin --delete branch-name</span><br></pre></td></tr></table></figure>
+
+<p>This deletes the branch named <code>branch-name</code> on the remote repository (<code>origin</code> on GitHub).</p>
+</li>
+</ol>
+<h3 id="2-3-Add-Files"><a href="#2-3-Add-Files" class="headerlink" title="2.3 Add Files"></a>2.3 Add Files</h3><p>Start tracking files by adding them to the staging area:</p>
+   <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add &lt;file&gt;  <span class="comment"># Replace &lt;file&gt; with the actual filename or use &#x27;.&#x27; to add all files</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-Commit-Changes"><a href="#2-4-Commit-Changes" class="headerlink" title="2.4 Commit Changes"></a>2.4 Commit Changes</h3><p>Commit the staged changes to the repository:</p>
+   <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m <span class="string">&quot;Initial commit&quot;</span>  <span class="comment"># Use a meaningful commit message</span></span><br><span class="line"></span><br><span class="line">template:</span><br><span class="line">&lt;<span class="built_in">type</span>&gt;[optional scope]: &lt;description&gt;</span><br><span class="line"></span><br><span class="line">[optional body]</span><br><span class="line"></span><br><span class="line">[optional footer(s)]</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Merging-the-branches"><a href="#3-Merging-the-branches" class="headerlink" title="3. Merging the branches"></a>3. Merging the branches</h2><p><strong>Navigate to main:</strong> First, ensure you are on the branch into which you want to merge changes. Typically, this is the <code>main</code> branch:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout main</span><br><span class="line">git fetch origin</span><br></pre></td></tr></table></figure>
+
+<p><strong>Fetch Latest Changes:</strong> It’s a good practice to fetch the latest changes from the remote repository before merging:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git fetch origin</span><br></pre></td></tr></table></figure>
+
+<p><strong>Merge Branch:</strong> Merge the changes from the branch you want to merge (let’s say <code>devpt</code>) into <code>main</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git merge devpt</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-Creating-patches"><a href="#4-Creating-patches" class="headerlink" title="4. Creating patches"></a>4. Creating patches</h2><p><strong>List all commits on a specific branch:</strong> Replace <code>&lt;branch-name&gt;</code> with the name of the branch you’re interested in, such as <code>devpt</code> in your case.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span> devpt (or)</span><br><span class="line">git <span class="built_in">log</span> -n 10  <span class="comment"># Shows the last 10 commits</span></span><br></pre></td></tr></table></figure>
+
+<p>Generate patches for the commits:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git format-patch &lt;commit_hash&gt; (or) <span class="comment"># for a particular</span></span><br><span class="line">git format-patch &lt;commit_hash_from&gt;..&lt;commit_hash_to&gt; <span class="comment"># for 2 or more commits</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-1-Applying-the-patch-files"><a href="#4-1-Applying-the-patch-files" class="headerlink" title="4.1 Applying the patch files"></a>4.1 Applying the patch files</h3><p>If you have <code>.patch</code> files generated using <code>git format-patch</code> or another method, you can apply them using <code>git apply</code> or <code>git am</code>.</p>
+<h4 id="4-1-2-Using-git-apply"><a href="#4-1-2-Using-git-apply" class="headerlink" title="4.1.2 Using git apply"></a>4.1.2 Using git apply</h4><ol>
+<li><p><strong>Navigate to your Git repository:</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/your/repository</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Apply the patch using <code>git apply</code>:</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git apply path/to/your/patchfile.patch</span><br></pre></td></tr></table></figure>
+
+<p>Replace <code>path/to/your/patchfile.patch</code> with the actual path to your patch file.</p>
+</li>
+</ol>
+<h2 id="5-Reset-the-repo-to-the-specific-commit"><a href="#5-Reset-the-repo-to-the-specific-commit" class="headerlink" title="5. Reset the repo to the specific commit"></a>5. Reset the repo to the specific commit</h2><p>Use <code>git reset</code> to move the <code>HEAD</code> pointer and working directory to the specific commit you want to start from. This effectively “rewinds” your repository’s state to that commit.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span> devpt</span><br><span class="line">git reset --hard &lt;commit-hash&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Replace <code>&lt;commit-hash&gt;</code> with the hash of the commit you want to start from. This hash uniquely identifies each commit and can be found using <code>git log</code>.</p>
 ]]></content>
       <tags>
-        <tag>openbmc</tag>
+        <tag>GitHub Commands</tag>
       </tags>
   </entry>
   <entry>
@@ -257,8 +318,37 @@
       </tags>
   </entry>
   <entry>
+    <title>Verified Commits in the GitHub</title>
+    <url>/2024/07/10/VerifiedCommitsGitHub/</url>
+    <content><![CDATA[<p>Verified commits in GitHub are those that are signed and can be cryptographically verified to ensure that they come from a trusted source. Here’s how you can set up and use GPG to sign your commits and tags:</p>
+<h2 id="Step-by-Step-Guide-to-Verified-Commits"><a href="#Step-by-Step-Guide-to-Verified-Commits" class="headerlink" title="Step-by-Step Guide to Verified Commits"></a>Step-by-Step Guide to Verified Commits</h2><h3 id="1-Install-GPG"><a href="#1-Install-GPG" class="headerlink" title="1. Install GPG"></a>1. Install GPG</h3><p>If you don’t have GPG installed, you can install it using the following commands:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install gnupg</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Generate-a-GPG-Key"><a href="#2-Generate-a-GPG-Key" class="headerlink" title="2. Generate a GPG Key"></a>2. Generate a GPG Key</h3><p>If you don’t already have a GPG key, you can generate one using the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gpg --full-generate-key</span><br></pre></td></tr></table></figure>
+
+<p>Follow the prompts to generate your key. Choose RSA and RSA, key size of 4096 bits, and a key expiration period as per your preference.</p>
+<h3 id="3-List-Your-GPG-Keys"><a href="#3-List-Your-GPG-Keys" class="headerlink" title="3. List Your GPG Keys"></a>3. List Your GPG Keys</h3><p>To list your GPG keys and find the key ID, use the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gpg --list-secret-keys --keyid-format LONG</span><br></pre></td></tr></table></figure>
+
+<p>Output:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gpg: checking the trustdb</span><br><span class="line">gpg: marginals needed: 3  completes needed: 1  trust model: pgp</span><br><span class="line">gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u</span><br><span class="line">/home/raman/.gnupg/pubring.kbx</span><br><span class="line">------------------------------</span><br><span class="line">sec   rsa4096/69A232962D78CB0A 2024-07-06 [SC]</span><br><span class="line">      29C678E0F97172E8238E1B3A69A232962D78CB0A</span><br><span class="line">uid                 [ultimate] raman (created to <span class="keyword">do</span> the verified commits) &lt;kkraman02@gmail.com&gt;</span><br><span class="line">ssb   rsa4096/3DCDC68CC5F4C641 2024-07-06 [E]</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-Export-Your-GPG-Key"><a href="#4-Export-Your-GPG-Key" class="headerlink" title="4. Export Your GPG Key"></a>4. Export Your GPG Key</h3><p>export your GPG key in ASCII format:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gpg --armor --<span class="built_in">export</span> 69A232962D78CB0A</span><br></pre></td></tr></table></figure>
+
+<p>copy and paste the generated <strong>PUBLIC KEY BLOCK</strong> to the here(<a class="link"   href="https://github.com/settings/keys" >https://github.com/settings/keys<i class="fas fa-external-link-alt"></i></a>) -&gt; GPG keys.</p>
+<h3 id="5-Configure-Git-to-Use-Your-GPG-Key"><a href="#5-Configure-Git-to-Use-Your-GPG-Key" class="headerlink" title="5. Configure Git to Use Your GPG Key"></a>5. Configure Git to Use Your GPG Key</h3><p>Set Git to use your GPG key for signing commits:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.signingkey 69A232962D78CB0A</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-Sign-Your-Commits"><a href="#6-Sign-Your-Commits" class="headerlink" title="6. Sign Your Commits"></a>6. Sign Your Commits</h3><p>To sign your commits, add the <code>-S</code> flag to the commit command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -S -m <span class="string">&quot;Your commit message&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="7-How-to-check-verified-and-unverified-commits"><a href="#7-How-to-check-verified-and-unverified-commits" class="headerlink" title="7. How to check verified and unverified commits"></a>7. How to check verified and unverified commits</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span> --show-signature	<span class="comment"># show verified commits</span></span><br><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
     <title>Yocto Project Development</title>
-    <url>/2024/07/09/YoctoProjectDevelopment/</url>
+    <url>/2024/07/10/YoctoProjectDevelopment/</url>
     <content><![CDATA[<h3 id="Definitions"><a href="#Definitions" class="headerlink" title="Definitions"></a>Definitions</h3><p>Terminology in the Yocto Project can be a little confusing. These definitions should help you along the way:</p>
 <ul>
 <li><strong>OpenEmbedded</strong>: build system and community</li>
