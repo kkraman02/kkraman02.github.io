@@ -72,6 +72,72 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Building EDK2 for Ampere Jade</title>
+    <url>/2024/10/16/BuildingEDK2ForAmpereJade/</url>
+    <content><![CDATA[<h2 id="Setup-the-Build-Environment"><a href="#Setup-the-Build-Environment" class="headerlink" title="Setup the Build Environment"></a>Setup the Build Environment</h2><ol>
+<li><p>Check Cross-Compiler Installation</p>
+ <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt upgrade -y</span><br><span class="line">sudo apt install gcc-aarch64-linux-gnu</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Specify the Correct GCC Toolchain</p>
+<p>You may need to explicitly tell the build system to use the correct cross-compiler. Set the <code>GCC5_AARCH64_PREFIX</code> environment variable to point to the AArch64 GCC compiler:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> GCC5_AARCH64_PREFIX=aarch64-linux-gnu-</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="Obtaining-Source-Code"><a href="#Obtaining-Source-Code" class="headerlink" title="Obtaining Source Code"></a>Obtaining Source Code</h2><ol>
+<li><p>Create a new folder (directory) on your local development machine for use as your workspace. This example uses &#x2F;work&#x2F;git&#x2F;tianocore, modify as appropriate for your needs.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">export</span> WORKSPACE=/media/raman/development/tianocore</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">mkdir</span> -p <span class="variable">$WORKSPACE</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> <span class="variable">$WORKSPACE</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Into that folder, clone:</p>
+<ul>
+<li><p><a class="link"   href="https://github.com/tianocore/edk2" >edk2<i class="fas fa-external-link-alt"></i></a></p>
+</li>
+<li><p><a class="link"   href="https://github.com/tianocore/edk2-platforms" >edk2-platforms<i class="fas fa-external-link-alt"></i></a></p>
+</li>
+<li><p><a class="link"   href="https://github.com/tianocore/edk2-non-osi" >edk2-non-osi<i class="fas fa-external-link-alt"></i></a> (if building platforms that need it)</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git <span class="built_in">clone</span> https://github.com/tianocore/edk2.git</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> edk2</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git submodule update --init</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> ..</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git <span class="built_in">clone</span> https://github.com/tianocore/edk2-platforms.git</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> edk2-platforms</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git submodule update --init</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> ..</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git <span class="built_in">clone</span> https://github.com/tianocore/edk2-non-osi.git</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Set up a <strong>PACKAGES_PATH</strong> to point to the locations of these three repositories:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">export</span> PACKAGES_PATH=<span class="variable">$PWD</span>/edk2:<span class="variable">$PWD</span>/edk2-platforms:<span class="variable">$PWD</span>/edk2-non-osi</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Build the environment</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ . edk2/edksetup.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Build BaseTools</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">make -C edk2/BaseTools TOOLCHAIN=GCC5</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="Building-the-UEFI-image"><a href="#Building-the-UEFI-image" class="headerlink" title="Building the UEFI image"></a>Building the UEFI image</h2><p>Copy the ManageabilityPkg files into the right directory.</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> -rfv /media/raman/development/tianocore/edk2-platforms/Features/ManageabilityPkg /media/raman/development/tianocore/edk2-platforms/</span><br></pre></td></tr></table></figure>
+
+<p>Building EDK2 FD with the following command:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> edk2-platforms &amp;&amp; build -a AARCH64 -t GCC5 -b RELEASE -D SECURE_BOOT_ENABLE -p Platform/Ampere/JadePkg/Jade.dsc</span><br></pre></td></tr></table></figure>
+
+<p><strong>Notes</strong>: Please refer to <a class="link"   href="https://github.com/AmpereComputing/edk2-ampere-tools/blob/master/LinuxBoot.md" >LinuxBoot.md<i class="fas fa-external-link-alt"></i></a> for building EDK2+LinuxBoot FD.</p>
+<p>The resulting image will be at</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">edk2-platforms/Build/Jade/RELEASE_GCC5/FV/BL33_JADE_UEFI.fd</span><br></pre></td></tr></table></figure>
+
+<p>We will be using edk2-platforms&#x2F;BUILDS&#x2F;jade_tianocore_atf for the final artifacts.</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> edk2-platforms</span><br><span class="line">$ <span class="built_in">mkdir</span> -p BUILDS/jade_tianocore_atf</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Signing-the-Image"><a href="#Signing-the-Image" class="headerlink" title="Signing the Image"></a>Signing the Image</h2><p>You need to download and install <code>cert_create</code> and <code>fiptool</code> from Arm Trusted Firmware.</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ..</span><br><span class="line">$ git <span class="built_in">clone</span> --depth 1 https://github.com/ARM-software/arm-trusted-firmware.git</span><br><span class="line">$ <span class="built_in">cd</span> arm-trusted-firmware</span><br><span class="line">$ make -C tools/cert_create</span><br><span class="line">$ make -C tools/fiptool</span><br></pre></td></tr></table></figure>
+
+<p>Set up your $PATH to include cert_create and fiptool from above.</p>
+<p>Perform the following to sign the image:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> edk2-platforms</span><br><span class="line">$ sudo apt install arm-trusted-firmware-tools</span><br><span class="line">$ cert_create -n --ntfw-nvctr 0 --key-alg rsa --nt-fw-key edk2-platforms/Platform/Ampere/JadePkg/TestKeys/Dbb_AmpereTest.priv.pem --nt-fw-cert BUILDS/jade_tianocore_atf/jade_tianocore.fd.crt --nt-fw /media/raman/development/tianocore/Build/Jade/RELEASE_GCC5/FV/BL33_JADE_UEFI.fd</span><br><span class="line">$ fiptool create --nt-fw-cert /media/raman/development/tianocore/edk2-platforms/BUILDS/jade_tianocore_atf/jade_tianocore.fd.crt --nt-fw /media/raman/development/tianocore/Build/Jade/RELEASE_GCC5/FV/BL33_JADE_UEFI.fd /media/raman/development/tianocore/edk2-platforms/BUILDS/jade_tianocore_atf/jade_tianocore.fip.signed</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Integrating-Board-Setting-and-Ampere’s-Arm-Trusted-Firmware-ATF"><a href="#Integrating-Board-Setting-and-Ampere’s-Arm-Trusted-Firmware-ATF" class="headerlink" title="Integrating Board Setting and Ampere’s Arm Trusted Firmware (ATF)"></a>Integrating Board Setting and Ampere’s Arm Trusted Firmware (ATF)</h2><p>You need to obtain Ampere ATF image and Board Setting file compatible with this vesion of Ampere EDK2 in order to build a final firmware image.</p>
+<p>Contact <a class="link"   href="mailto:developer@amperecomputing.com" >developer@amperecomputing.com<i class="fas fa-external-link-alt"></i></a> for information.</p>
+]]></content>
+      <tags>
+        <tag>EDK2</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Changing Ownership in Linux</title>
     <url>/2024/06/23/ChangingOwnershipLinux/</url>
     <content><![CDATA[<p>chown, full name change owner, is a very useful command in Linux systems, mainly used to change the permissions of files or directories.</p>
