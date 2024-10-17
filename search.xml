@@ -225,6 +225,92 @@
 ]]></content>
   </entry>
   <entry>
+    <title>GPIO Interrupt</title>
+    <url>/2024/10/17/GPIOInterrupt/</url>
+    <content><![CDATA[<h2 id="How-GPIO-Interrupts-Work"><a href="#How-GPIO-Interrupts-Work" class="headerlink" title="How GPIO Interrupts Work"></a>How GPIO Interrupts Work</h2><p>A <strong>GPIO interrupt</strong> is a hardware mechanism that detects changes in the state of a General-Purpose Input&#x2F;Output (GPIO) pin and notifies the system, typically by interrupting the CPU. Instead of continuously polling the GPIO pin (which is inefficient), an interrupt allows the system to respond only when an event (such as a voltage change) occurs on the pin.</p>
+<h4 id="Basic-Steps-in-a-GPIO-Interrupt"><a href="#Basic-Steps-in-a-GPIO-Interrupt" class="headerlink" title="Basic Steps in a GPIO Interrupt:"></a>Basic Steps in a GPIO Interrupt:</h4><ol>
+<li><strong>Edge Detection</strong>: The system configures the GPIO pin to detect specific voltage transitions, such as:<ul>
+<li><strong>Rising edge</strong>: When the pin’s voltage changes from low to high.</li>
+<li><strong>Falling edge</strong>: When the pin’s voltage changes from high to low.</li>
+<li><strong>Both edges</strong>: When the pin changes in either direction.</li>
+</ul>
+</li>
+<li><strong>Interrupt Generation</strong>: When the configured edge is detected, the GPIO hardware generates an interrupt signal to the CPU.</li>
+<li><strong>Interrupt Handling</strong>: The CPU stops its current task, saves the context, and jumps to the <strong>Interrupt Service Routine (ISR)</strong>, which is a predefined function to handle the event.</li>
+<li><strong>Interrupt Response</strong>: In the ISR, the specific action for the interrupt is performed, such as reading a sensor value, toggling another GPIO pin, or initiating communication over a bus.</li>
+<li><strong>Return to Main Task</strong>: Once the ISR completes, the CPU restores the previous task’s context and resumes its execution.</li>
+</ol>
+<h2 id="Steps-to-Determine-GPIO-Interrupt-Capability"><a href="#Steps-to-Determine-GPIO-Interrupt-Capability" class="headerlink" title="Steps to Determine GPIO Interrupt Capability"></a>Steps to Determine GPIO Interrupt Capability</h2><h3 id="1-Consult-the-EC-Chip’s-Datasheet"><a href="#1-Consult-the-EC-Chip’s-Datasheet" class="headerlink" title="1. Consult the EC Chip’s Datasheet"></a>1. Consult the EC Chip’s Datasheet</h3><ul>
+<li><p>The <strong>datasheet</strong> for the specific EC chip (e.g., Nuvoton, Super I&#x2F;O, or any other EC) will provide detailed information about the GPIO pins, including whether they can be used as interrupt sources.</p>
+</li>
+<li><p>Look for sections like:</p>
+<ul>
+<li>GPIO functions</li>
+<li>Interrupt capabilities</li>
+<li>Pin multiplexing (sometimes a GPIO pin can be multiplexed to serve different functions, including as an interrupt pin)</li>
+</ul>
+</li>
+<li><p><strong>Example</strong>: A typical section of a datasheet might say:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">GPIO 12–19 can be configured as external interrupt sources, with support <span class="keyword">for</span> both rising and falling edge detection.</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-Check-the-EC-Chip’s-Pin-Configuration-and-Registers"><a href="#2-Check-the-EC-Chip’s-Pin-Configuration-and-Registers" class="headerlink" title="2. Check the EC Chip’s Pin Configuration and Registers"></a>2. Check the EC Chip’s Pin Configuration and Registers</h3><ul>
+<li><p>The </p>
+<p>registers</p>
+<p> of the EC chip often provide configuration options for enabling interrupts on specific GPIO pins. Look for:</p>
+<ul>
+<li><strong>Interrupt Enable Register</strong>: Lists which GPIO pins can be configured as interrupt sources.</li>
+<li><strong>Interrupt Edge Configuration</strong>: Defines how the GPIO can detect interrupts (rising, falling, or both edges).</li>
+</ul>
+</li>
+<li><p>Example register names:</p>
+<ul>
+<li><code>GPIO Interrupt Mask Register (IMR)</code></li>
+<li><code>Interrupt Status Register (ISR)</code></li>
+<li><code>Interrupt Edge Register (IER)</code></li>
+</ul>
+</li>
+</ul>
+<p>These registers indicate how the GPIO pins can be configured to trigger interrupts.</p>
+<h3 id="3-Use-the-Embedded-System-Firmware-or-BIOS-Settings"><a href="#3-Use-the-Embedded-System-Firmware-or-BIOS-Settings" class="headerlink" title="3. Use the Embedded System Firmware or BIOS Settings"></a>3. Use the Embedded System Firmware or BIOS Settings</h3><ul>
+<li>If the EC chip is integrated into a system (such as a laptop or industrial device), the firmware (e.g., BIOS, UEFI, or EC firmware) might provide settings or an interface for configuring GPIO pins as interrupts.</li>
+<li>Use <strong>BIOS&#x2F;UEFI menus</strong> or the EC’s firmware console to review and configure GPIO interrupt capabilities, depending on the platform.</li>
+</ul>
+<h3 id="4-Use-Linux-Sysfs-for-Linux-Based-Systems"><a href="#4-Use-Linux-Sysfs-for-Linux-Based-Systems" class="headerlink" title="4. Use Linux Sysfs (for Linux-Based Systems)"></a>4. Use Linux Sysfs (for Linux-Based Systems)</h3><ul>
+<li><p>If you are running Linux on your embedded system, you can explore available GPIO interrupts through the </p>
+<p><strong>sysfs</strong> interface:</p>
+<ol>
+<li><p>List the available GPIO chips:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> /sys/class/gpio/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Check if any GPIOs are already configured for interrupts by examining the <code>edge</code> attribute for each GPIO:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /sys/class/gpio/gpio&lt;GPIO_PIN_NUMBER&gt;/edge</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>If a GPIO can be configured as an interrupt, this file will list the possible edge settings: <code>none</code>, <code>rising</code>, <code>falling</code>, or <code>both</code>.</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="5-Review-Platform-Specific-Documents-or-Schematics"><a href="#5-Review-Platform-Specific-Documents-or-Schematics" class="headerlink" title="5. Review Platform-Specific Documents or Schematics"></a>5. Review Platform-Specific Documents or Schematics</h3><ul>
+<li>In many embedded systems, the EC chip is part of a larger platform or SoC (System on Chip). You can consult:<ul>
+<li><strong>Platform datasheets</strong>: These may document how many GPIOs are available and which ones can act as interrupt sources.</li>
+<li><strong>Hardware schematics</strong>: This can help determine which GPIOs are mapped to the EC and what their interrupt capabilities are.</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-Refer-to-EC-Firmware-Code-if-available"><a href="#6-Refer-to-EC-Firmware-Code-if-available" class="headerlink" title="6. Refer to EC Firmware Code (if available)"></a>6. Refer to EC Firmware Code (if available)</h3><ul>
+<li>If you have access to the EC firmware source code or configuration, check how GPIO interrupts are defined and handled in the code.</li>
+<li>Typically, you’ll find interrupt configurations in <strong>initialization files</strong> or <strong>GPIO configuration code</strong> that directly interfaces with the EC registers.</li>
+</ul>
+<p>For example:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">// Configure GPIO12 as an interrupt</span><br><span class="line">GPIO_INT_ENABLE |= (1 &lt;&lt; <span class="string">12);  // Enable interrupt on GPIO12</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="7-Check-Manufacturer-Tools-or-Libraries"><a href="#7-Check-Manufacturer-Tools-or-Libraries" class="headerlink" title="7. Check Manufacturer Tools or Libraries"></a>7. Check Manufacturer Tools or Libraries</h3><ul>
+<li>Some manufacturers provide <strong>software tools</strong> or <strong>libraries</strong> to configure EC chips, including GPIO and interrupt settings.</li>
+<li><strong>Example</strong>: If you are working with an EC chip from a manufacturer like Nuvoton, they might offer a development toolchain with utilities to configure and monitor GPIO interrupts.</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>GitHub</title>
     <url>/2024/07/10/GitHub/</url>
     <content><![CDATA[<h1 id="What-is-GitHub"><a href="#What-is-GitHub" class="headerlink" title="What is GitHub?"></a>What is GitHub?</h1><p>GitHub is a platform where developers store and share their code. Think of it like a social network for programmers, but instead of sharing photos or updates, they share software projects. It helps developers collaborate on projects, track changes, and manage different versions of their code. It’s widely used for open-source projects and by teams working on software development together.</p>
@@ -307,6 +393,68 @@
       <tags>
         <tag>GitHub Commands</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Handling GPIO InterruptPins</title>
+    <url>/2024/10/17/HandlingGPIOInterruptPins/</url>
+    <content><![CDATA[<h2 id="Steps-to-Read-and-Configure-GPIOs-with-Interrupts"><a href="#Steps-to-Read-and-Configure-GPIOs-with-Interrupts" class="headerlink" title="Steps to Read and Configure GPIOs with Interrupts"></a>Steps to Read and Configure GPIOs with Interrupts</h2><h3 id="1-Access-GPIO-Pins-via-sysfs-Interface"><a href="#1-Access-GPIO-Pins-via-sysfs-Interface" class="headerlink" title="1. Access GPIO Pins via sysfs Interface"></a>1. Access GPIO Pins via <code>sysfs</code> Interface</h3><p>In Linux, the <strong>sysfs</strong> interface allows access to GPIO pins. The following steps will help you list and configure GPIOs.</p>
+<ul>
+<li><p>List Available GPIOs:</p>
+<ul>
+<li><p>In most cases, GPIO pins are mapped under <code>/sys/class/gpio</code>.</p>
+</li>
+<li><p>First, check if the GPIOs are exported by looking at this directory:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> /sys/class/gpio/</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>Export a GPIO Pin:</p>
+<ul>
+<li><p>If a GPIO pin is not visible, export it by writing its number into the <code>export</code> file.</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> &lt;GPIO_PIN_NUMBER&gt; &gt; /sys/class/gpio/export</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>For example, to export GPIO pin 22:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> 22 &gt; /sys/class/gpio/export</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>Check GPIO Pin Direction:</p>
+<ul>
+<li><p>After exporting the pin, check or configure the GPIO direction (input or output) by interacting with the <code>direction</code> file.</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /sys/class/gpio/gpio22/direction</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>To set the GPIO as an input pin (necessary for interrupt):</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;in&quot;</span> &gt; /sys/class/gpio/gpio22/direction</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="2-Enable-GPIO-Interrupts"><a href="#2-Enable-GPIO-Interrupts" class="headerlink" title="2. Enable GPIO Interrupts"></a>2. Enable GPIO Interrupts</h3><p>Once a GPIO pin is exported, you can configure its edge detection, which enables the interrupt functionality.</p>
+<ul>
+<li><p>Set the Interrupt Trigger:</p>
+<ul>
+<li><p>You can configure which edge (voltage change) the GPIO will respond to by writing to the <code>edge</code> file. Possible values include:</p>
+<ul>
+<li><code>none</code>: No interrupt (default).</li>
+<li><code>rising</code>: Trigger on rising edge (low to high).</li>
+<li><code>falling</code>: Trigger on falling edge (high to low).</li>
+<li><code>both</code>: Trigger on both edges (rising and falling).</li>
+</ul>
+</li>
+<li><p>For example, to trigger on both rising and falling edges:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;both&quot;</span> &gt; /sys/class/gpio/gpio22/edge</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="3-Monitor-GPIO-Interrupt-Events"><a href="#3-Monitor-GPIO-Interrupt-Events" class="headerlink" title="3. Monitor GPIO Interrupt Events"></a>3. Monitor GPIO Interrupt Events</h3><ul>
+<li><p>A more practical approach for real-time monitoring is to use the <code>poll()</code> system call in a C or Python program. Alternatively, you can use <code>inotifywait</code> in a terminal to monitor changes.</p>
+</li>
+<li><p>To use <code>inotifywait</code>:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo apt-get install inotify-tools</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">inotifywait -m /sys/class/gpio/gpio22/value</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>This will display a notification whenever the value of the GPIO changes, i.e., when an interrupt occurs.</p>
+</li>
+</ul>
+]]></content>
   </entry>
   <entry>
     <title>Project Plan</title>

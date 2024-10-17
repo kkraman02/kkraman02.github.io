@@ -9,7 +9,7 @@
     
     <title>
         
-            Building EDK2 for Ampere Jade |
+            GPIO Interrupt |
         
         Makes Sense
     </title>
@@ -215,7 +215,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        Building EDK2 for Ampere Jade
+                        GPIO Interrupt
                     </div>
                 
 
@@ -243,26 +243,17 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-10-16 08:40:44</span>
+                <span class="datetime">2024-10-17 15:53:33</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Oct 16 2024 15:02:39 GMT+0800">2024-10-16 15:02:39</span>
+                <span class="datetime" data-updated="Thu Oct 17 2024 16:29:29 GMT+0800">2024-10-17 16:29:29</span>
             </span>
         
 
         
 
-        
-            <span class="post-tag meta-info-item border-box">
-                <ul class="post-tag-ul">
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="../../../../tags/EDK2/">EDK2</a></li>
-                        
-                    
-                </ul>
-            </span>
         
 
         
@@ -287,79 +278,87 @@
                     
 
                     
-                         <h2 id="Setup-the-Build-Environment"><a href="#Setup-the-Build-Environment" class="headerlink" title="Setup the Build Environment"></a>Setup the Build Environment</h2><ol>
-<li><p>Check Cross-Compiler Installation</p>
- <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt upgrade -y</span><br><span class="line">sudo apt install gcc-aarch64-linux-gnu</span><br></pre></td></tr></table></figure>
+                         <h2 id="How-GPIO-Interrupts-Work"><a href="#How-GPIO-Interrupts-Work" class="headerlink" title="How GPIO Interrupts Work"></a>How GPIO Interrupts Work</h2><p>A <strong>GPIO interrupt</strong> is a hardware mechanism that detects changes in the state of a General-Purpose Input&#x2F;Output (GPIO) pin and notifies the system, typically by interrupting the CPU. Instead of continuously polling the GPIO pin (which is inefficient), an interrupt allows the system to respond only when an event (such as a voltage change) occurs on the pin.</p>
+<h4 id="Basic-Steps-in-a-GPIO-Interrupt"><a href="#Basic-Steps-in-a-GPIO-Interrupt" class="headerlink" title="Basic Steps in a GPIO Interrupt:"></a>Basic Steps in a GPIO Interrupt:</h4><ol>
+<li><strong>Edge Detection</strong>: The system configures the GPIO pin to detect specific voltage transitions, such as:<ul>
+<li><strong>Rising edge</strong>: When the pin’s voltage changes from low to high.</li>
+<li><strong>Falling edge</strong>: When the pin’s voltage changes from high to low.</li>
+<li><strong>Both edges</strong>: When the pin changes in either direction.</li>
+</ul>
 </li>
-<li><p>Specify the Correct GCC Toolchain</p>
-<p>You may need to explicitly tell the build system to use the correct cross-compiler. Set the <code>GCC5_AARCH64_PREFIX</code> environment variable to point to the AArch64 GCC compiler:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;export GCC5_AARCH64_PREFIX=aarch64-linux-gnu-&quot;</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure></li>
+<li><strong>Interrupt Generation</strong>: When the configured edge is detected, the GPIO hardware generates an interrupt signal to the CPU.</li>
+<li><strong>Interrupt Handling</strong>: The CPU stops its current task, saves the context, and jumps to the <strong>Interrupt Service Routine (ISR)</strong>, which is a predefined function to handle the event.</li>
+<li><strong>Interrupt Response</strong>: In the ISR, the specific action for the interrupt is performed, such as reading a sensor value, toggling another GPIO pin, or initiating communication over a bus.</li>
+<li><strong>Return to Main Task</strong>: Once the ISR completes, the CPU restores the previous task’s context and resumes its execution.</li>
 </ol>
-<h2 id="Obtaining-Source-Code"><a href="#Obtaining-Source-Code" class="headerlink" title="Obtaining Source Code"></a>Obtaining Source Code</h2><ol>
-<li><p>Create a new folder (directory) on your local development machine for use as your workspace. This example uses &#x2F;work&#x2F;git&#x2F;tianocore, modify as appropriate for your needs.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">export</span> WORKSPACE=/media/raman/development/tianocore</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">mkdir</span> -p <span class="variable">$WORKSPACE</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> <span class="variable">$WORKSPACE</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="Steps-to-Determine-GPIO-Interrupt-Capability"><a href="#Steps-to-Determine-GPIO-Interrupt-Capability" class="headerlink" title="Steps to Determine GPIO Interrupt Capability"></a>Steps to Determine GPIO Interrupt Capability</h2><h3 id="1-Consult-the-EC-Chip’s-Datasheet"><a href="#1-Consult-the-EC-Chip’s-Datasheet" class="headerlink" title="1. Consult the EC Chip’s Datasheet"></a>1. Consult the EC Chip’s Datasheet</h3><ul>
+<li><p>The <strong>datasheet</strong> for the specific EC chip (e.g., Nuvoton, Super I&#x2F;O, or any other EC) will provide detailed information about the GPIO pins, including whether they can be used as interrupt sources.</p>
 </li>
-<li><p>Into that folder, clone:</p>
+<li><p>Look for sections like:</p>
 <ul>
-<li><p><a class="link"   target="_blank" rel="noopener" href="https://github.com/tianocore/edk2" >edk2<i class="fas fa-external-link-alt"></i></a></p>
+<li>GPIO functions</li>
+<li>Interrupt capabilities</li>
+<li>Pin multiplexing (sometimes a GPIO pin can be multiplexed to serve different functions, including as an interrupt pin)</li>
+</ul>
 </li>
-<li><p><a class="link"   target="_blank" rel="noopener" href="https://github.com/tianocore/edk2-platforms" >edk2-platforms<i class="fas fa-external-link-alt"></i></a></p>
+<li><p><strong>Example</strong>: A typical section of a datasheet might say:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GPIO 12–19 can be configured as external interrupt sources, with support <span class="keyword">for</span> both rising and falling edge detection.</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-Check-the-EC-Chip’s-Pin-Configuration-and-Registers"><a href="#2-Check-the-EC-Chip’s-Pin-Configuration-and-Registers" class="headerlink" title="2. Check the EC Chip’s Pin Configuration and Registers"></a>2. Check the EC Chip’s Pin Configuration and Registers</h3><ul>
+<li><p>The </p>
+<p>registers</p>
+<p> of the EC chip often provide configuration options for enabling interrupts on specific GPIO pins. Look for:</p>
+<ul>
+<li><strong>Interrupt Enable Register</strong>: Lists which GPIO pins can be configured as interrupt sources.</li>
+<li><strong>Interrupt Edge Configuration</strong>: Defines how the GPIO can detect interrupts (rising, falling, or both edges).</li>
+</ul>
 </li>
-<li><p><a class="link"   target="_blank" rel="noopener" href="https://github.com/tianocore/edk2-non-osi" >edk2-non-osi<i class="fas fa-external-link-alt"></i></a> (if building platforms that need it)</p>
+<li><p>Example register names:</p>
+<ul>
+<li><code>GPIO Interrupt Mask Register (IMR)</code></li>
+<li><code>Interrupt Status Register (ISR)</code></li>
+<li><code>Interrupt Edge Register (IER)</code></li>
+</ul>
 </li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git <span class="built_in">clone</span> https://github.com/tianocore/edk2.git</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> edk2</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git submodule update --init</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> ..</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git <span class="built_in">clone</span> https://github.com/tianocore/edk2-platforms.git</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> edk2-platforms</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git submodule update --init</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> ..</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git <span class="built_in">clone</span> https://github.com/tianocore/edk2-non-osi.git</span></span><br></pre></td></tr></table></figure>
+<p>These registers indicate how the GPIO pins can be configured to trigger interrupts.</p>
+<h3 id="3-Use-the-Embedded-System-Firmware-or-BIOS-Settings"><a href="#3-Use-the-Embedded-System-Firmware-or-BIOS-Settings" class="headerlink" title="3. Use the Embedded System Firmware or BIOS Settings"></a>3. Use the Embedded System Firmware or BIOS Settings</h3><ul>
+<li>If the EC chip is integrated into a system (such as a laptop or industrial device), the firmware (e.g., BIOS, UEFI, or EC firmware) might provide settings or an interface for configuring GPIO pins as interrupts.</li>
+<li>Use <strong>BIOS&#x2F;UEFI menus</strong> or the EC’s firmware console to review and configure GPIO interrupt capabilities, depending on the platform.</li>
+</ul>
+<h3 id="4-Use-Linux-Sysfs-for-Linux-Based-Systems"><a href="#4-Use-Linux-Sysfs-for-Linux-Based-Systems" class="headerlink" title="4. Use Linux Sysfs (for Linux-Based Systems)"></a>4. Use Linux Sysfs (for Linux-Based Systems)</h3><ul>
+<li><p>If you are running Linux on your embedded system, you can explore available GPIO interrupts through the </p>
+<p><strong>sysfs</strong> interface:</p>
+<ol>
+<li><p>List the available GPIO chips:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> /sys/class/gpio/</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Set up a <strong>PACKAGES_PATH</strong> to point to the locations of these three repositories:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">export</span> PACKAGES_PATH=<span class="variable">$PWD</span>/edk2:<span class="variable">$PWD</span>/edk2-platforms:<span class="variable">$PWD</span>/edk2-non-osi</span><br></pre></td></tr></table></figure>
+<li><p>Check if any GPIOs are already configured for interrupts by examining the <code>edge</code> attribute for each GPIO:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /sys/class/gpio/gpio&lt;GPIO_PIN_NUMBER&gt;/edge</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Build the environment</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ . edk2/edksetup.sh</span><br></pre></td></tr></table></figure>
+<li><p>If a GPIO can be configured as an interrupt, this file will list the possible edge settings: <code>none</code>, <code>rising</code>, <code>falling</code>, or <code>both</code>.</p>
 </li>
-<li><p>Build BaseTools</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make -C edk2/BaseTools TOOLCHAIN=GCC5</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h2 id="Building-the-UEFI-image"><a href="#Building-the-UEFI-image" class="headerlink" title="Building the UEFI image"></a>Building the UEFI image</h2><p>Copy the ManageabilityPkg files into the right directory.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> -rfv /media/raman/development/tianocore/edk2-platforms/Features/ManageabilityPkg /media/raman/development/tianocore/edk2-platforms/</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="5-Review-Platform-Specific-Documents-or-Schematics"><a href="#5-Review-Platform-Specific-Documents-or-Schematics" class="headerlink" title="5. Review Platform-Specific Documents or Schematics"></a>5. Review Platform-Specific Documents or Schematics</h3><ul>
+<li>In many embedded systems, the EC chip is part of a larger platform or SoC (System on Chip). You can consult:<ul>
+<li><strong>Platform datasheets</strong>: These may document how many GPIOs are available and which ones can act as interrupt sources.</li>
+<li><strong>Hardware schematics</strong>: This can help determine which GPIOs are mapped to the EC and what their interrupt capabilities are.</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-Refer-to-EC-Firmware-Code-if-available"><a href="#6-Refer-to-EC-Firmware-Code-if-available" class="headerlink" title="6. Refer to EC Firmware Code (if available)"></a>6. Refer to EC Firmware Code (if available)</h3><ul>
+<li>If you have access to the EC firmware source code or configuration, check how GPIO interrupts are defined and handled in the code.</li>
+<li>Typically, you’ll find interrupt configurations in <strong>initialization files</strong> or <strong>GPIO configuration code</strong> that directly interfaces with the EC registers.</li>
+</ul>
+<p>For example:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// Configure GPIO12 as an interrupt</span><br><span class="line">GPIO_INT_ENABLE |= (1 &lt;&lt; <span class="string">12);  // Enable interrupt on GPIO12</span></span><br></pre></td></tr></table></figure>
 
-<p>Building EDK2 FD with the following command:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> edk2-platforms &amp;&amp; build -a AARCH64 -t GCC5 -b RELEASE -D SECURE_BOOT_ENABLE -p Platform/Ampere/JadePkg/Jade.dsc</span><br></pre></td></tr></table></figure>
-
-<p><strong>Notes</strong>: Please refer to <a class="link"   target="_blank" rel="noopener" href="https://github.com/AmpereComputing/edk2-ampere-tools/blob/master/LinuxBoot.md" >LinuxBoot.md<i class="fas fa-external-link-alt"></i></a> for building EDK2+LinuxBoot FD.</p>
-<p>The resulting image will be at</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">edk2-platforms/Build/Jade/RELEASE_GCC5/FV/BL33_JADE_UEFI.fd</span><br></pre></td></tr></table></figure>
-
-<p>We will be using edk2-platforms&#x2F;BUILDS&#x2F;jade_tianocore_atf for the final artifacts.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> edk2-platforms</span><br><span class="line">$ <span class="built_in">mkdir</span> -p BUILDS/jade_tianocore_atf</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Signing-the-Image"><a href="#Signing-the-Image" class="headerlink" title="Signing the Image"></a>Signing the Image</h2><p>You need to download and install <code>cert_create</code> and <code>fiptool</code> from Arm Trusted Firmware.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ..</span><br><span class="line">$ git <span class="built_in">clone</span> --depth 1 https://github.com/ARM-software/arm-trusted-firmware.git</span><br><span class="line">$ <span class="built_in">cd</span> arm-trusted-firmware</span><br><span class="line">$ make -C tools/cert_create</span><br><span class="line">$ make -C tools/fiptool</span><br></pre></td></tr></table></figure>
-
-<p>Set up your $PATH to include cert_create and fiptool from above.</p>
-<p>Perform the following to sign the image:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> edk2-platforms</span><br><span class="line">$ sudo apt install arm-trusted-firmware-tools</span><br><span class="line">$ cert_create -n --ntfw-nvctr 0 --key-alg rsa --nt-fw-key edk2-platforms/Platform/Ampere/JadePkg/TestKeys/Dbb_AmpereTest.priv.pem --nt-fw-cert BUILDS/jade_tianocore_atf/jade_tianocore.fd.crt --nt-fw /media/raman/development/tianocore/Build/Jade/RELEASE_GCC5/FV/BL33_JADE_UEFI.fd</span><br><span class="line">$ fiptool create --nt-fw-cert /media/raman/development/tianocore/edk2-platforms/BUILDS/jade_tianocore_atf/jade_tianocore.fd.crt --nt-fw /media/raman/development/tianocore/Build/Jade/RELEASE_GCC5/FV/BL33_JADE_UEFI.fd /media/raman/development/tianocore/edk2-platforms/BUILDS/jade_tianocore_atf/jade_tianocore.fip.signed</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Integrating-Board-Setting-and-Ampere’s-Arm-Trusted-Firmware-ATF"><a href="#Integrating-Board-Setting-and-Ampere’s-Arm-Trusted-Firmware-ATF" class="headerlink" title="Integrating Board Setting and Ampere’s Arm Trusted Firmware (ATF)"></a>Integrating Board Setting and Ampere’s Arm Trusted Firmware (ATF)</h2><p>You need to obtain Ampere ATF image and Board Setting file compatible with this vesion of Ampere EDK2 in order to build a final firmware image.</p>
-<p>Contact <a class="link"   href="mailto:developer@amperecomputing.com" >developer@amperecomputing.com<i class="fas fa-external-link-alt"></i></a> for information.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/ADLINK/AmpereAltra-ATF-SCP</span><br><span class="line">$ git <span class="built_in">cp</span> /media/raman/development/tianocore/AmpereAltra-ATF-SCP/atf/* /media/raman/development/tianocore/edk2-platforms/BUILDS/jade_tianocore_atf</span><br><span class="line">$ git <span class="built_in">cp</span> /media/raman/development/tianocore/AmpereAltra-ATF-SCP/board_settings/* /media/raman/development/tianocore/edk2-platforms/BUILDS/jade_tianocore_atf</span><br><span class="line">$ git <span class="built_in">cp</span> /media/raman/development/tianocore/AmpereAltra-ATF-SCP/scp/* /media/raman/development/tianocore/edk2-platforms/BUILDS/jade_tianocore_atf</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Build-integrated-UEFI-Board-Setting-ATF-image"><a href="#Build-integrated-UEFI-Board-Setting-ATF-image" class="headerlink" title="Build integrated UEFI + Board Setting + ATF image"></a>Build integrated UEFI + Board Setting + ATF image</h2><p>Generating the final image with the following commands:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">dd</span> bs=1024 count=2048 <span class="keyword">if</span>=/dev/zero | <span class="built_in">tr</span> <span class="string">&quot;\000&quot;</span> <span class="string">&quot;\377&quot;</span> &gt; BUILDS/jade_tianocore_atf/jade_tianocore_atf.img</span><br><span class="line">$ <span class="built_in">dd</span> bs=1024 conv=notrunc <span class="keyword">if</span>=BUILDS/jade_tianocore_atf/altra_atf_signed_2.10.20221028.slim of=BUILDS/jade_tianocore_atf/jade_tianocore_atf.img</span><br><span class="line">$ <span class="built_in">dd</span> bs=1024 seek=1984 conv=notrunc <span class="keyword">if</span>=BUILDS/jade_tianocore_atf/jade_board_setting_2.10.20221028.bin of=BUILDS/jade_tianocore_atf/jade_tianocore_atf.img</span><br><span class="line">$ <span class="built_in">dd</span> bs=1024 seek=2048 <span class="keyword">if</span>=BUILDS/jade_tianocore_atf/jade_tianocore.fip.signed of=BUILDS/jade_tianocore_atf/jade_tianocore_atf.img</span><br></pre></td></tr></table></figure>
-
-<p>Build Tianocore Capsule.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ build -a AARCH64 -t GCC5 -b RELEASE -p Platform/Ampere/JadePkg/JadeCapsule.dsc -D UEFI_ATF_IMAGE=BUILDS/jade_tianocore_atf/altra_atf_signed_2.10.20221028.slim -D SCP_IMAGE=BUILDS/jade_tianocore_atf/altra_scp_signed_2.10.20221028.slim</span><br><span class="line">$ <span class="built_in">cp</span> /media/raman/development/tianocore/Build/Jade/RELEASE_GCC5/FV/JADEUEFIATFFIRMWAREUPDATECAPSULEFMPPKCS7.Cap BUILDS/jade_tianocore_atf/jade_tianocore_atf.cap</span><br><span class="line">$ <span class="built_in">cp</span> /media/raman/development/tianocore/Build/Jade/RELEASE_GCC5/FV/JADESCPFIRMWAREUPDATECAPSULEFMPPKCS7.Cap BUILDS/jade_tianocore_atf/jade_scp.cap</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Bonus-Tip-Automate-the-build-using-script"><a href="#Bonus-Tip-Automate-the-build-using-script" class="headerlink" title="Bonus Tip(Automate the build using script)"></a>Bonus Tip(Automate the build using script)</h2><p>You can automate the build using the script file from the edk2-ampere-tools.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install efitools gnu-efi</span><br><span class="line">$ <span class="built_in">cd</span> /media/raman/development/tianocore/edk2-ampere-tools/efitools</span><br><span class="line">$ make</span><br><span class="line">$ <span class="built_in">cd</span> ~/media/raman/development/tianocore/edk2-ampere-tools</span><br><span class="line">$ ./edk2-build.sh -b RELEASE Jade --atf-image /media/raman/development/tianocore/edk2-platforms/BUILDS/jade_tianocore_atf/altra_atf_signed_2.10.20221028.slim</span><br></pre></td></tr></table></figure>
-
+<h3 id="7-Check-Manufacturer-Tools-or-Libraries"><a href="#7-Check-Manufacturer-Tools-or-Libraries" class="headerlink" title="7. Check Manufacturer Tools or Libraries"></a>7. Check Manufacturer Tools or Libraries</h3><ul>
+<li>Some manufacturers provide <strong>software tools</strong> or <strong>libraries</strong> to configure EC chips, including GPIO and interrupt settings.</li>
+<li><strong>Example</strong>: If you are working with an EC chip from a manufacturer like Nuvoton, they might offer a development toolchain with utilities to configure and monitor GPIO interrupts.</li>
+</ul>
 
                     
                 </div>
@@ -370,11 +369,11 @@
     <div class="copyright-info-content border-box">
         <div class="copyright-info-top border-box">
             <div class="copyright-post-title border-box text-ellipsis">
-                Building EDK2 for Ampere Jade
+                GPIO Interrupt
             </div>
 
             <div class="copyright-post-link border-box text-ellipsis">
-                2024/10/16/BuildingEDK2ForAmpereJade/
+                2024/10/17/GPIOInterrupt/
             </div>
         </div>
 
@@ -390,7 +389,7 @@
                 <div class="type">
                     Published
                 </div>
-                <div class="content">2024-10-16 08:40</div>
+                <div class="content">2024-10-17 15:53</div>
             </div>
 
 
@@ -422,14 +421,6 @@
 
                 <div class="post-bottom-tags-and-share border-box">
                     <div>
-                        
-                            <ul class="post-tags-box border-box">
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="../../../../tags/EDK2/">EDK2</a>
-                                    </li>
-                                
-                            </ul>
                         
                     </div>
                     <div>
@@ -468,14 +459,14 @@
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="../../17/GPIOInterrupt/"
-                                   title="GPIO Interrupt"
+                                   href="../HandlingGPIOInterruptPins/"
+                                   title="Handling GPIO InterruptPins"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">GPIO Interrupt</span>
+                                        <span class="post-nav-title-item text-ellipsis">Handling GPIO InterruptPins</span>
                                         <span class="post-nav-item">Prev posts</span>
                                     </span>
                                 </a>
@@ -485,11 +476,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="../../../07/10/VerifiedCommitsGitHub/"
-                                   title="Verified Commits in the GitHub"
+                                   href="../../16/BuildingEDK2ForAmpereJade/"
+                                   title="Building EDK2 for Ampere Jade"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Verified Commits in the GitHub</span>
+                                        <span class="post-nav-title-item text-ellipsis">Building EDK2 for Ampere Jade</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -517,7 +508,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Setup-the-Build-Environment"><span class="nav-text">Setup the Build Environment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Obtaining-Source-Code"><span class="nav-text">Obtaining Source Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Building-the-UEFI-image"><span class="nav-text">Building the UEFI image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Signing-the-Image"><span class="nav-text">Signing the Image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Integrating-Board-Setting-and-Ampere%E2%80%99s-Arm-Trusted-Firmware-ATF"><span class="nav-text">Integrating Board Setting and Ampere’s Arm Trusted Firmware (ATF)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-integrated-UEFI-Board-Setting-ATF-image"><span class="nav-text">Build integrated UEFI + Board Setting + ATF image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bonus-Tip-Automate-the-build-using-script"><span class="nav-text">Bonus Tip(Automate the build using script)</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#How-GPIO-Interrupts-Work"><span class="nav-text">How GPIO Interrupts Work</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Basic-Steps-in-a-GPIO-Interrupt"><span class="nav-text">Basic Steps in a GPIO Interrupt:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Steps-to-Determine-GPIO-Interrupt-Capability"><span class="nav-text">Steps to Determine GPIO Interrupt Capability</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Consult-the-EC-Chip%E2%80%99s-Datasheet"><span class="nav-text">1. Consult the EC Chip’s Datasheet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Check-the-EC-Chip%E2%80%99s-Pin-Configuration-and-Registers"><span class="nav-text">2. Check the EC Chip’s Pin Configuration and Registers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Use-the-Embedded-System-Firmware-or-BIOS-Settings"><span class="nav-text">3. Use the Embedded System Firmware or BIOS Settings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Use-Linux-Sysfs-for-Linux-Based-Systems"><span class="nav-text">4. Use Linux Sysfs (for Linux-Based Systems)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Review-Platform-Specific-Documents-or-Schematics"><span class="nav-text">5. Review Platform-Specific Documents or Schematics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Refer-to-EC-Firmware-Code-if-available"><span class="nav-text">6. Refer to EC Firmware Code (if available)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Check-Manufacturer-Tools-or-Libraries"><span class="nav-text">7. Check Manufacturer Tools or Libraries</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -698,7 +689,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Setup-the-Build-Environment"><span class="nav-text">Setup the Build Environment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Obtaining-Source-Code"><span class="nav-text">Obtaining Source Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Building-the-UEFI-image"><span class="nav-text">Building the UEFI image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Signing-the-Image"><span class="nav-text">Signing the Image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Integrating-Board-Setting-and-Ampere%E2%80%99s-Arm-Trusted-Firmware-ATF"><span class="nav-text">Integrating Board Setting and Ampere’s Arm Trusted Firmware (ATF)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-integrated-UEFI-Board-Setting-ATF-image"><span class="nav-text">Build integrated UEFI + Board Setting + ATF image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bonus-Tip-Automate-the-build-using-script"><span class="nav-text">Bonus Tip(Automate the build using script)</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#How-GPIO-Interrupts-Work"><span class="nav-text">How GPIO Interrupts Work</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Basic-Steps-in-a-GPIO-Interrupt"><span class="nav-text">Basic Steps in a GPIO Interrupt:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Steps-to-Determine-GPIO-Interrupt-Capability"><span class="nav-text">Steps to Determine GPIO Interrupt Capability</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Consult-the-EC-Chip%E2%80%99s-Datasheet"><span class="nav-text">1. Consult the EC Chip’s Datasheet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Check-the-EC-Chip%E2%80%99s-Pin-Configuration-and-Registers"><span class="nav-text">2. Check the EC Chip’s Pin Configuration and Registers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Use-the-Embedded-System-Firmware-or-BIOS-Settings"><span class="nav-text">3. Use the Embedded System Firmware or BIOS Settings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Use-Linux-Sysfs-for-Linux-Based-Systems"><span class="nav-text">4. Use Linux Sysfs (for Linux-Based Systems)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Review-Platform-Specific-Documents-or-Schematics"><span class="nav-text">5. Review Platform-Specific Documents or Schematics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Refer-to-EC-Firmware-Code-if-available"><span class="nav-text">6. Refer to EC Firmware Code (if available)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Check-Manufacturer-Tools-or-Libraries"><span class="nav-text">7. Check Manufacturer Tools or Libraries</span></a></li></ol></li></ol>
     </div>
 </div>
 

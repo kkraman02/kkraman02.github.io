@@ -9,7 +9,7 @@
     
     <title>
         
-            Archive: 2024 |
+            Handling GPIO InterruptPins |
         
         Makes Sense
     </title>
@@ -89,7 +89,7 @@
                     
                         
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="../../../../archives"
                             >
                                 
@@ -165,7 +165,7 @@
             
                 
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="../../../../archives"
                     >ARCHIVES</a>
                 </li>
@@ -206,78 +206,275 @@
             <div class="main-content border-box">
                 
 
-                    <div class="fade-in-down-animation">
-    <div class="archives-container">
-        <div class="archives-timeline border-box">
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
             
-<div class="archive-list-container border-box">
-    
-        <section class="archive-item border-box">
-            <div class="archive-item-header border-box">
-                <span class="archive-year">2024</span>
-            </div>
-            <ul class="archive-item-body border-box">
+
+            <div class="post-content-bottom border-box">
                 
-                    <li class="post-item border-box">
-                        <span class="starting-point border-box flex-center"></span>
-                        <span class="post-date border-box">06-23</span>
-                        <a class="post-title border-box text-ellipsis"
-                           href="../../../../2024/06/23/CompressingDecompressingFiles/"
-                        >Compressing &amp;  Decompressing Files</a>
-                    </li>
+                    <div class="post-title">
+                        Handling GPIO InterruptPins
+                    </div>
                 
-                    <li class="post-item border-box">
-                        <span class="starting-point border-box flex-center"></span>
-                        <span class="post-date border-box">06-23</span>
-                        <a class="post-title border-box text-ellipsis"
-                           href="../../../../2024/06/23/FlashingOSUsingDDUtilityLinux/"
-                        >Flashing OS Using DD Utility in Linux</a>
-                    </li>
+
                 
-                    <li class="post-item border-box">
-                        <span class="starting-point border-box flex-center"></span>
-                        <span class="post-date border-box">06-04</span>
-                        <a class="post-title border-box text-ellipsis"
-                           href="../../../../2024/06/04/Bitbake-Environment/"
-                        >Bitbake Environment</a>
-                    </li>
-                
-            </ul>
-        </section>
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="../../../../images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Kothandaraman Kannadasan</span>
+                                
+                                    <span class="author-badge">Lv2</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-10-17 16:13:30</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Thu Oct 17 2024 16:29:23 GMT+0800">2024-10-17 16:29:23</span>
+            </span>
+        
+
+        
+
+        
+
+        
+        
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
     
 </div>
 
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h2 id="Steps-to-Read-and-Configure-GPIOs-with-Interrupts"><a href="#Steps-to-Read-and-Configure-GPIOs-with-Interrupts" class="headerlink" title="Steps to Read and Configure GPIOs with Interrupts"></a>Steps to Read and Configure GPIOs with Interrupts</h2><h3 id="1-Access-GPIO-Pins-via-sysfs-Interface"><a href="#1-Access-GPIO-Pins-via-sysfs-Interface" class="headerlink" title="1. Access GPIO Pins via sysfs Interface"></a>1. Access GPIO Pins via <code>sysfs</code> Interface</h3><p>In Linux, the <strong>sysfs</strong> interface allows access to GPIO pins. The following steps will help you list and configure GPIOs.</p>
+<ul>
+<li><p>List Available GPIOs:</p>
+<ul>
+<li><p>In most cases, GPIO pins are mapped under <code>/sys/class/gpio</code>.</p>
+</li>
+<li><p>First, check if the GPIOs are exported by looking at this directory:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> /sys/class/gpio/</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>Export a GPIO Pin:</p>
+<ul>
+<li><p>If a GPIO pin is not visible, export it by writing its number into the <code>export</code> file.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> &lt;GPIO_PIN_NUMBER&gt; &gt; /sys/class/gpio/export</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>For example, to export GPIO pin 22:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> 22 &gt; /sys/class/gpio/export</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>Check GPIO Pin Direction:</p>
+<ul>
+<li><p>After exporting the pin, check or configure the GPIO direction (input or output) by interacting with the <code>direction</code> file.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /sys/class/gpio/gpio22/direction</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>To set the GPIO as an input pin (necessary for interrupt):</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;in&quot;</span> &gt; /sys/class/gpio/gpio22/direction</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="2-Enable-GPIO-Interrupts"><a href="#2-Enable-GPIO-Interrupts" class="headerlink" title="2. Enable GPIO Interrupts"></a>2. Enable GPIO Interrupts</h3><p>Once a GPIO pin is exported, you can configure its edge detection, which enables the interrupt functionality.</p>
+<ul>
+<li><p>Set the Interrupt Trigger:</p>
+<ul>
+<li><p>You can configure which edge (voltage change) the GPIO will respond to by writing to the <code>edge</code> file. Possible values include:</p>
+<ul>
+<li><code>none</code>: No interrupt (default).</li>
+<li><code>rising</code>: Trigger on rising edge (low to high).</li>
+<li><code>falling</code>: Trigger on falling edge (high to low).</li>
+<li><code>both</code>: Trigger on both edges (rising and falling).</li>
+</ul>
+</li>
+<li><p>For example, to trigger on both rising and falling edges:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;both&quot;</span> &gt; /sys/class/gpio/gpio22/edge</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="3-Monitor-GPIO-Interrupt-Events"><a href="#3-Monitor-GPIO-Interrupt-Events" class="headerlink" title="3. Monitor GPIO Interrupt Events"></a>3. Monitor GPIO Interrupt Events</h3><ul>
+<li><p>A more practical approach for real-time monitoring is to use the <code>poll()</code> system call in a C or Python program. Alternatively, you can use <code>inotifywait</code> in a terminal to monitor changes.</p>
+</li>
+<li><p>To use <code>inotifywait</code>:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install inotify-tools</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inotifywait -m /sys/class/gpio/gpio22/value</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>This will display a notification whenever the value of the GPIO changes, i.e., when an interrupt occurs.</p>
+</li>
+</ul>
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                Handling GPIO InterruptPins
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2024/10/17/HandlingGPIOInterruptPins/
+            </div>
         </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    Author
+                </div>
+                <div class="content">Kothandaraman Kannadasan</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    Published
+                </div>
+                <div class="content">2024-10-17 16:13</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    License
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
     </div>
-    
-    <div class="paginator border-box flex-center">
-        <div class="btn-wrap allowed">
-            <a class="jump-btn"
-               href="../../"
-            ><i class="fa-solid fa-chevron-left"></i></a>
-        </div>
-
-
-        <div class="page-number-box border-box flex-center">
-            <input class="page-number-input border-box base-color-size"
-                   type="number"
-                   value="2"
-                   min="1"
-                   max="2"
-            ><span class="delimiter base-color-size">/</span><span class="base-color-size">2</span>
-        </div>
-
-
-        <div class="btn-wrap">
-            <a class="jump-btn"
-               href="../../../../"
-            ><i class="fa-solid fa-chevron-right"></i></a>
-        </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="Copy copyright info" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
     </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="../GPIOInterrupt/"
+                                   title="GPIO Interrupt"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">GPIO Interrupt</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
 
 
 
 
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Steps-to-Read-and-Configure-GPIOs-with-Interrupts"><span class="nav-text">Steps to Read and Configure GPIOs with Interrupts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Access-GPIO-Pins-via-sysfs-Interface"><span class="nav-text">1. Access GPIO Pins via sysfs Interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Enable-GPIO-Interrupts"><span class="nav-text">2. Enable GPIO Interrupts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Monitor-GPIO-Interrupt-Events"><span class="nav-text">3. Monitor GPIO Interrupt Events</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
 </div>
 
 
@@ -336,6 +533,31 @@
 
     <!-- post tools -->
     
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
 
     <!-- side tools -->
     <div class="side-tools">
@@ -362,6 +584,10 @@
     </ul>
 
     <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
         
 
         
@@ -419,8 +645,18 @@
 
     <!-- tablet toc -->
     
-</main>
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Steps-to-Read-and-Configure-GPIOs-with-Interrupts"><span class="nav-text">Steps to Read and Configure GPIOs with Interrupts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Access-GPIO-Pins-via-sysfs-Interface"><span class="nav-text">1. Access GPIO Pins via sysfs Interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Enable-GPIO-Interrupts"><span class="nav-text">2. Enable GPIO Interrupts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Monitor-GPIO-Interrupt-Events"><span class="nav-text">3. Monitor GPIO Interrupt Events</span></a></li></ol></li></ol>
+    </div>
+</div>
 
+            </div>
+        </div>
+    
+</main>
 
 
 
@@ -442,6 +678,24 @@
     
 
     <!-- post page -->
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.5/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.5/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.5/js/post/copyright-info.min.js"></script>
+        
+
+        <!-- share -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.5/js/post/share.min.js"></script>
+        
     
 
     <!-- categories page -->
