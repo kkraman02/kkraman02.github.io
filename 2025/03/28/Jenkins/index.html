@@ -9,7 +9,7 @@
     
     <title>
         
-            SSH (Secured Shell) |
+            Jenkins |
         
         Raman&#39;s Hub
     </title>
@@ -287,7 +287,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        SSH (Secured Shell)
+                        Jenkins
                     </div>
                 
 
@@ -315,12 +315,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2025-03-26 21:14:30</span>
+                <span class="datetime">2025-03-28 20:30:00</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Mar 26 2025 21:49:39 GMT+0800">2025-03-26 21:49:39</span>
+                <span class="datetime" data-updated="Fri Mar 28 2025 21:45:26 GMT+0800">2025-03-28 21:45:26</span>
             </span>
         
 
@@ -328,7 +328,7 @@
             <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
                 <ul class="post-category-ul">
                     
-                            <li class="category-item"><a href="/categories/SSH/">SSH</a></li>
+                            <li class="category-item"><a href="/categories/Jenkins/">Jenkins</a></li>
                         
                     
                 </ul>
@@ -339,7 +339,7 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/SSH/">SSH</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Jenkins/">Jenkins</a></li>
                         
                     
                 </ul>
@@ -364,40 +364,64 @@
                     
 
                     
-                         <h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>SSH is stands for Secured Shell. It is a network protocol that is used to send the commands in a secure way to the host from the client.</p>
-<h2 id="On-the-SSH-Server"><a href="#On-the-SSH-Server" class="headerlink" title="On the SSH Server"></a>On the SSH Server</h2><p>For Debian-based system:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install openssh-server -y</span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> ssh</span><br><span class="line"><span class="built_in">sudo</span> systemctl start ssh</span><br><span class="line"><span class="built_in">sudo</span> systemctl status ssh</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="On-the-SSH-Client"><a href="#On-the-SSH-Client" class="headerlink" title="On the SSH Client"></a>On the SSH Client</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install openssh-client -y</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Test-SSH-Connection-from-Client"><a href="#Test-SSH-Connection-from-Client" class="headerlink" title="Test SSH Connection from Client"></a>Test SSH Connection from Client</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh username@server_ip_address</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Transferring-the-files-over-SCP-Secured-Copy-Protocol"><a href="#Transferring-the-files-over-SCP-Secured-Copy-Protocol" class="headerlink" title="Transferring the files over SCP (Secured Copy Protocol)"></a>Transferring the files over SCP (Secured Copy Protocol)</h2><p>Copy file from local to remote.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scp /path/to/local/file username@remote_host:/path/to/remote/destination</span><br><span class="line"><span class="comment"># Ex: scp myfile.txt user@192.168.1.100:/home/user/</span></span><br></pre></td></tr></table></figure>
-
-<p>Copy file from remote to local.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scp username@remote_host:/path/to/remote/file /path/to/local/destination</span><br><span class="line"><span class="comment"># Ex: scp user@192.168.1.100:/home/user/myfile.txt ./</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Transferring-the-files-over-rsync-Remote-Sync"><a href="#Transferring-the-files-over-rsync-Remote-Sync" class="headerlink" title="Transferring the files over rsync (Remote Sync)"></a>Transferring the files over rsync (Remote Sync)</h2><p>Copy file from local to remote.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rsync -avz /path/to/local/file username@remote_host:/path/to/remote/destination</span><br><span class="line"><span class="comment"># Ex: rsync -avz myfile.txt user@192.168.1.100:/home/user/</span></span><br></pre></td></tr></table></figure>
-
-<p>Copy file from remote to local.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rsync -avz username@remote_host:/path/to/remote/file /path/to/local/destination</span><br><span class="line"><span class="comment"># Ex: rsync -avz user@192.168.1.100:/home/user/myfile.txt ./</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>Options Breakdown</strong></p>
-<ul>
-<li><code>-a</code>: archive mode (preserves permissions, symbolic links, etc.)</li>
-<li><code>-v</code>: verbose</li>
-<li><code>-z</code>: compress file data during the transfer</li>
+                         <p>Jenkins is a popular open-source framework. It helps developers to automate the software development, testing, and deployment  their software products, for an example Embedded Linux Yocto development.</p>
+<h2 id="Installing-Jenkins"><a href="#Installing-Jenkins" class="headerlink" title="Installing Jenkins"></a>Installing Jenkins</h2><ul>
+<li><p>In prior installing Jenkins, <a class="link"   target="_blank" rel="noopener" href="https://www.jenkins.io/doc/book/installing/linux/#installation-of-java" >install Java<i class="fas fa-external-link-alt"></i></a> because it Jenkins requires Java.</p>
+</li>
+<li><p>Refer to <a class="link"   target="_blank" rel="noopener" href="https://www.jenkins.io/doc/book/installing/linux/#debianubuntu" >here<i class="fas fa-external-link-alt"></i></a> for installing Jenkins on Ubuntu host. Choose the LTS release instead of weekly release in order setup more stable environment.</p>
+</li>
 </ul>
+<h2 id="Start-Jenkins"><a href="#Start-Jenkins" class="headerlink" title="Start Jenkins"></a>Start Jenkins</h2><p>Enable the Jenkins service to start at boot with the command</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> jenkins</span><br><span class="line"><span class="built_in">sudo</span> systemctl start jenkins</span><br></pre></td></tr></table></figure>
+
+<p>Check the status of the Jenkins service using the command</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl status jenkins</span><br></pre></td></tr></table></figure>
+
+<p>If everything has been set up correctly, you should see an output like this</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Loaded: loaded (/lib/systemd/system/jenkins.service; enabled; vendor preset: enabled)</span><br><span class="line">Active: active (running) since Tue 2018-11-13 16:19:01 +03; 4min 57s ago</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Post-installation-Setup"><a href="#Post-installation-Setup" class="headerlink" title="Post-installation Setup"></a>Post-installation Setup</h2><ul>
+<li><p>This setup wizard takes you through a few quick “one-off” steps to unlock Jenkins, customize it with plugins and create the first administrator user through which you can continue accessing Jenkins.</p>
+</li>
+<li><p>Refer to <a class="link"   target="_blank" rel="noopener" href="https://www.jenkins.io/doc/book/installing/linux/#setup-wizard" >here<i class="fas fa-external-link-alt"></i></a> to get more detailed information.</p>
+</li>
+</ul>
+<h2 id="Start-a-New-Job"><a href="#Start-a-New-Job" class="headerlink" title="Start a New Job"></a>Start a New Job</h2><ul>
+<li>Dashboard -&gt; <strong>click</strong> New Item -&gt; </li>
+<li>Name your job item and choose the job type.</li>
+<li>For beginner it’s recommended to go with <strong>Freestyle project</strong>. It offers you the shell environment to design the job workflow.</li>
+<li>Advanced users go with <strong>Pipeline</strong>. It offers you to write down your workflow in groovy format. Hence, you will get more control.</li>
+</ul>
+<h2 id="Defining-Pipeline-Using-Groovy-Script"><a href="#Defining-Pipeline-Using-Groovy-Script" class="headerlink" title="Defining Pipeline Using Groovy Script"></a>Defining Pipeline Using Groovy Script</h2><ul>
+<li><p>Dashboard -&gt; Job Name -&gt; Configuration -&gt;</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">    agent any</span><br><span class="line"></span><br><span class="line">    environment &#123;</span><br><span class="line">        YOCTO_DIR = <span class="string">&quot;/media/raman/development/jenkins_x86_yocto&quot;</span></span><br><span class="line">        POKY_REPO = <span class="string">&quot;git://git.yoctoproject.org/poky&quot;</span></span><br><span class="line">        POKY_BRANCH = <span class="string">&quot;kirkstone&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">&#x27;Checkout Yocto&#x27;</span>) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                sh <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">                    mkdir -p $YOCTO_DIR</span></span><br><span class="line"><span class="string">                    cd $YOCTO_DIR</span></span><br><span class="line"><span class="string">                    if [ ! -d poky ]; then</span></span><br><span class="line"><span class="string">                        git clone -b $POKY_BRANCH $POKY_REPO</span></span><br><span class="line"><span class="string">                    fi</span></span><br><span class="line"><span class="string">                &quot;&quot;&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        stage(<span class="string">&#x27;Setup Build Environment&#x27;</span>) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                sh <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">                    cd $YOCTO_DIR/poky</span></span><br><span class="line"><span class="string">                    bash -c &#x27;source oe-init-build-env build &amp;&amp; sed -i &quot;s/^MACHINE ?=.*/MACHINE ??= \\&quot;qemux86-64\\&quot;/&quot; conf/local.conf&#x27;</span></span><br><span class="line"><span class="string">                &quot;&quot;&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        stage(<span class="string">&#x27;Build&#x27;</span>) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                sh <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">                    cd $YOCTO_DIR/poky</span></span><br><span class="line"><span class="string">                    bash -c &#x27;source oe-init-build-env build &amp;&amp; bitbake core-image-minimal&#x27;</span></span><br><span class="line"><span class="string">                &quot;&quot;&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        stage(<span class="string">&#x27;Archive Artifacts&#x27;</span>) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                sh <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">                    mkdir -p artifacts</span></span><br><span class="line"><span class="string">                    cp -r $YOCTO_DIR/poky/build/tmp/deploy/images/qemux86-64 ./artifacts/</span></span><br><span class="line"><span class="string">                &quot;&quot;&quot;</span></span><br><span class="line">                archiveArtifacts <span class="attr">artifacts:</span> <span class="string">&quot;artifacts/qemux86-64/**/*&quot;</span>, <span class="attr">fingerprint:</span> <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    post &#123;</span><br><span class="line">        failure &#123;</span><br><span class="line">            echo <span class="string">&#x27;Build failed!&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">        success &#123;</span><br><span class="line">            echo <span class="string">&#x27;Build completed successfully!&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Start-the-First-Build-of-Your-Job"><a href="#Start-the-First-Build-of-Your-Job" class="headerlink" title="Start the First Build of Your Job"></a>Start the First Build of Your Job</h2><ul>
+<li>Dashboard -&gt; Job Name -&gt; <strong>click</strong> Build Now.</li>
+<li>Dashboard -&gt; Job Name -&gt; <strong>click</strong> build number(#1) -&gt; Console Output(you can monitor&#x2F;see the build status).</li>
+</ul>
+<h2 id="Make-Your-Jenkins-Accessible-Over-The-Network"><a href="#Make-Your-Jenkins-Accessible-Over-The-Network" class="headerlink" title="Make Your Jenkins Accessible Over The Network"></a>Make Your Jenkins Accessible Over The Network</h2><p>Open the Jenkins default config file.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nano /etc/default/jenkins</span><br></pre></td></tr></table></figure>
+
+<p>Make sure HTTP HOST is set to <code>HTTP_HOST=0.0.0.0</code></p>
+<p>Tell Jenkins to listen on all network interfaces.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">JENKINS_ARGS=<span class="string">&quot;--webroot=/var/cache/<span class="variable">$NAME</span>/war --httpPort=<span class="variable">$HTTP_PORT</span>&quot;</span></span><br><span class="line">&lt;!-- Change the above line as shown below --!&gt;</span><br><span class="line">JENKINS_ARGS=<span class="string">&quot;--webroot=/var/cache/<span class="variable">$NAME</span>/war --httpPort=<span class="variable">$HTTP_PORT</span> --httpListenAddress=0.0.0.0&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Save and close the config file.</p>
+<p>Restart Jenkins.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl restart jenkins</span><br></pre></td></tr></table></figure>
+
+<p>Allow firewall access.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> ufw allow 8080</span><br><span class="line"><span class="built_in">sudo</span> ufw status</span><br></pre></td></tr></table></figure>
+
+<p>Get the system IP.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hostname -I</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">172.30.70.51</span><br></pre></td></tr></table></figure>
+
+<p>You should now be able to access your Jenkins from other machines using your server’s IP address.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://172.30.70.51:8080/</span><br></pre></td></tr></table></figure>
+
 
                     
                 </div>
@@ -408,11 +432,11 @@
     <div class="copyright-info-content border-box">
         <div class="copyright-info-top border-box">
             <div class="copyright-post-title border-box text-ellipsis">
-                SSH (Secured Shell)
+                Jenkins
             </div>
 
             <div class="copyright-post-link border-box text-ellipsis">
-                2025/03/26/SSH/
+                2025/03/28/Jenkins/
             </div>
         </div>
 
@@ -428,7 +452,7 @@
                 <div class="type">
                     Published
                 </div>
-                <div class="content">2025-03-26 21:14</div>
+                <div class="content">2025-03-28 20:30</div>
             </div>
 
 
@@ -464,7 +488,7 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/SSH/">SSH</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Jenkins/">Jenkins</a>
                                     </li>
                                 
                             </ul>
@@ -503,31 +527,15 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/2025/03/28/Jenkins/"
-                                   title="Jenkins"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Jenkins</span>
-                                        <span class="post-nav-item">Prev posts</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2025/03/13/GitReviewPR/"
-                                   title="GitHub Pull-Request Review"
+                                   href="/2025/03/26/SSH/"
+                                   title="SSH (Secured Shell)"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">GitHub Pull-Request Review</span>
+                                        <span class="post-nav-title-item text-ellipsis">SSH (Secured Shell)</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -555,7 +563,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Definition"><span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#On-the-SSH-Server"><span class="nav-text">On the SSH Server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#On-the-SSH-Client"><span class="nav-text">On the SSH Client</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Test-SSH-Connection-from-Client"><span class="nav-text">Test SSH Connection from Client</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transferring-the-files-over-SCP-Secured-Copy-Protocol"><span class="nav-text">Transferring the files over SCP (Secured Copy Protocol)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transferring-the-files-over-rsync-Remote-Sync"><span class="nav-text">Transferring the files over rsync (Remote Sync)</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Installing-Jenkins"><span class="nav-text">Installing Jenkins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Start-Jenkins"><span class="nav-text">Start Jenkins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Post-installation-Setup"><span class="nav-text">Post-installation Setup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Start-a-New-Job"><span class="nav-text">Start a New Job</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Defining-Pipeline-Using-Groovy-Script"><span class="nav-text">Defining Pipeline Using Groovy Script</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Start-the-First-Build-of-Your-Job"><span class="nav-text">Start the First Build of Your Job</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Make-Your-Jenkins-Accessible-Over-The-Network"><span class="nav-text">Make Your Jenkins Accessible Over The Network</span></a></li></ol>
     </div>
 </div>
 
@@ -686,7 +694,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Definition"><span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#On-the-SSH-Server"><span class="nav-text">On the SSH Server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#On-the-SSH-Client"><span class="nav-text">On the SSH Client</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Test-SSH-Connection-from-Client"><span class="nav-text">Test SSH Connection from Client</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transferring-the-files-over-SCP-Secured-Copy-Protocol"><span class="nav-text">Transferring the files over SCP (Secured Copy Protocol)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transferring-the-files-over-rsync-Remote-Sync"><span class="nav-text">Transferring the files over rsync (Remote Sync)</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Installing-Jenkins"><span class="nav-text">Installing Jenkins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Start-Jenkins"><span class="nav-text">Start Jenkins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Post-installation-Setup"><span class="nav-text">Post-installation Setup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Start-a-New-Job"><span class="nav-text">Start a New Job</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Defining-Pipeline-Using-Groovy-Script"><span class="nav-text">Defining Pipeline Using Groovy Script</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Start-the-First-Build-of-Your-Job"><span class="nav-text">Start the First Build of Your Job</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Make-Your-Jenkins-Accessible-Over-The-Network"><span class="nav-text">Make Your Jenkins Accessible Over The Network</span></a></li></ol>
     </div>
 </div>
 
