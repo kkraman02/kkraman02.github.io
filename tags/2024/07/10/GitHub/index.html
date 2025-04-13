@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Kothandaraman Kannadasan">
+    
+    <title>
+        
+            GitHub |
+        
+        Raman&#39;s Hub
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Raman's Hub","author":"Kothandaraman Kannadasan","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/                        || fa-solid fa-home","archives":"/archives            || fa-solid fa-box-archive","docs+":{"icon":"fa-solid fa-book","children":[{"categories":"/categories  || fa-solid fa-layer-group"},{"tags":"/tags              || fa-solid fa-tags"}]},"about":"/about                  || fa-solid fa-user-graduate"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/kkraman02","x":"X","facebook":"Facebook","email":"kkraman02@gmail.com"}},"scroll":{"progress_bar":true,"percent":true,"hide_header":false},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":true,"reward":{"enable":true,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":"flase","use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.3"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Raman&#39;s Hub
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box has-sub-menu">
+                            <a class="menu-text-color border-box" href="javascript:void(0);">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-book"></i>
+                                
+                                DOCS+
+                                
+                                    <i class="menu-text-color collapse-icon fa-solid fa-angle-down"></i>
+                                
+                            </a>
+                            
+                                <ul class="sub-menu-list border-box">
+                                    
+                                        
+                                        <li class="sub-menu-item border-box ">
+                                            <a class="menu-text-color border-box flex-start" href="/categories">
+                                                
+                                                    <i class="menu-text-color sub-menu-icon fa-solid fa-layer-group"></i>
+                                                
+                                                CATEGORIES
+                                            </a>
+                                        </li>
+                                    
+                                        
+                                        <li class="sub-menu-item border-box ">
+                                            <a class="menu-text-color border-box flex-start" href="/tags">
+                                                
+                                                    <i class="menu-text-color sub-menu-icon fa-solid fa-tags"></i>
+                                                
+                                                TAGS
+                                            </a>
+                                        </li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                
+                                ABOUT
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box has-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="javascript:void(0);">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-book"></i>
+                                </span>
+                            
+                            DOCS+
+                        </a>
+                        
+                            <i class="right-side collapse-icon fa-solid fa-angle-left"></i>
+                        
+                    </label>
+                    
+                        <ul class="drawer-sub-menu-list border-box">
+                            
+                                
+                                <li class="sub-menu-item border-box">
+                                    <a class="drawer-menu-text-color border-box flex-start" href="/categories">
+                                        
+                                            <span class="sub-menu-icon-wrap border-box flex-center">
+                                                <i class="drawer-menu-text-color sub-menu-icon fa-solid fa-layer-group"></i>
+                                            </span>
+                                        
+                                        CATEGORIES
+                                    </a>
+                                </li>
+                            
+                                
+                                <li class="sub-menu-item border-box">
+                                    <a class="drawer-menu-text-color border-box flex-start" href="/tags">
+                                        
+                                            <span class="sub-menu-icon-wrap border-box flex-center">
+                                                <i class="drawer-menu-text-color sub-menu-icon fa-solid fa-tags"></i>
+                                            </span>
+                                        
+                                        TAGS
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                </span>
+                            
+                            ABOUT
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        GitHub
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Kothandaraman Kannadasan</span>
+                                
+                                    <span class="author-badge">Lv3</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-07-10 22:02:56</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Mon Feb 17 2025 11:22:38 GMT+0800">2025-02-17 11:22:38</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/GitHub/">GitHub</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/GitHub-Commands/">GitHub Commands</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h1 id="What-is-GitHub"><a href="#What-is-GitHub" class="headerlink" title="What is GitHub?"></a>What is GitHub?</h1><p>GitHub is a platform where developers store and share their code. Think of it like a social network for programmers, but instead of sharing photos or updates, they share software projects. It helps developers collaborate on projects, track changes, and manage different versions of their code. It’s widely used for open-source projects and by teams working on software development together.</p>
+<h2 id="1-Installing-and-Getting-Started-with-Git-in-Linux"><a href="#1-Installing-and-Getting-Started-with-Git-in-Linux" class="headerlink" title="1. Installing and Getting Started with Git in Linux"></a>1. Installing and Getting Started with Git in Linux</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update &amp;&amp; <span class="built_in">sudo</span> apt upgrade -y</span><br><span class="line"><span class="built_in">sudo</span> apt install git</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-Configuring-Git"><a href="#1-2-Configuring-Git" class="headerlink" title="1.2. Configuring Git"></a>1.2. Configuring Git</h3><p>After installing Git, you should configure it with your name and email. This information is used to identify your commits.</p>
+<ol>
+<li><p><strong>Set Your Name:</strong> Replace <code>Your Name</code> with your actual name:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;Your Name&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Set Your Email:</strong> Replace <code>your.email@example.com</code> with your email address:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email <span class="string">&quot;your.email@example.com&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="1-3-Cloning-an-Existing-Repository"><a href="#1-3-Cloning-an-Existing-Repository" class="headerlink" title="1.3. Cloning an Existing Repository:"></a>1.3. Cloning an Existing Repository:</h3><ol>
+<li><p><strong>Navigate to the Directory:</strong> Open Terminal and navigate to the directory where you want to clone the repository. For example:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/your/desired/directory</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Clone the Repository:</strong> Use the <code>git clone</code> command followed by the URL of the GitHub repository you want to clone. For example, to clone a repository named <code>example_repo</code> from GitHub:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/username/example_repo.git</span><br></pre></td></tr></table></figure>
+
+<p>Replace <code>username</code> with the GitHub username and <code>example_repo</code> with the name of the repository you want to clone.</p>
+</li>
+<li><p><strong>Navigate into the Cloned Repository:</strong> After cloning, navigate into the cloned repository:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> example_repo</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="2-Branching-in-the-repositories"><a href="#2-Branching-in-the-repositories" class="headerlink" title="2. Branching in the repositories"></a>2. Branching in the repositories</h2><h3 id="2-1-Creating-a-new-branch"><a href="#2-1-Creating-a-new-branch" class="headerlink" title="2.1. Creating a new branch"></a>2.1. Creating a new branch</h3>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git branch --all</span><br><span class="line">git checkout -b new-branch-name</span><br><span class="line">git checkout new-branch-name</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-Deleting-a-branch"><a href="#2-2-Deleting-a-branch" class="headerlink" title="2.2. Deleting a branch"></a>2.2. Deleting a branch</h3><p>Once you’ve merged your changes from a branch and no longer need it, you can delete it:</p>
+<ol>
+<li><p><strong>Delete Locally:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d branch-name</span><br></pre></td></tr></table></figure>
+
+<p>This deletes the branch named <code>branch-name</code> locally, but only if its changes have been merged into another branch.</p>
+</li>
+<li><p><strong>Delete Remotely:</strong> If you’ve pushed the branch to GitHub and want to delete it there too:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --delete branch-name</span><br></pre></td></tr></table></figure>
+
+<p>This deletes the branch named <code>branch-name</code> on the remote repository (<code>origin</code> on GitHub).</p>
+</li>
+</ol>
+<h3 id="2-3-Add-Files"><a href="#2-3-Add-Files" class="headerlink" title="2.3 Add Files"></a>2.3 Add Files</h3><p>Start tracking files by adding them to the staging area:</p>
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;file&gt;  <span class="comment"># Replace &lt;file&gt; with the actual filename or use &#x27;.&#x27; to add all files</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-Commit-Changes"><a href="#2-4-Commit-Changes" class="headerlink" title="2.4 Commit Changes"></a>2.4 Commit Changes</h3><p>Commit the staged changes to the repository:</p>
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">&quot;Initial commit&quot;</span>  <span class="comment"># Use a meaningful commit message</span></span><br><span class="line"></span><br><span class="line">template:</span><br><span class="line">&lt;<span class="built_in">type</span>&gt;[optional scope]: &lt;description&gt;</span><br><span class="line"></span><br><span class="line">[optional body]</span><br><span class="line"></span><br><span class="line">[optional footer(s)]</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Merging-the-branches"><a href="#3-Merging-the-branches" class="headerlink" title="3. Merging the branches"></a>3. Merging the branches</h2><p><strong>Navigate to main:</strong> First, ensure you are on the branch into which you want to merge changes. Typically, this is the <code>main</code> branch:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout main</span><br><span class="line">git fetch origin</span><br></pre></td></tr></table></figure>
+
+<p><strong>Fetch Latest Changes:</strong> It’s a good practice to fetch the latest changes from the remote repository before merging:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin</span><br></pre></td></tr></table></figure>
+
+<p><strong>Merge Branch:</strong> Merge the changes from the branch you want to merge (let’s say <code>devpt</code>) into <code>main</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge devpt</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-Creating-patches"><a href="#4-Creating-patches" class="headerlink" title="4. Creating patches"></a>4. Creating patches</h2><p><strong>List all commits on a specific branch:</strong> Replace <code>&lt;branch-name&gt;</code> with the name of the branch you’re interested in, such as <code>devpt</code> in your case.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> devpt (or)</span><br><span class="line">git <span class="built_in">log</span> -n 10  <span class="comment"># Shows the last 10 commits</span></span><br></pre></td></tr></table></figure>
+
+<p>Generate patches for the commits:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git format-patch &lt;commit_hash&gt; (or) <span class="comment"># for a particular</span></span><br><span class="line">git format-patch &lt;commit_hash_from&gt;..&lt;commit_hash_to&gt; <span class="comment"># for 2 or more commits</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-1-Applying-the-patch-files"><a href="#4-1-Applying-the-patch-files" class="headerlink" title="4.1 Applying the patch files"></a>4.1 Applying the patch files</h3><p>If you have <code>.patch</code> files generated using <code>git format-patch</code> or another method, you can apply them using <code>git apply</code> or <code>git am</code>.</p>
+<h4 id="4-1-2-Using-git-apply"><a href="#4-1-2-Using-git-apply" class="headerlink" title="4.1.2 Using git apply"></a>4.1.2 Using git apply</h4><ol>
+<li><p><strong>Navigate to your Git repository:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/your/repository</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Apply the patch using <code>git apply</code>:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git apply path/to/your/patchfile.patch</span><br></pre></td></tr></table></figure>
+
+<p>Replace <code>path/to/your/patchfile.patch</code> with the actual path to your patch file.</p>
+</li>
+</ol>
+<h2 id="5-Reset-the-repo-to-the-specific-commit"><a href="#5-Reset-the-repo-to-the-specific-commit" class="headerlink" title="5. Reset the repo to the specific commit"></a>5. Reset the repo to the specific commit</h2><p>Use <code>git reset</code> to move the <code>HEAD</code> pointer and working directory to the specific commit you want to start from. This effectively “rewinds” your repository’s state to that commit.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> devpt</span><br><span class="line">git reset --hard &lt;commit-hash&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Replace <code>&lt;commit-hash&gt;</code> with the hash of the commit you want to start from. This hash uniquely identifies each commit and can be found using <code>git log</code>.</p>
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                GitHub
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2024/07/10/GitHub/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    Author
+                </div>
+                <div class="content">Kothandaraman Kannadasan</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    Published
+                </div>
+                <div class="content">2024-07-10 22:02</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    License
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="Copy copyright info" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/GitHub-Commands/">GitHub Commands</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/07/10/VerifiedCommitsGitHub/"
+                                   title="Verified Commits in the GitHub"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Verified Commits in the GitHub</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/07/09/ProjectPlan/"
+                                   title="Project Plan"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Project Plan</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What-is-GitHub"><span class="nav-text">What is GitHub?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Installing-and-Getting-Started-with-Git-in-Linux"><span class="nav-text">1. Installing and Getting Started with Git in Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Configuring-Git"><span class="nav-text">1.2. Configuring Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Cloning-an-Existing-Repository"><span class="nav-text">1.3. Cloning an Existing Repository:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Branching-in-the-repositories"><span class="nav-text">2. Branching in the repositories</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Creating-a-new-branch"><span class="nav-text">2.1. Creating a new branch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Deleting-a-branch"><span class="nav-text">2.2. Deleting a branch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Add-Files"><span class="nav-text">2.3 Add Files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-Commit-Changes"><span class="nav-text">2.4 Commit Changes</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Merging-the-branches"><span class="nav-text">3. Merging the branches</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Creating-patches"><span class="nav-text">4. Creating patches</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Applying-the-patch-files"><span class="nav-text">4.1 Applying the patch files</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-2-Using-git-apply"><span class="nav-text">4.1.2 Using git apply</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Reset-the-repo-to-the-specific-commit"><span class="nav-text">5. Reset the repo to the specific commit</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Kothandaraman Kannadasan</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What-is-GitHub"><span class="nav-text">What is GitHub?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Installing-and-Getting-Started-with-Git-in-Linux"><span class="nav-text">1. Installing and Getting Started with Git in Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Configuring-Git"><span class="nav-text">1.2. Configuring Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Cloning-an-Existing-Repository"><span class="nav-text">1.3. Cloning an Existing Repository:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Branching-in-the-repositories"><span class="nav-text">2. Branching in the repositories</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Creating-a-new-branch"><span class="nav-text">2.1. Creating a new branch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Deleting-a-branch"><span class="nav-text">2.2. Deleting a branch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Add-Files"><span class="nav-text">2.3 Add Files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-Commit-Changes"><span class="nav-text">2.4 Commit Changes</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Merging-the-branches"><span class="nav-text">3. Merging the branches</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Creating-patches"><span class="nav-text">4. Creating patches</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Applying-the-patch-files"><span class="nav-text">4.1 Applying the patch files</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-2-Using-git-apply"><span class="nav-text">4.1.2 Using git apply</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Reset-the-repo-to-the-specific-commit"><span class="nav-text">5. Reset the repo to the specific commit</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+            
+<script src="/js/post/copyright-info.js"></script>
+
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+    
+<script src="//cdn.jsdelivr.net/npm/mermaid@7.1.2/dist/mermaid.min.js"></script>
+
+
+
+
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Kothandaraman Kannadasan">
+    
+    <title>
+        
+            GPIO Interrupt |
+        
+        Raman&#39;s Hub
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Raman's Hub","author":"Kothandaraman Kannadasan","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/                        || fa-solid fa-home","archives":"/archives            || fa-solid fa-box-archive","docs+":{"icon":"fa-solid fa-book","children":[{"categories":"/categories  || fa-solid fa-layer-group"},{"tags":"/tags              || fa-solid fa-tags"}]},"about":"/about                  || fa-solid fa-user-graduate"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/kkraman02","x":"X","facebook":"Facebook","email":"kkraman02@gmail.com"}},"scroll":{"progress_bar":true,"percent":true,"hide_header":false},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":true,"reward":{"enable":true,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":"flase","use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.3"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Raman&#39;s Hub
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box has-sub-menu">
+                            <a class="menu-text-color border-box" href="javascript:void(0);">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-book"></i>
+                                
+                                DOCS+
+                                
+                                    <i class="menu-text-color collapse-icon fa-solid fa-angle-down"></i>
+                                
+                            </a>
+                            
+                                <ul class="sub-menu-list border-box">
+                                    
+                                        
+                                        <li class="sub-menu-item border-box ">
+                                            <a class="menu-text-color border-box flex-start" href="/categories">
+                                                
+                                                    <i class="menu-text-color sub-menu-icon fa-solid fa-layer-group"></i>
+                                                
+                                                CATEGORIES
+                                            </a>
+                                        </li>
+                                    
+                                        
+                                        <li class="sub-menu-item border-box ">
+                                            <a class="menu-text-color border-box flex-start" href="/tags">
+                                                
+                                                    <i class="menu-text-color sub-menu-icon fa-solid fa-tags"></i>
+                                                
+                                                TAGS
+                                            </a>
+                                        </li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                
+                                ABOUT
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box has-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="javascript:void(0);">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-book"></i>
+                                </span>
+                            
+                            DOCS+
+                        </a>
+                        
+                            <i class="right-side collapse-icon fa-solid fa-angle-left"></i>
+                        
+                    </label>
+                    
+                        <ul class="drawer-sub-menu-list border-box">
+                            
+                                
+                                <li class="sub-menu-item border-box">
+                                    <a class="drawer-menu-text-color border-box flex-start" href="/categories">
+                                        
+                                            <span class="sub-menu-icon-wrap border-box flex-center">
+                                                <i class="drawer-menu-text-color sub-menu-icon fa-solid fa-layer-group"></i>
+                                            </span>
+                                        
+                                        CATEGORIES
+                                    </a>
+                                </li>
+                            
+                                
+                                <li class="sub-menu-item border-box">
+                                    <a class="drawer-menu-text-color border-box flex-start" href="/tags">
+                                        
+                                            <span class="sub-menu-icon-wrap border-box flex-center">
+                                                <i class="drawer-menu-text-color sub-menu-icon fa-solid fa-tags"></i>
+                                            </span>
+                                        
+                                        TAGS
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                </span>
+                            
+                            ABOUT
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        GPIO Interrupt
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Kothandaraman Kannadasan</span>
+                                
+                                    <span class="author-badge">Lv3</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-10-17 15:53:33</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Mon Feb 17 2025 11:20:30 GMT+0800">2025-02-17 11:20:30</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/Embedded-System/">Embedded System</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Interfaces/">Interfaces</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h2 id="How-GPIO-Interrupts-Work"><a href="#How-GPIO-Interrupts-Work" class="headerlink" title="How GPIO Interrupts Work"></a>How GPIO Interrupts Work</h2><p>A <strong>GPIO interrupt</strong> is a hardware mechanism that detects changes in the state of a General-Purpose Input&#x2F;Output (GPIO) pin and notifies the system, typically by interrupting the CPU. Instead of continuously polling the GPIO pin (which is inefficient), an interrupt allows the system to respond only when an event (such as a voltage change) occurs on the pin.</p>
+<h4 id="Basic-Steps-in-a-GPIO-Interrupt"><a href="#Basic-Steps-in-a-GPIO-Interrupt" class="headerlink" title="Basic Steps in a GPIO Interrupt:"></a>Basic Steps in a GPIO Interrupt:</h4><ol>
+<li><strong>Edge Detection</strong>: The system configures the GPIO pin to detect specific voltage transitions, such as:<ul>
+<li><strong>Rising edge</strong>: When the pin’s voltage changes from low to high.</li>
+<li><strong>Falling edge</strong>: When the pin’s voltage changes from high to low.</li>
+<li><strong>Both edges</strong>: When the pin changes in either direction.</li>
+</ul>
+</li>
+<li><strong>Interrupt Generation</strong>: When the configured edge is detected, the GPIO hardware generates an interrupt signal to the CPU.</li>
+<li><strong>Interrupt Handling</strong>: The CPU stops its current task, saves the context, and jumps to the <strong>Interrupt Service Routine (ISR)</strong>, which is a predefined function to handle the event.</li>
+<li><strong>Interrupt Response</strong>: In the ISR, the specific action for the interrupt is performed, such as reading a sensor value, toggling another GPIO pin, or initiating communication over a bus.</li>
+<li><strong>Return to Main Task</strong>: Once the ISR completes, the CPU restores the previous task’s context and resumes its execution.</li>
+</ol>
+<h2 id="Steps-to-Determine-GPIO-Interrupt-Capability"><a href="#Steps-to-Determine-GPIO-Interrupt-Capability" class="headerlink" title="Steps to Determine GPIO Interrupt Capability"></a>Steps to Determine GPIO Interrupt Capability</h2><h3 id="1-Consult-the-EC-Chip’s-Datasheet"><a href="#1-Consult-the-EC-Chip’s-Datasheet" class="headerlink" title="1. Consult the EC Chip’s Datasheet"></a>1. Consult the EC Chip’s Datasheet</h3><ul>
+<li><p>The <strong>datasheet</strong> for the specific EC chip (e.g., Nuvoton, Super I&#x2F;O, or any other EC) will provide detailed information about the GPIO pins, including whether they can be used as interrupt sources.</p>
+</li>
+<li><p>Look for sections like:</p>
+<ul>
+<li>GPIO functions</li>
+<li>Interrupt capabilities</li>
+<li>Pin multiplexing (sometimes a GPIO pin can be multiplexed to serve different functions, including as an interrupt pin)</li>
+</ul>
+</li>
+<li><p><strong>Example</strong>: A typical section of a datasheet might say:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GPIO 12–19 can be configured as external interrupt sources, with support <span class="keyword">for</span> both rising and falling edge detection.</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-Check-the-EC-Chip’s-Pin-Configuration-and-Registers"><a href="#2-Check-the-EC-Chip’s-Pin-Configuration-and-Registers" class="headerlink" title="2. Check the EC Chip’s Pin Configuration and Registers"></a>2. Check the EC Chip’s Pin Configuration and Registers</h3><ul>
+<li><p>The </p>
+<p>registers</p>
+<p> of the EC chip often provide configuration options for enabling interrupts on specific GPIO pins. Look for:</p>
+<ul>
+<li><strong>Interrupt Enable Register</strong>: Lists which GPIO pins can be configured as interrupt sources.</li>
+<li><strong>Interrupt Edge Configuration</strong>: Defines how the GPIO can detect interrupts (rising, falling, or both edges).</li>
+</ul>
+</li>
+<li><p>Example register names:</p>
+<ul>
+<li><code>GPIO Interrupt Mask Register (IMR)</code></li>
+<li><code>Interrupt Status Register (ISR)</code></li>
+<li><code>Interrupt Edge Register (IER)</code></li>
+</ul>
+</li>
+</ul>
+<p>These registers indicate how the GPIO pins can be configured to trigger interrupts.</p>
+<h3 id="3-Use-the-Embedded-System-Firmware-or-BIOS-Settings"><a href="#3-Use-the-Embedded-System-Firmware-or-BIOS-Settings" class="headerlink" title="3. Use the Embedded System Firmware or BIOS Settings"></a>3. Use the Embedded System Firmware or BIOS Settings</h3><ul>
+<li>If the EC chip is integrated into a system (such as a laptop or industrial device), the firmware (e.g., BIOS, UEFI, or EC firmware) might provide settings or an interface for configuring GPIO pins as interrupts.</li>
+<li>Use <strong>BIOS&#x2F;UEFI menus</strong> or the EC’s firmware console to review and configure GPIO interrupt capabilities, depending on the platform.</li>
+</ul>
+<h3 id="4-Use-Linux-Sysfs-for-Linux-Based-Systems"><a href="#4-Use-Linux-Sysfs-for-Linux-Based-Systems" class="headerlink" title="4. Use Linux Sysfs (for Linux-Based Systems)"></a>4. Use Linux Sysfs (for Linux-Based Systems)</h3><ul>
+<li><p>If you are running Linux on your embedded system, you can explore available GPIO interrupts through the </p>
+<p><strong>sysfs</strong> interface:</p>
+<ol>
+<li><p>List the available GPIO chips:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> /sys/class/gpio/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Check if any GPIOs are already configured for interrupts by examining the <code>edge</code> attribute for each GPIO:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /sys/class/gpio/gpio&lt;GPIO_PIN_NUMBER&gt;/edge</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>If a GPIO can be configured as an interrupt, this file will list the possible edge settings: <code>none</code>, <code>rising</code>, <code>falling</code>, or <code>both</code>.</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="5-Review-Platform-Specific-Documents-or-Schematics"><a href="#5-Review-Platform-Specific-Documents-or-Schematics" class="headerlink" title="5. Review Platform-Specific Documents or Schematics"></a>5. Review Platform-Specific Documents or Schematics</h3><ul>
+<li>In many embedded systems, the EC chip is part of a larger platform or SoC (System on Chip). You can consult:<ul>
+<li><strong>Platform datasheets</strong>: These may document how many GPIOs are available and which ones can act as interrupt sources.</li>
+<li><strong>Hardware schematics</strong>: This can help determine which GPIOs are mapped to the EC and what their interrupt capabilities are.</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-Refer-to-EC-Firmware-Code-if-available"><a href="#6-Refer-to-EC-Firmware-Code-if-available" class="headerlink" title="6. Refer to EC Firmware Code (if available)"></a>6. Refer to EC Firmware Code (if available)</h3><ul>
+<li>If you have access to the EC firmware source code or configuration, check how GPIO interrupts are defined and handled in the code.</li>
+<li>Typically, you’ll find interrupt configurations in <strong>initialization files</strong> or <strong>GPIO configuration code</strong> that directly interfaces with the EC registers.</li>
+</ul>
+<p>For example:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// Configure GPIO12 as an interrupt</span><br><span class="line">GPIO_INT_ENABLE |= (1 &lt;&lt; <span class="string">12);  // Enable interrupt on GPIO12</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="7-Check-Manufacturer-Tools-or-Libraries"><a href="#7-Check-Manufacturer-Tools-or-Libraries" class="headerlink" title="7. Check Manufacturer Tools or Libraries"></a>7. Check Manufacturer Tools or Libraries</h3><ul>
+<li>Some manufacturers provide <strong>software tools</strong> or <strong>libraries</strong> to configure EC chips, including GPIO and interrupt settings.</li>
+<li><strong>Example</strong>: If you are working with an EC chip from a manufacturer like Nuvoton, they might offer a development toolchain with utilities to configure and monitor GPIO interrupts.</li>
+</ul>
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                GPIO Interrupt
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2024/10/17/GPIOInterrupt/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    Author
+                </div>
+                <div class="content">Kothandaraman Kannadasan</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    Published
+                </div>
+                <div class="content">2024-10-17 15:53</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    License
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="Copy copyright info" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Interfaces/">Interfaces</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/10/17/HandlingGPIOInterruptPins/"
+                                   title="Handling GPIO InterruptPins"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Handling GPIO InterruptPins</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/10/16/BuildingEDK2ForAdlinkAmpere/"
+                                   title="Building EDK2 for Adlink Ampere"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Building EDK2 for Adlink Ampere</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#How-GPIO-Interrupts-Work"><span class="nav-text">How GPIO Interrupts Work</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Basic-Steps-in-a-GPIO-Interrupt"><span class="nav-text">Basic Steps in a GPIO Interrupt:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Steps-to-Determine-GPIO-Interrupt-Capability"><span class="nav-text">Steps to Determine GPIO Interrupt Capability</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Consult-the-EC-Chip%E2%80%99s-Datasheet"><span class="nav-text">1. Consult the EC Chip’s Datasheet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Check-the-EC-Chip%E2%80%99s-Pin-Configuration-and-Registers"><span class="nav-text">2. Check the EC Chip’s Pin Configuration and Registers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Use-the-Embedded-System-Firmware-or-BIOS-Settings"><span class="nav-text">3. Use the Embedded System Firmware or BIOS Settings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Use-Linux-Sysfs-for-Linux-Based-Systems"><span class="nav-text">4. Use Linux Sysfs (for Linux-Based Systems)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Review-Platform-Specific-Documents-or-Schematics"><span class="nav-text">5. Review Platform-Specific Documents or Schematics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Refer-to-EC-Firmware-Code-if-available"><span class="nav-text">6. Refer to EC Firmware Code (if available)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Check-Manufacturer-Tools-or-Libraries"><span class="nav-text">7. Check Manufacturer Tools or Libraries</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Kothandaraman Kannadasan</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#How-GPIO-Interrupts-Work"><span class="nav-text">How GPIO Interrupts Work</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Basic-Steps-in-a-GPIO-Interrupt"><span class="nav-text">Basic Steps in a GPIO Interrupt:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Steps-to-Determine-GPIO-Interrupt-Capability"><span class="nav-text">Steps to Determine GPIO Interrupt Capability</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Consult-the-EC-Chip%E2%80%99s-Datasheet"><span class="nav-text">1. Consult the EC Chip’s Datasheet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Check-the-EC-Chip%E2%80%99s-Pin-Configuration-and-Registers"><span class="nav-text">2. Check the EC Chip’s Pin Configuration and Registers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Use-the-Embedded-System-Firmware-or-BIOS-Settings"><span class="nav-text">3. Use the Embedded System Firmware or BIOS Settings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Use-Linux-Sysfs-for-Linux-Based-Systems"><span class="nav-text">4. Use Linux Sysfs (for Linux-Based Systems)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Review-Platform-Specific-Documents-or-Schematics"><span class="nav-text">5. Review Platform-Specific Documents or Schematics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Refer-to-EC-Firmware-Code-if-available"><span class="nav-text">6. Refer to EC Firmware Code (if available)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Check-Manufacturer-Tools-or-Libraries"><span class="nav-text">7. Check Manufacturer Tools or Libraries</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+            
+<script src="/js/post/copyright-info.js"></script>
+
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+    
+<script src="//cdn.jsdelivr.net/npm/mermaid@7.1.2/dist/mermaid.min.js"></script>
+
+
+
+
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

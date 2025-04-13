@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Kothandaraman Kannadasan">
+    
+    <title>
+        
+            Jenkins |
+        
+        Raman&#39;s Hub
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Raman's Hub","author":"Kothandaraman Kannadasan","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/                        || fa-solid fa-home","archives":"/archives            || fa-solid fa-box-archive","docs+":{"icon":"fa-solid fa-book","children":[{"categories":"/categories  || fa-solid fa-layer-group"},{"tags":"/tags              || fa-solid fa-tags"}]},"about":"/about                  || fa-solid fa-user-graduate"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/kkraman02","x":"X","facebook":"Facebook","email":"kkraman02@gmail.com"}},"scroll":{"progress_bar":true,"percent":true,"hide_header":false},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":true,"reward":{"enable":true,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":"flase","use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.3"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Raman&#39;s Hub
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box has-sub-menu">
+                            <a class="menu-text-color border-box" href="javascript:void(0);">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-book"></i>
+                                
+                                DOCS+
+                                
+                                    <i class="menu-text-color collapse-icon fa-solid fa-angle-down"></i>
+                                
+                            </a>
+                            
+                                <ul class="sub-menu-list border-box">
+                                    
+                                        
+                                        <li class="sub-menu-item border-box ">
+                                            <a class="menu-text-color border-box flex-start" href="/categories">
+                                                
+                                                    <i class="menu-text-color sub-menu-icon fa-solid fa-layer-group"></i>
+                                                
+                                                CATEGORIES
+                                            </a>
+                                        </li>
+                                    
+                                        
+                                        <li class="sub-menu-item border-box ">
+                                            <a class="menu-text-color border-box flex-start" href="/tags">
+                                                
+                                                    <i class="menu-text-color sub-menu-icon fa-solid fa-tags"></i>
+                                                
+                                                TAGS
+                                            </a>
+                                        </li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                
+                                ABOUT
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box has-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="javascript:void(0);">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-book"></i>
+                                </span>
+                            
+                            DOCS+
+                        </a>
+                        
+                            <i class="right-side collapse-icon fa-solid fa-angle-left"></i>
+                        
+                    </label>
+                    
+                        <ul class="drawer-sub-menu-list border-box">
+                            
+                                
+                                <li class="sub-menu-item border-box">
+                                    <a class="drawer-menu-text-color border-box flex-start" href="/categories">
+                                        
+                                            <span class="sub-menu-icon-wrap border-box flex-center">
+                                                <i class="drawer-menu-text-color sub-menu-icon fa-solid fa-layer-group"></i>
+                                            </span>
+                                        
+                                        CATEGORIES
+                                    </a>
+                                </li>
+                            
+                                
+                                <li class="sub-menu-item border-box">
+                                    <a class="drawer-menu-text-color border-box flex-start" href="/tags">
+                                        
+                                            <span class="sub-menu-icon-wrap border-box flex-center">
+                                                <i class="drawer-menu-text-color sub-menu-icon fa-solid fa-tags"></i>
+                                            </span>
+                                        
+                                        TAGS
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                </span>
+                            
+                            ABOUT
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        Jenkins
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Kothandaraman Kannadasan</span>
+                                
+                                    <span class="author-badge">Lv3</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-03-28 20:30:00</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Fri Mar 28 2025 21:45:26 GMT+0800">2025-03-28 21:45:26</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/Jenkins/">Jenkins</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Jenkins/">Jenkins</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p>Jenkins is a popular open-source framework. It helps developers to automate the software development, testing, and deployment  their software products, for an example Embedded Linux Yocto development.</p>
+<h2 id="Installing-Jenkins"><a href="#Installing-Jenkins" class="headerlink" title="Installing Jenkins"></a>Installing Jenkins</h2><ul>
+<li><p>In prior installing Jenkins, <a class="link"   target="_blank" rel="noopener" href="https://www.jenkins.io/doc/book/installing/linux/#installation-of-java" >install Java<i class="fas fa-external-link-alt"></i></a> because it Jenkins requires Java.</p>
+</li>
+<li><p>Refer to <a class="link"   target="_blank" rel="noopener" href="https://www.jenkins.io/doc/book/installing/linux/#debianubuntu" >here<i class="fas fa-external-link-alt"></i></a> for installing Jenkins on Ubuntu host. Choose the LTS release instead of weekly release in order setup more stable environment.</p>
+</li>
+</ul>
+<h2 id="Start-Jenkins"><a href="#Start-Jenkins" class="headerlink" title="Start Jenkins"></a>Start Jenkins</h2><p>Enable the Jenkins service to start at boot with the command</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> jenkins</span><br><span class="line"><span class="built_in">sudo</span> systemctl start jenkins</span><br></pre></td></tr></table></figure>
+
+<p>Check the status of the Jenkins service using the command</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl status jenkins</span><br></pre></td></tr></table></figure>
+
+<p>If everything has been set up correctly, you should see an output like this</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Loaded: loaded (/lib/systemd/system/jenkins.service; enabled; vendor preset: enabled)</span><br><span class="line">Active: active (running) since Tue 2018-11-13 16:19:01 +03; 4min 57s ago</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Post-installation-Setup"><a href="#Post-installation-Setup" class="headerlink" title="Post-installation Setup"></a>Post-installation Setup</h2><ul>
+<li><p>This setup wizard takes you through a few quick “one-off” steps to unlock Jenkins, customize it with plugins and create the first administrator user through which you can continue accessing Jenkins.</p>
+</li>
+<li><p>Refer to <a class="link"   target="_blank" rel="noopener" href="https://www.jenkins.io/doc/book/installing/linux/#setup-wizard" >here<i class="fas fa-external-link-alt"></i></a> to get more detailed information.</p>
+</li>
+</ul>
+<h2 id="Start-a-New-Job"><a href="#Start-a-New-Job" class="headerlink" title="Start a New Job"></a>Start a New Job</h2><ul>
+<li>Dashboard -&gt; <strong>click</strong> New Item -&gt; </li>
+<li>Name your job item and choose the job type.</li>
+<li>For beginner it’s recommended to go with <strong>Freestyle project</strong>. It offers you the shell environment to design the job workflow.</li>
+<li>Advanced users go with <strong>Pipeline</strong>. It offers you to write down your workflow in groovy format. Hence, you will get more control.</li>
+</ul>
+<h2 id="Defining-Pipeline-Using-Groovy-Script"><a href="#Defining-Pipeline-Using-Groovy-Script" class="headerlink" title="Defining Pipeline Using Groovy Script"></a>Defining Pipeline Using Groovy Script</h2><ul>
+<li><p>Dashboard -&gt; Job Name -&gt; Configuration -&gt;</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">    agent any</span><br><span class="line"></span><br><span class="line">    environment &#123;</span><br><span class="line">        YOCTO_DIR = <span class="string">&quot;/media/raman/development/jenkins_x86_yocto&quot;</span></span><br><span class="line">        POKY_REPO = <span class="string">&quot;git://git.yoctoproject.org/poky&quot;</span></span><br><span class="line">        POKY_BRANCH = <span class="string">&quot;kirkstone&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">&#x27;Checkout Yocto&#x27;</span>) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                sh <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">                    mkdir -p $YOCTO_DIR</span></span><br><span class="line"><span class="string">                    cd $YOCTO_DIR</span></span><br><span class="line"><span class="string">                    if [ ! -d poky ]; then</span></span><br><span class="line"><span class="string">                        git clone -b $POKY_BRANCH $POKY_REPO</span></span><br><span class="line"><span class="string">                    fi</span></span><br><span class="line"><span class="string">                &quot;&quot;&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        stage(<span class="string">&#x27;Setup Build Environment&#x27;</span>) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                sh <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">                    cd $YOCTO_DIR/poky</span></span><br><span class="line"><span class="string">                    bash -c &#x27;source oe-init-build-env build &amp;&amp; sed -i &quot;s/^MACHINE ?=.*/MACHINE ??= \\&quot;qemux86-64\\&quot;/&quot; conf/local.conf&#x27;</span></span><br><span class="line"><span class="string">                &quot;&quot;&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        stage(<span class="string">&#x27;Build&#x27;</span>) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                sh <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">                    cd $YOCTO_DIR/poky</span></span><br><span class="line"><span class="string">                    bash -c &#x27;source oe-init-build-env build &amp;&amp; bitbake core-image-minimal&#x27;</span></span><br><span class="line"><span class="string">                &quot;&quot;&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        stage(<span class="string">&#x27;Archive Artifacts&#x27;</span>) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                sh <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">                    mkdir -p artifacts</span></span><br><span class="line"><span class="string">                    cp -r $YOCTO_DIR/poky/build/tmp/deploy/images/qemux86-64 ./artifacts/</span></span><br><span class="line"><span class="string">                &quot;&quot;&quot;</span></span><br><span class="line">                archiveArtifacts <span class="attr">artifacts:</span> <span class="string">&quot;artifacts/qemux86-64/**/*&quot;</span>, <span class="attr">fingerprint:</span> <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    post &#123;</span><br><span class="line">        failure &#123;</span><br><span class="line">            echo <span class="string">&#x27;Build failed!&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">        success &#123;</span><br><span class="line">            echo <span class="string">&#x27;Build completed successfully!&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Start-the-First-Build-of-Your-Job"><a href="#Start-the-First-Build-of-Your-Job" class="headerlink" title="Start the First Build of Your Job"></a>Start the First Build of Your Job</h2><ul>
+<li>Dashboard -&gt; Job Name -&gt; <strong>click</strong> Build Now.</li>
+<li>Dashboard -&gt; Job Name -&gt; <strong>click</strong> build number(#1) -&gt; Console Output(you can monitor&#x2F;see the build status).</li>
+</ul>
+<h2 id="Make-Your-Jenkins-Accessible-Over-The-Network"><a href="#Make-Your-Jenkins-Accessible-Over-The-Network" class="headerlink" title="Make Your Jenkins Accessible Over The Network"></a>Make Your Jenkins Accessible Over The Network</h2><p>Open the Jenkins default config file.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nano /etc/default/jenkins</span><br></pre></td></tr></table></figure>
+
+<p>Make sure HTTP HOST is set to <code>HTTP_HOST=0.0.0.0</code></p>
+<p>Tell Jenkins to listen on all network interfaces.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">JENKINS_ARGS=<span class="string">&quot;--webroot=/var/cache/<span class="variable">$NAME</span>/war --httpPort=<span class="variable">$HTTP_PORT</span>&quot;</span></span><br><span class="line">&lt;!-- Change the above line as shown below --!&gt;</span><br><span class="line">JENKINS_ARGS=<span class="string">&quot;--webroot=/var/cache/<span class="variable">$NAME</span>/war --httpPort=<span class="variable">$HTTP_PORT</span> --httpListenAddress=0.0.0.0&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Save and close the config file.</p>
+<p>Restart Jenkins.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl restart jenkins</span><br></pre></td></tr></table></figure>
+
+<p>Allow firewall access.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> ufw allow 8080</span><br><span class="line"><span class="built_in">sudo</span> ufw status</span><br></pre></td></tr></table></figure>
+
+<p>Get the system IP.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hostname -I</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">172.30.70.51</span><br></pre></td></tr></table></figure>
+
+<p>You should now be able to access your Jenkins from other machines using your server’s IP address.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://172.30.70.51:8080/</span><br></pre></td></tr></table></figure>
+
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                Jenkins
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2025/03/28/Jenkins/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    Author
+                </div>
+                <div class="content">Kothandaraman Kannadasan</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    Published
+                </div>
+                <div class="content">2025-03-28 20:30</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    License
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="Copy copyright info" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Jenkins/">Jenkins</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/03/31/chmod_chown/"
+                                   title="Chmod and Chown Commands"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Chmod and Chown Commands</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/03/26/SSH/"
+                                   title="SSH (Secured Shell)"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">SSH (Secured Shell)</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Installing-Jenkins"><span class="nav-text">Installing Jenkins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Start-Jenkins"><span class="nav-text">Start Jenkins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Post-installation-Setup"><span class="nav-text">Post-installation Setup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Start-a-New-Job"><span class="nav-text">Start a New Job</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Defining-Pipeline-Using-Groovy-Script"><span class="nav-text">Defining Pipeline Using Groovy Script</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Start-the-First-Build-of-Your-Job"><span class="nav-text">Start the First Build of Your Job</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Make-Your-Jenkins-Accessible-Over-The-Network"><span class="nav-text">Make Your Jenkins Accessible Over The Network</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Kothandaraman Kannadasan</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Installing-Jenkins"><span class="nav-text">Installing Jenkins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Start-Jenkins"><span class="nav-text">Start Jenkins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Post-installation-Setup"><span class="nav-text">Post-installation Setup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Start-a-New-Job"><span class="nav-text">Start a New Job</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Defining-Pipeline-Using-Groovy-Script"><span class="nav-text">Defining Pipeline Using Groovy Script</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Start-the-First-Build-of-Your-Job"><span class="nav-text">Start the First Build of Your Job</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Make-Your-Jenkins-Accessible-Over-The-Network"><span class="nav-text">Make Your Jenkins Accessible Over The Network</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+            
+<script src="/js/post/copyright-info.js"></script>
+
+        
+
+        <!-- share -->
+        
+            
+<script src="/js/post/share.js"></script>
+
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+    
+<script src="//cdn.jsdelivr.net/npm/mermaid@7.1.2/dist/mermaid.min.js"></script>
+
+
+
+
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
