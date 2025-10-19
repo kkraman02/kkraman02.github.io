@@ -320,7 +320,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Mon Feb 17 2025 11:22:37 GMT+0800">2025-02-17 11:22:37</span>
+                <span class="datetime" data-updated="Sun Oct 19 2025 09:00:39 GMT+0800">2025-10-19 09:00:39</span>
             </span>
         
 
@@ -366,9 +366,9 @@
                     
                          <h2 id="1-Formatting-the-USB-stick"><a href="#1-Formatting-the-USB-stick" class="headerlink" title="1. Formatting the USB stick"></a>1. Formatting the USB stick</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsblk</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> umount /dev/sdc1</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> umount /dev/sdc*</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> fdisk.vfat -F 32 -n USB_A /dev/sdc -I</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> mkfs.vfat -F 32 -n USB_A /dev/sdc -I</span><br></pre></td></tr></table></figure>
 
 <h2 id="2-Flashing-the-OS-Image-file-to-the-USB-stick"><a href="#2-Flashing-the-OS-Image-file-to-the-USB-stick" class="headerlink" title="2. Flashing the OS&#x2F;Image file to the USB stick"></a>2. Flashing the OS&#x2F;Image file to the USB stick</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">dd</span> <span class="keyword">if</span>=&lt;file_name&gt; of=/dev/sdc status=progress</span><br></pre></td></tr></table></figure>
 
