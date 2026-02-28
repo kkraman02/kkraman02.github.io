@@ -320,7 +320,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Mon Feb 17 2025 11:22:37 GMT+0800">2025-02-17 11:22:37</span>
+                <span class="datetime" data-updated="Fri Dec 05 2025 20:52:07 GMT+0800">2025-12-05 20:52:07</span>
             </span>
         
 
@@ -366,9 +366,9 @@
                     
                          <h2 id="1-Formatting-the-USB-stick"><a href="#1-Formatting-the-USB-stick" class="headerlink" title="1. Formatting the USB stick"></a>1. Formatting the USB stick</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsblk</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> umount /dev/sdc1</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> umount /dev/sdc*</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> fdisk.vfat -F 32 -n USB_A /dev/sdc -I</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> mkfs.vfat -F 32 -n USB_A /dev/sdc -I</span><br></pre></td></tr></table></figure>
 
 <h2 id="2-Flashing-the-OS-Image-file-to-the-USB-stick"><a href="#2-Flashing-the-OS-Image-file-to-the-USB-stick" class="headerlink" title="2. Flashing the OS&#x2F;Image file to the USB stick"></a>2. Flashing the OS&#x2F;Image file to the USB stick</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">dd</span> <span class="keyword">if</span>=&lt;file_name&gt; of=/dev/sdc status=progress</span><br></pre></td></tr></table></figure>
 
@@ -496,22 +496,6 @@
                             </div>
                         
                         
-                            <div class="next-post">
-                                <a class="next"
-                                   rel="next"
-                                   href="/2024/06/04/Bitbake-Environment/"
-                                   title="Bitbake Environment"
-                                >
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Bitbake Environment</span>
-                                        <span class="post-nav-item">Next posts</span>
-                                    </span>
-                                    <span class="right arrow-icon flex-center">
-                                        <i class="fas fa-chevron-right"></i>
-                                    </span>
-                                </a>
-                            </div>
-                        
                     </div>
                 
 
@@ -549,7 +533,7 @@
             
 <footer class="footer border-box">
     <div class="copyright-info info-item">
-        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2025
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2026
         
             &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Kothandaraman Kannadasan</a>
         

@@ -302,7 +302,7 @@
                             <div class="author border-box">
                                 <span class="name">Kothandaraman Kannadasan</span>
                                 
-                                    <span class="author-badge">Lv4</span>
+                                    <span class="author-badge">Lv3</span>
                                 
                             </div>
                             <div class="meta-info border-box">
@@ -320,7 +320,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Fri Dec 05 2025 20:52:07 GMT+0800">2025-12-05 20:52:07</span>
+                <span class="datetime" data-updated="Sat Feb 28 2026 20:54:53 GMT+0800">2026-02-28 20:54:53</span>
             </span>
         
 
@@ -364,7 +364,8 @@
                     
 
                     
-                         <h3 id="Definitions"><a href="#Definitions" class="headerlink" title="Definitions"></a>Definitions</h3><p>Terminology in the Yocto Project can be a little confusing. These definitions should help you along the way:</p>
+                         <h2 id="1-Bitbake"><a href="#1-Bitbake" class="headerlink" title="1. Bitbake"></a>1. Bitbake</h2><p>Bitbake is the build engine. It reads instructions(recipes) and builds a full Linux system from source. It’s commoly used in the Yocto project to create custom Linux distributions. Bitbake processes recipes, which specify how to fetch, configure, compile, and package software components, enabling reproducible and customizable builds.</p>
+<h2 id="2-Terminlology"><a href="#2-Terminlology" class="headerlink" title="2. Terminlology"></a>2. Terminlology</h2><p>Terminology in the Yocto Project can be a little confusing. These definitions should help you along the way:</p>
 <ul>
 <li><strong>OpenEmbedded</strong>: build system and community</li>
 <li><strong>The Yocto Project</strong>: umbrella project and community</li>
@@ -376,7 +377,59 @@
 <li><strong>Machine</strong>: defines the architecture, pins, buses, BSP, etc.</li>
 <li><strong>Image</strong>: output of build process (bootable and executable Linux OS)</li>
 </ul>
-<h3 id="Block-Diagram"><a href="#Block-Diagram" class="headerlink" title="Block Diagram"></a>Block Diagram</h3><p><img   src="/images/YoctoProjectDevelopment.assets/YoctoBlockDiagram.png" ></p>
+<h2 id="3-Block-Diagram"><a href="#3-Block-Diagram" class="headerlink" title="3. Block Diagram"></a>3. Block Diagram</h2><p><img   src="/images/YoctoProjectDevelopment.assets/YoctoBlockDiagram.png" ></p>
+<h2 id="4-Must-to-Know-Commands"><a href="#4-Must-to-Know-Commands" class="headerlink" title="4. Must to Know Commands"></a>4. Must to Know Commands</h2><h3 id="4-1-Basic-Yocto-Build-Setup-and-Commands"><a href="#4-1-Basic-Yocto-Build-Setup-and-Commands" class="headerlink" title="4.1 Basic Yocto Build Setup and Commands"></a>4.1 Basic Yocto Build Setup and Commands</h3><p>You must setup the build environment before building it.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source oe-init-build-env</span><br></pre></td></tr></table></figure>
+
+<p>Build an image.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitbake &lt;image-name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Remove just only build ouput(artifacts).</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitbake -c clean &lt;recipe-name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Remove build output + sstate cache</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitbake -c cleansstate &lt;recipe-name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Remove build output + sstate cache + downloaded source code</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitbake -c cleanall &lt;recipe-name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Compiling the recipe.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitbake -c complile &lt;recipe-name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Configuring the recipe.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitbake -c configure &lt;recipe-name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>List layers used in your current build environment.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitbake-layers show-layers</span><br></pre></td></tr></table></figure>
+
+<p>Add new layer to you current build environment.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitbake-layers add-layer &lt;layer-name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-Package-Management"><a href="#4-2-Package-Management" class="headerlink" title="4.2 Package Management"></a>4.2 Package Management</h3><p>List available recipes and it’s version.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitbake -s</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-Troubleshooting-and-Debugging"><a href="#4-3-Troubleshooting-and-Debugging" class="headerlink" title="4.3 Troubleshooting and Debugging"></a>4.3 Troubleshooting and Debugging</h3><p>Bitbake server stuck issue.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pkill -f &quot;bitbake.*server&quot; || true</span><br><span class="line">rm -f ./bitbake.lock ./cache/bitbake.lock</span><br></pre></td></tr></table></figure>
+
+<p>Show environment variables used for the recipe.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitbake -e &lt;recipe-name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Generates dependency graph.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitbake -g &lt;recipe-name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Start modifying a recipe in workspace</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">devtool modify &lt;recipe&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Build a recipe from workspace</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">devtool build &lt;recipe-name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Show the status of the modified recipes</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">devtool status</span><br></pre></td></tr></table></figure>
+
+<p>Finalize modification into a layers</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">devtool finish &lt;recipe-name&gt; &lt;layer-name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>wic create <wks-file> –image-name <image></p>
 
                     
                 </div>
@@ -534,7 +587,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Definitions"><span class="nav-text">Definitions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Block-Diagram"><span class="nav-text">Block Diagram</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Bitbake"><span class="nav-text">1. Bitbake</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Terminlology"><span class="nav-text">2. Terminlology</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Block-Diagram"><span class="nav-text">3. Block Diagram</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Must-to-Know-Commands"><span class="nav-text">4. Must to Know Commands</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Basic-Yocto-Build-Setup-and-Commands"><span class="nav-text">4.1 Basic Yocto Build Setup and Commands</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-Package-Management"><span class="nav-text">4.2 Package Management</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-Troubleshooting-and-Debugging"><span class="nav-text">4.3 Troubleshooting and Debugging</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -665,7 +718,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Definitions"><span class="nav-text">Definitions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Block-Diagram"><span class="nav-text">Block Diagram</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Bitbake"><span class="nav-text">1. Bitbake</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Terminlology"><span class="nav-text">2. Terminlology</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Block-Diagram"><span class="nav-text">3. Block Diagram</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Must-to-Know-Commands"><span class="nav-text">4. Must to Know Commands</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Basic-Yocto-Build-Setup-and-Commands"><span class="nav-text">4.1 Basic Yocto Build Setup and Commands</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-Package-Management"><span class="nav-text">4.2 Package Management</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-Troubleshooting-and-Debugging"><span class="nav-text">4.3 Troubleshooting and Debugging</span></a></li></ol></li></ol>
     </div>
 </div>
 
